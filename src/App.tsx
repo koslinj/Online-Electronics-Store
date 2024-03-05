@@ -1,9 +1,11 @@
+import AuthProvider from "./providers/AuthProvider";
+import Routes from "./routes";
 
 function App() {
   return (
-    <div className="text-red-400 text-3xl">
-      APP
-    </div>
+    <AuthProvider>
+      <Routes />
+    </AuthProvider>
   );
 }
 
