@@ -1,17 +1,22 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
-import { Product } from '../types';
+import { Category, Product } from '../types';
 import { ProductCard } from '../components/ProductCard';
+import { fetchCategories } from '../api/categories';
+import { fetchProducts } from '../api/products';
 
 export const Home = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
 
   useEffect(() => {
-    
+
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/products');
-        setProducts(response.data); 
+        const _cat = await fetchCategories()
+        const _prod = await fetchProducts()
+        setCategories(_cat)
+        setProducts(_prod)
+
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -23,7 +28,6 @@ export const Home = () => {
   return (
     <div>
       <h1 className="text-red-500">HOME</h1>
-      
       <ul>
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
