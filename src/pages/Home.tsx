@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Category, Product } from '../types';
 import { ProductCard } from '../components/ProductCard';
+import { TopNavbar } from '../components/navbar/TopNavbar';
+import { BottomNavbar } from '../components/navbar/BottomNavbar';
 import { fetchCategories } from '../api/categories';
 import { fetchProducts } from '../api/products';
 
@@ -27,6 +29,8 @@ export const Home = () => {
 
   return (
     <div>
+      <TopNavbar />
+      <BottomNavbar categories={categories} />
       <h1 className="text-red-500">HOME</h1>
       <ul>
         {products.map((product) => (
