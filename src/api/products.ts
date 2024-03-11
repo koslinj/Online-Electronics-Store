@@ -8,3 +8,12 @@ export const fetchProducts = async () => {
     console.error('Error fetching data:', error);
   }
 };
+
+export const fetchProductsByCategory = async (category: string | null) => {
+  try {
+    const response = await axios.get(`http://localhost:8080/api/products?category=${category}`);
+    return response.data
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+};

@@ -5,6 +5,9 @@ import { Logout } from "../pages/Logout";
 import { Profile } from "../pages/Profile";
 import { LoginRoute } from "./LoginRoute";
 import { Home } from "../pages/Home";
+import { CategoryPage } from "../pages/CategoryPage";
+import { ProductList } from "../pages/ProductList";
+import { Root } from "../pages/Root";
 
 const Routes = () => {
 
@@ -12,16 +15,30 @@ const Routes = () => {
   const routesForPublic = [
     {
       path: "/",
-      element: <Home />,
-    },
-    {
-      path: "/service",
-      element: <div>Service Page</div>,
-    },
-    {
-      path: "/about-us",
-      element: <div>About Us</div>,
-    },
+      element: <Root />,
+      children: [
+        {
+          path: "/",
+          element: <Home />,
+        },
+        {
+          path: "/categories/:generalCategory",
+          element: <CategoryPage />,
+        },
+        {
+          path: "/products/:category",
+          element: <ProductList />,
+        },
+        {
+          path: "/service",
+          element: <div>Service Page</div>,
+        },
+        {
+          path: "/about-us",
+          element: <div>About Us</div>,
+        },
+      ]
+    }
   ];
 
   // Define routes accessible only to authenticated users
@@ -64,7 +81,7 @@ const Routes = () => {
   ]);
 
   // Provide the router configuration using RouterProvider
-  return <RouterProvider router={router} />;
+  return <RouterProvider router={router} />
 };
 
 export default Routes;

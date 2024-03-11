@@ -1,5 +1,7 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { useAuth } from "../providers/AuthProvider";
+import { TopNavbar } from "../components/navbar/TopNavbar";
+import { BottomNavbar } from "../components/navbar/BottomNavbar";
 
 export const ProtectedRoute = () => {
   const { token } = useAuth();
@@ -8,5 +10,11 @@ export const ProtectedRoute = () => {
     return <Navigate to="/login" />;
   }
 
-  return <Outlet />;
+  return (
+    <>
+      <TopNavbar />
+      <BottomNavbar />
+      <Outlet />
+    </>
+  )
 };
