@@ -1,18 +1,18 @@
 import { useState } from 'react'
 import { IoSearch } from "react-icons/io5"
+import { useNavigate } from 'react-router-dom';
 
-export const SearchBar = ({ onSearch }) => {
+export const SearchBar = () => {
   const [searchTerm, setSearchTerm] = useState('');
-
+  const navigate = useNavigate();
 
   const handleSearch = () => {
-    // Pass the search term to the parent component
-    //onSearch(searchTerm);
-    console.log(searchTerm)
+    if (searchTerm.trim() !== '') {
+      navigate(`/search?q=${searchTerm}`);
+    }
   };
 
   const handleKeyPress = (event) => {
-    // Trigger search if Enter key is pressed
     if (event.key === 'Enter') {
       handleSearch();
     }

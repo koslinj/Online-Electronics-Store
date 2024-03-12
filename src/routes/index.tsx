@@ -8,6 +8,7 @@ import { CategoryPage } from "../pages/CategoryPage";
 import { ProductList } from "../pages/ProductList";
 import { Root } from "../pages/Root";
 import { Register } from "../pages/Register";
+import { SearchResultsPage } from "../pages/SearchResultsPage";
 
 const Routes = () => {
 
@@ -30,13 +31,9 @@ const Routes = () => {
           element: <ProductList />,
         },
         {
-          path: "/service",
-          element: <div>Service Page</div>,
-        },
-        {
-          path: "/about-us",
-          element: <div>About Us</div>,
-        },
+          path: "/search",
+          element: <SearchResultsPage />
+        }
       ]
     }
   ];
