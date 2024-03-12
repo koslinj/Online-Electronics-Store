@@ -7,7 +7,7 @@ interface Props {
 
 export const ProductCard = ({ product }: Props) => {
   return (
-    <div className="group relative w-56 rounded-md flex flex-col items-center p-2 pb-16 h-80 before:absolute before:h-[1px] before:w-48 before:bottom-0 before:bg-gray-300 cursor-pointer hover:shadow-card duration-200">
+    <div className="group relative w-52 rounded-md flex flex-col items-center p-2 pb-16 h-80 before:absolute before:h-[1px] before:w-48 before:bottom-0 before:bg-gray-300 cursor-pointer hover:shadow-card duration-200">
       <img className='w-full' src={product.imageUrl} alt={product.name} />
       <p className="w-full">{product.name}</p>
       <p className="absolute bottom-2 left-2">2 649,00 zł</p>
