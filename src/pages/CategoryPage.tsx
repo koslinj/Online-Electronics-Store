@@ -1,7 +1,7 @@
 import { Link, useParams } from 'react-router-dom';
 import { Category } from '../types';
 import { useEffect, useState } from 'react';
-import { fetchCategoriesByGeneralCategory } from '../api/categories';
+import { fetchCategoriesByUrlGeneralCategory } from '../api/categories';
 
 export const CategoryPage = () => {
   const { generalCategory } = useParams();
@@ -12,7 +12,7 @@ export const CategoryPage = () => {
 
     const fetchData = async () => {
       try {
-        const _cat = await fetchCategoriesByGeneralCategory(generalCategory || null)
+        const _cat = await fetchCategoriesByUrlGeneralCategory(generalCategory!)
         setCategories(_cat)
 
       } catch (error) {
@@ -25,7 +25,10 @@ export const CategoryPage = () => {
 
   return (
     <>
-      <h2>{generalCategory}</h2>
+      <h2 className='text-2xl text-gray-600 m-4'>
+        <span className='font-bold text-black'>Kategorie</span><br />
+        w {categories[0]?.generalCategory}
+      </h2>
       {categories.map((cat) => (
         <Link to={`/products/${cat.urlName}`} key={cat.id}>
           <div>{cat.name}</div>
