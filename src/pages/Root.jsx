@@ -2,6 +2,7 @@ import { TopNavbar } from '../components/navbar/TopNavbar'
 import { BottomNavbar } from '../components/navbar/BottomNavbar'
 import { Outlet } from 'react-router-dom'
 import { useEffect, useState } from 'react';
+import { Footer } from '../components/footer/Footer';
 
 export const Root = () => {
   // const [side, setSide] = useState("left");
@@ -31,6 +32,7 @@ export const Root = () => {
       <TopNavbar />
       <BottomNavbar />
       <Outlet />
+      <Footer />
     </>
   )
 }
