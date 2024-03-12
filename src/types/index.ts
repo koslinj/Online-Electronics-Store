@@ -9,6 +9,7 @@ export interface Product {
 export interface Category {
   id: number
   generalCategory: string
+  urlGeneralCategory: string
   name: string
   urlName: string
 }
