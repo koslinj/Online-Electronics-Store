@@ -1,13 +1,13 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { ProtectedRoute } from "./ProtectedRoute";
 import { Login } from "../pages/Login";
-import { Logout } from "../pages/Logout";
 import { Profile } from "../pages/Profile";
 import { LoginRoute } from "./LoginRoute";
 import { Home } from "../pages/Home";
 import { CategoryPage } from "../pages/CategoryPage";
 import { ProductList } from "../pages/ProductList";
 import { Root } from "../pages/Root";
+import { Register } from "../pages/Register";
 
 const Routes = () => {
 
@@ -50,11 +50,7 @@ const Routes = () => {
         {
           path: "/profile",
           element: <Profile />
-        },
-        {
-          path: "/logout",
-          element: <Logout />,
-        },
+        }
       ],
     },
   ];
@@ -68,6 +64,10 @@ const Routes = () => {
         {
           path: "/login",
           element: <Login />,
+        },
+        {
+          path: "/register",
+          element: <Register />,
         },
       ]
     }
