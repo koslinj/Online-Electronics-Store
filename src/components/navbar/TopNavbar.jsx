@@ -4,6 +4,7 @@ import { AccountButton } from "./AccountButton"
 import { Dropdown } from "../Dropdown"
 import { SearchBar } from "./SearchBar"
 import { CartButton } from "./CartButton"
+import { LanguageButtons } from "./LanguageButtons"
 
 export const TopNavbar = () => {
 
@@ -16,6 +17,7 @@ export const TopNavbar = () => {
         </div>
       </Link>
       <SearchBar />
+      <LanguageButtons />
       <AccountButton />
       <Dropdown
         side={"left"}

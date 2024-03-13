@@ -1,8 +1,10 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next';
 import { IoSearch } from "react-icons/io5"
 import { useNavigate } from 'react-router-dom';
 
 export const SearchBar = () => {
+  const { t } = useTranslation()
   const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
 
@@ -23,7 +25,8 @@ export const SearchBar = () => {
       <input
         className='p-1 outline-none border-gray-400 border-2 rounded-md'
         type="text"
-        placeholder="Czego szukasz?"
+        size={28}
+        placeholder={t('searchPlaceholder')}
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
         onKeyPress={handleKeyPress}
