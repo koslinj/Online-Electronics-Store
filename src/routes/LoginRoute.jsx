@@ -10,11 +10,5 @@ export const LoginRoute = () => {
     return <Navigate to="/profile" />;
   }
 
-  return (
-    <>
-      <TopNavbar />
-      <BottomNavbar />
-      <Outlet />
-    </>
-  )
+  return <Outlet />
 };

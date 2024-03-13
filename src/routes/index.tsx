@@ -65,13 +65,19 @@ const Routes = () => {
       element: <LoginRoute />,
       children: [
         {
-          path: "/login",
-          element: <Login />,
-        },
-        {
-          path: "/register",
-          element: <Register />,
-        },
+          path: "/",
+          element: <Root />,
+          children: [
+            {
+              path: "/login",
+              element: <Login />,
+            },
+            {
+              path: "/register",
+              element: <Register />,
+            }
+          ]
+        }
       ]
     }
   ];
