@@ -5,11 +5,14 @@ import { PromotionsFooter } from "./PromotionsFooter"
 
 export const Footer = () => {
   return (
-    <div className="flex justify-center gap-10 sticky top-[100vh] mt-20 mb-10">
-      <OrdersFooter />
-      <PromotionsFooter />
-      <ElectroStoreFooter />
-      <ContactsFooter />
+    <div className="sticky top-[100vh] mt-20 mb-10">
+      <div className="flex justify-center gap-10">
+        <OrdersFooter />
+        <PromotionsFooter />
+        <ElectroStoreFooter />
+        <ContactsFooter />
+      </div>
+      <p className="text-center mt-8 italic">© ELECTROstore 2024</p>
     </div>
   )
 }
