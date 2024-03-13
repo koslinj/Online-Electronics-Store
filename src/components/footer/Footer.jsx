@@ -5,7 +5,7 @@ import { PromotionsFooter } from "./PromotionsFooter"
 
 export const Footer = () => {
   return (
-    <div className="flex justify-center gap-10">
+    <div className="flex justify-center gap-10 sticky top-[100vh]">
       <OrdersFooter />
       <PromotionsFooter />
       <ElectroStoreFooter />

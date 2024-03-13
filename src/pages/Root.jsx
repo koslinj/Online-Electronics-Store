@@ -28,11 +28,11 @@ export const Root = () => {
   // }, []);
 
   return (
-    <>
+    <div className='min-h-screen'>
       <TopNavbar />
       <BottomNavbar />
       <Outlet />
       <Footer />
-    </>
+    </div>
   )
 }
