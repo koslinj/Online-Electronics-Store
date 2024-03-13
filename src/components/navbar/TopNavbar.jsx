@@ -9,7 +9,7 @@ import { LanguageButtons } from "./LanguageButtons"
 export const TopNavbar = () => {
 
   return (
-    <div className="px-6 py-1 flex gap-6 items-center">
+    <div className="px-6 py-1 flex gap-10 items-center justify-center max-w-7xl mx-auto">
       <Link to="/">
         <div className="flex items-center">
           <img src={boltLogo} alt="Bolt Logo" width={50} />
@@ -18,15 +18,17 @@ export const TopNavbar = () => {
       </Link>
       <SearchBar />
       <LanguageButtons />
-      <AccountButton />
-      <Dropdown
-        side={"left"}
-        element={<CartButton />}
-      >
-        <div className="hover:bg-green-300 p-2">Shopping Link 1</div>
-        <div className="hover:bg-green-300 p-2">Shopping Link 2</div>
-        <div className="hover:bg-green-300 p-2">Shopping Link 3</div>
-      </Dropdown>
+      <div className="flex items-center justify-center">
+        <AccountButton />
+        <Dropdown
+          side={"left"}
+          element={<CartButton />}
+        >
+          <div className="hover:bg-green-300 p-2">Shopping Link 1</div>
+          <div className="hover:bg-green-300 p-2">Shopping Link 2</div>
+          <div className="hover:bg-green-300 p-2">Shopping Link 3</div>
+        </Dropdown>
+      </div>
     </div>
   )
 }

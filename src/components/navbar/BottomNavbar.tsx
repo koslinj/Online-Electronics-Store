@@ -52,30 +52,30 @@ export const BottomNavbar = () => {
   }, []);
 
   return (
-    <div className="px-6 py-1 flex gap-6 items-center bg-gray-100 shadow-card">
-
-      {categories.map((item) => (
-        <Dropdown
-          key={item.urlGeneralCategory}
-          side="right"
-          element={
-            <Link to={`/categories/${item.urlGeneralCategory}`}>
-              <div className="w-32 leading-5 rounded-t-md p-1 group-hover:bg-green-200">
-                {item.generalCategory}
-              </div>
-            </Link>}
-        >
-          {item.names.map((cat => (
-            <Link
-              to={`/products/${cat.urlName}`}
-              key={cat.urlName}
-            >
-              <div className="hover:bg-green-300 p-2">{cat.name}</div>
-            </Link>
-          )))}
-        </Dropdown>
-      ))}
-
+    <div className="bg-gray-100 shadow-card">
+      <div className="max-w-7xl mx-auto px-6 py-1 flex gap-6 items-center">
+        {categories.map((item) => (
+          <Dropdown
+            key={item.urlGeneralCategory}
+            side="right"
+            element={
+              <Link to={`/categories/${item.urlGeneralCategory}`}>
+                <div className="w-32 leading-5 rounded-t-md p-1 group-hover:bg-green-200">
+                  {item.generalCategory}
+                </div>
+              </Link>}
+          >
+            {item.names.map((cat => (
+              <Link
+                to={`/products/${cat.urlName}`}
+                key={cat.urlName}
+              >
+                <div className="hover:bg-green-300 p-2">{cat.name}</div>
+              </Link>
+            )))}
+          </Dropdown>
+        ))}
+      </div>
     </div>
   )
 }

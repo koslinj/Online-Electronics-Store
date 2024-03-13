@@ -21,11 +21,10 @@ export const SearchBar = () => {
   };
 
   return (
-    <div className='flex items-center'>
+    <div className='flex flex-1 items-center'>
       <input
-        className='p-1 outline-none border-gray-400 border-2 rounded-md'
+        className='p-1 outline-none border-gray-400 border-2 rounded-md flex-grow'
         type="text"
-        size={28}
         placeholder={t('searchPlaceholder')}
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
