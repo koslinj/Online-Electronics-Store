@@ -1,3 +1,4 @@
+import { ContactsFooter } from "./ContactsFooter"
 import { ElectroStoreFooter } from "./ElectroStoreFooter"
 import { OrdersFooter } from "./OrdersFooter"
 import { PromotionsFooter } from "./PromotionsFooter"
@@ -8,6 +9,7 @@ export const Footer = () => {
       <OrdersFooter />
       <PromotionsFooter />
       <ElectroStoreFooter />
+      <ContactsFooter />
     </div>
   )
 }
