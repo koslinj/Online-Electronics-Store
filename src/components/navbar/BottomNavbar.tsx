@@ -60,7 +60,7 @@ export const BottomNavbar = () => {
           side="right"
           element={
             <Link to={`/categories/${item.urlGeneralCategory}`}>
-              <div className="w-24 leading-5 rounded-t-md p-1 group-hover:bg-green-200">
+              <div className="w-32 leading-5 rounded-t-md p-1 group-hover:bg-green-200">
                 {item.generalCategory}
               </div>
             </Link>}
