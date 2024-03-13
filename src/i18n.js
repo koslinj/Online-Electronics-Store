@@ -6,6 +6,7 @@ i18next
   .use(initReactI18next)
   .use(LanguageDetector)
   .init({
+    debug: true,
     fallbackLng: "pl",
     resources: {
       en: {
@@ -17,7 +18,10 @@ i18next
           login: "Log in",
           noAccount: "Do not have account?",
           createAccount: "Create an account",
-          password: "Password"
+          password: "Password",
+          name: "Name",
+          surname: "Surname",
+          haveAccount: "Already have an account?  <1><0>Log in</0></1>"
         }
       },
       pl: {
@@ -29,7 +33,10 @@ i18next
           login: "Zaloguj się",
           noAccount: "Nie masz konta?",
           createAccount: "Załóż konto",
-          password: "Hasło"
+          password: "Hasło",
+          name: "Imię",
+          surname: "Nazwisko",
+          haveAccount: "Masz już konto?  <1><0>Zaloguj się</0></1>"
         }
       }
     }
