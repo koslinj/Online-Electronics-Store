@@ -29,7 +29,7 @@ export const Login = () => {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="shadow-card rounded-lg p-4 flex flex-col gap-8 my-6 w-72">
+      <div className="shadow-equal rounded-lg p-4 flex flex-col gap-8 my-6 w-72">
         <h2 className="font-bold text-2xl">{t("login")}</h2>
         <input
           className='py-1 px-2 outline-none border-gray-700 border-2 rounded-md'

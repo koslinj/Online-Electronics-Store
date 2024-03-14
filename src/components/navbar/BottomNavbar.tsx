@@ -52,7 +52,7 @@ export const BottomNavbar = () => {
   }, []);
 
   return (
-    <div className="bg-gray-100 shadow-card">
+    <div className="bg-gray-100 shadow-equal">
       <div className="max-w-7xl mx-auto px-6 py-1 flex gap-6 items-center">
         {categories.map((item) => (
           <Dropdown
