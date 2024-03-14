@@ -5,7 +5,7 @@ import { User } from './User';
 import { Admin } from './Admin';
 
 export const Profile = () => {
-  const [user, setUSer] = useState();
+  const [user, setUser] = useState();
   const { setToken } = useAuth()
 
   useEffect(() => {
@@ -21,13 +21,13 @@ export const Profile = () => {
         const data = response.data;
 
         if (isMounted) {
-          setUSer(data);
+          setUser(data);
         }
       } catch (error) {
-        if (error.response?.status == 403) {
+        if (error.response?.status === 403) {
           setToken();
         } else {
-          console.log("NIE TUTAJ")
+          console.log(error.message)
         }
       }
     };
@@ -39,7 +39,7 @@ export const Profile = () => {
       isMounted = false;
       abortController.abort();
     };
-  }, []);
+  }, [setToken]);
 
   if (user?.role === "USER") return <User />
   if (user?.role === "ADMIN") return <Admin />
