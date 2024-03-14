@@ -13,7 +13,7 @@ module.exports = {
     },
     extend: {
       boxShadow: {
-        'card': '0 0 5px rgba(0, 0, 0, 0.6)',
+        'equal': '0 0 5px rgba(0, 0, 0, 0.6)',
       },
       colors: {
         border: "hsl(var(--border))",

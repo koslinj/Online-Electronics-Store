@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Product } from '../types';
 import { ProductCard } from '../components/ProductCard';
 import { fetchProducts } from '../api/products';
-import { Slider } from '@/components/Slider';
+import { MainCarousel } from '@/components/MainCarousel';
 
 export const Home = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -24,7 +24,7 @@ export const Home = () => {
 
   return (
     <div>
-      <Slider />
+      <MainCarousel />
       <h1 className="text-red-500">HOME</h1>
       <ul>
         {products.map((product) => (
