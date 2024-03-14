@@ -67,19 +67,19 @@ export function MainCarousel() {
             delay: 3000,
           }),
         ]}
-        className="mx-12"
+        className="md:mx-12"
       >
         <CarouselContent>
           {images.map((image) => (
             <CarouselItem key={image.id}>
-              <div className="px-2">
-                <img src={image.src} alt="carousel Image" className="rounded-lg border-2 border-black" />
+              <div className="md:px-2">
+                <img src={image.src} alt="carousel Image" className="h-28 object-cover md:rounded-lg md:border-2 border-black" />
               </div>
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="border-gray-500 size-10" />
-        <CarouselNext className="border-gray-500 size-10" />
+        <CarouselPrevious className="border-gray-500 size-10 hidden md:flex" />
+        <CarouselNext className="border-gray-500 size-10 hidden md:flex" />
       </Carousel>
     </div>
   )

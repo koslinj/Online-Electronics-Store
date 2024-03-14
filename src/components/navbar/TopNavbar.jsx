@@ -9,11 +9,11 @@ import { LanguageButtons } from "./LanguageButtons"
 export const TopNavbar = () => {
 
   return (
-    <div className="px-6 py-1 flex gap-10 items-center justify-center max-w-7xl mx-auto">
+    <div className="px-1 lg:px-6 py-1 flex gap-x-10 items-center justify-between lg:justify-center max-w-7xl mx-auto flex-wrap">
       <Link to="/">
         <div className="flex items-center">
           <img src={boltLogo} alt="Bolt Logo" width={50} />
-          <p className="leading-4 text-xl">ELECTRO<br />store</p>
+          <p className="hidden lg:block leading-4 text-xl">ELECTRO<br />store</p>
         </div>
       </Link>
       <SearchBar />
