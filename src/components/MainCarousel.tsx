@@ -73,7 +73,7 @@ export function MainCarousel() {
           {images.map((image) => (
             <CarouselItem key={image.id}>
               <div className="md:px-2">
-                <img src={image.src} alt="carousel Image" className="h-28 object-cover md:rounded-lg md:border-2 border-black" />
+                <img src={image.src} alt="carousel Image" className="min-h-32 object-cover md:rounded-lg border-2 border-black" />
               </div>
             </CarouselItem>
           ))}
