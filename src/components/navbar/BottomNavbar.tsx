@@ -3,6 +3,7 @@ import { Dropdown } from "../Dropdown"
 import { useEffect, useState } from "react";
 import { fetchCategories } from "../../api/categories";
 import { Category } from "../../types";
+import { IoIosArrowDown } from "react-icons/io";
 
 interface GroupedCategory {
   generalCategory: string;
@@ -52,16 +53,19 @@ export const BottomNavbar = () => {
   }, []);
 
   return (
-    <div className="bg-gray-100 shadow-equal">
-      <div className="max-w-7xl mx-auto px-6 py-1 flex gap-6 items-center">
+    <div className="bg-gray-200 shadow-lg">
+      <div className="max-w-7xl mx-auto px-6 flex gap-6 items-center">
         {categories.map((item) => (
           <Dropdown
             key={item.urlGeneralCategory}
             side="right"
             element={
               <Link to={`/categories/${item.urlGeneralCategory}`}>
-                <div className="w-32 leading-5 rounded-t-md p-1 group-hover:bg-green-200">
-                  {item.generalCategory}
+                <div className="w-36 leading-5 rounded-md p-1 group-hover:bg-white group-hover:scale-105 duration-200 flex items-center">
+                  <div>{item.generalCategory}</div>
+                  <div>
+                    <IoIosArrowDown className="size-5 group-hover:-rotate-180 duration-300" />
+                  </div>
                 </div>
               </Link>}
           >
@@ -70,7 +74,7 @@ export const BottomNavbar = () => {
                 to={`/products/${cat.urlName}`}
                 key={cat.urlName}
               >
-                <div className="hover:bg-green-300 p-2">{cat.name}</div>
+                <div className="hover:bg-gray-200 rounded-lg p-2 text-nowrap">{cat.name}</div>
               </Link>
             )))}
           </Dropdown>
