@@ -1,13 +1,13 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { ProtectedRoute } from "./ProtectedRoute";
-import { Login } from "../pages/Login";
-import { Profile } from "../pages/Profile";
+import { Login } from "../pages/auth/Login";
+import { Profile } from "../pages/profile/Profile";
 import { LoginRoute } from "./LoginRoute";
 import { Home } from "../pages/Home";
 import { CategoryPage } from "../pages/CategoryPage";
 import { ProductList } from "../pages/ProductList";
 import { Root } from "../pages/Root";
-import { Register } from "../pages/Register";
+import { Register } from "../pages/auth/Register";
 import { SearchResultsPage } from "../pages/SearchResultsPage";
 
 const Routes = () => {
