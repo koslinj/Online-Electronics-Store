@@ -4,6 +4,7 @@ export interface Product {
   description: string
   price: number
   imageUrl: string
+  producerName: String
 }
 
 export interface Category {
