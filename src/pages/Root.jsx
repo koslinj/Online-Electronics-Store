@@ -31,7 +31,9 @@ export const Root = () => {
     <div className='min-h-screen'>
       <TopNavbar />
       <BottomNavbar />
-      <Outlet />
+      <div className='max-w-7xl mx-auto px-6'>
+        <Outlet />
+      </div>
       <Footer />
     </div>
   )
