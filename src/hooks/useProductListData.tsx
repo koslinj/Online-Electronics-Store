@@ -24,9 +24,11 @@ export const useProductListData = (category: string | undefined) => {
         });
 
         const updatedFilters: { [key: string]: string[] } = {};
-        for (const filterName in uniqueFilters) {
-          updatedFilters[filterName] = Array.from(uniqueFilters[filterName]);
-        }
+        Object.keys(uniqueFilters)
+          .sort() // Sort filter names alphabetically
+          .forEach(filterName => {
+            updatedFilters[filterName] = Array.from(uniqueFilters[filterName]);
+          });
         setFilters(updatedFilters);
 
         const _catEntity = await fetchCategoryByUrlName(category!);
