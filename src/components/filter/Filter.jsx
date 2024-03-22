@@ -1,43 +1,30 @@
+import { useSearchParams } from "react-router-dom";
 
-export const Filter = ({ producers, producerFilter, setProducerFilter }) => {
+export const Filter = ({ options, filterName, onFilterChange }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  function handle(name) {
-    const currentProducers = producerFilter.getAll("producer");
-  
-    if (currentProducers.includes(name)) {
-      const updatedProducers = currentProducers.filter(producer => producer !== name);
-      
-      setProducerFilter(params => {
-        params.delete("producer");
-        updatedProducers.forEach(producer => {
-          params.append("producer", producer);
-        });
-        return params;
-      });
-    } else {
-      setProducerFilter(params => {
-        params.append("producer", name);
-        return params;
-      });
-    }
-  }
+  const handleChange = (event) => {
+    const value = event.target.value;
+    onFilterChange(filterName, value);
+  };
 
   return (
     <div className="border-4 rounded-xl p-2 w-60">
-      <h2 className="text-3xl font-bold mb-6">Filtry</h2>
-      <h3 className="text-xl font-bold">Producent</h3>
-      {producers.map((producerName, index) => (
+      <h2 className="text-3xl font-bold mb-6">Filters</h2>
+      <h3 className="text-xl font-bold">{filterName}</h3>
+      {options.map((option, index) => (
         <div key={index}>
           <input
             type="checkbox"
-            id={producerName}
-            value={producerName}
-            onChange={() => {handle(producerName)}}
-            checked={producerFilter.getAll("producer").includes(producerName)}
+            id={`${filterName}-${option}`}
+            value={option}
+            checked={searchParams?.getAll(filterName)?.includes(option)}
+            onChange={handleChange}
           />
-          <label htmlFor={producerName}>{producerName}</label>
+          <label htmlFor={`${filterName}-${option}`}>{option}</label>
         </div>
       ))}
     </div>
-  )
-}
+  );
+};
+
