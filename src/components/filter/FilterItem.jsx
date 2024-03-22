@@ -1,11 +1,13 @@
 import { useSearchParams } from "react-router-dom";
+import { useFilterHandling } from "@/hooks/useFilterHandling";
 
-export const FilterItem = ({ options, filterName, onFilterChange }) => {
+export const FilterItem = ({ options, filterName }) => {
   const [searchParams] = useSearchParams();
+  const { handleFilterChange } = useFilterHandling();
 
   const handleChange = (event) => {
     const value = event.target.value;
-    onFilterChange(filterName, value);
+    handleFilterChange(filterName, value);
   };
 
   return (

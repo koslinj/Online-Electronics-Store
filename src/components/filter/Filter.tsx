@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next';
 import { FilterItem } from './FilterItem';
-import { useFilterHandling } from '@/hooks/useFilterHandling';
 
 type FiltersType = [string, string[]][];
 
@@ -10,7 +9,6 @@ interface Props {
 
 export const Filter = ({ filters }: Props) => {
   const { t } = useTranslation()
-  const { handleFilterChange } = useFilterHandling();
 
   return (
     <div className="border-4 rounded-xl p-2 w-60">
@@ -20,7 +18,6 @@ export const Filter = ({ filters }: Props) => {
           key={filterName}
           options={options}
           filterName={filterName}
-          onFilterChange={handleFilterChange}
         />
       ))}
     </div>
