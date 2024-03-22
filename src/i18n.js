@@ -53,7 +53,8 @@ i18next
           contact: "Contact",
           monFri: "mon. - fri.",
           satSun: "sat. - sun.",
-          showrooms: "ELECTROstore showrooms"
+          showrooms: "ELECTROstore showrooms",
+          filters: "Filters"
         }
       },
       pl: {
@@ -100,7 +101,8 @@ i18next
           contact: "Kontakt",
           monFri: "pon. - pt.",
           satSun: "sob. - niedz.",
-          showrooms: "Salony ELECTROstore"
+          showrooms: "Salony ELECTROstore",
+          filters: "Filtry"
         }
       }
     }
