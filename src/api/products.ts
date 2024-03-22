@@ -9,7 +9,7 @@ export const fetchProducts = async () => {
   }
 };
 
-export const fetchProductsByCategory = async (category: string | null) => {
+export const fetchProductsByCategory = async (category: string) => {
   try {
     const response = await axios.get(`http://localhost:8080/api/products?category=${category}`);
     return response.data
@@ -17,3 +17,12 @@ export const fetchProductsByCategory = async (category: string | null) => {
     console.error('Error fetching data:', error);
   }
 };
+
+export const fetchProductByName = async (name: string) => {
+  try {
+    const response = await axios.get(`http://localhost:8080/api/products?name=${name}`);
+    return response.data
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+}

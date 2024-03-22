@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { ProductCard } from '../components/ProductCard';
 import { useFiltering } from '@/hooks/useFiltering';
 import { useProductListData } from '@/hooks/useProductListData';
@@ -17,7 +17,9 @@ export const ProductListPage = () => {
         <h2 className='text-2xl font-bold m-4'>{categoryEntity?.name}</h2>
         <div className='flex gap-2'>
           {filteredProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <Link to={encodeURIComponent(product.name)}>
+              <ProductCard key={product.id} product={product} />
+            </Link>
           ))}
         </div>
       </div>

@@ -9,6 +9,7 @@ import { ProductListPage } from "../pages/ProductListPage";
 import { Root } from "../pages/Root";
 import { Register } from "../pages/auth/Register";
 import { SearchResultsPage } from "../pages/SearchResultsPage";
+import { ProductPage } from "@/pages/ProductPage";
 
 const Routes = () => {
 
@@ -29,6 +30,10 @@ const Routes = () => {
         {
           path: "/products/:category",
           element: <ProductListPage />,
+        },
+        {
+          path: "/products/:category/:productName",
+          element: <ProductPage />,
         },
         {
           path: "/search",
