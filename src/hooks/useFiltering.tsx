@@ -7,18 +7,40 @@ export function useFiltering(allProducts: Product[]) {
   const [filteredProducts, setFilteredProducts] = useState<Product[]>(allProducts);
 
   useEffect(() => {
+    let minPrice = -1
+    let maxPrice = -1
     const filterParams: Record<string, string[]> = {}
     searchParams.forEach((value, key) => {
-      if (filterParams[key]) {
-        filterParams[key].push(value);
+      if (key === "Od" || key === "Do") { // Handle price filter differently
+        const price = parseInt(value);
+        if (!isNaN(price)) {
+          if (key === "Od") {
+            console.log(price)
+            minPrice = price
+          } else if (key === "Do") {
+            maxPrice = price
+          }
+        }
       } else {
-        filterParams[key] = [value];
+        if (filterParams[key]) {
+          filterParams[key].push(value);
+        } else {
+          filterParams[key] = [value];
+        }
       }
     });
 
     let filteredProducts = allProducts;
 
-    // Loop through each filter parameter
+    // Apply price filter
+    if (minPrice !== -1) {
+      filteredProducts = filteredProducts.filter(product => product.price >= minPrice);
+    }
+    if (maxPrice !== -1) {
+      filteredProducts = filteredProducts.filter(product => product.price <= maxPrice);
+    }
+
+    // Loop through each filter parameter (except price)
     for (const filterName in filterParams) {
       if (filterParams.hasOwnProperty(filterName)) {
         const filterValues = filterParams[filterName]; // Get array of filter values
