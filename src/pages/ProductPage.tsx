@@ -21,9 +21,9 @@ export const ProductPage = () => {
   }, [productName])
 
   return (
-    <div className="flex mt-10 max-w-6xl mx-auto border-4 py-6">
-      <div className="w-2/5">
-        <img className="cursor-pointer border-2" src={product?.imageUrl} alt={product?.name} onClick={() => setShowModal(true)} />
+    <div className="flex mt-10 max-w-6xl mx-auto py-6">
+      <div className="w-2/5 pr-4">
+        <img className="cursor-pointer duration-200 rounded-lg border-2" src={product?.imageUrl} alt={product?.name} onClick={() => setShowModal(true)} />
       </div>
       <div className="w-3/5">
         <h3 className="text-2xl font-semibold">{product?.name}</h3>
