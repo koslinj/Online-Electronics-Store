@@ -5,7 +5,7 @@ import { Profile } from "../pages/profile/Profile";
 import { LoginRoute } from "./LoginRoute";
 import { Home } from "../pages/Home";
 import { CategoryPage } from "../pages/CategoryPage";
-import { ProductList } from "../pages/ProductList";
+import { ProductListPage } from "../pages/ProductListPage";
 import { Root } from "../pages/Root";
 import { Register } from "../pages/auth/Register";
 import { SearchResultsPage } from "../pages/SearchResultsPage";
@@ -28,7 +28,7 @@ const Routes = () => {
         },
         {
           path: "/products/:category",
-          element: <ProductList />,
+          element: <ProductListPage />,
         },
         {
           path: "/search",

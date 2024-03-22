@@ -4,7 +4,7 @@ import { useFiltering } from '@/hooks/useFiltering';
 import { useProductListData } from '@/hooks/useProductListData';
 import { Filter } from '@/components/filter/Filter';
 
-export const ProductList = () => {
+export const ProductListPage = () => {
   const { category } = useParams();
   const { allProducts, categoryEntity, filters } = useProductListData(category);
 
