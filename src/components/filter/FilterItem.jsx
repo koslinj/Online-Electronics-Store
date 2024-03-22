@@ -1,6 +1,6 @@
 import { useSearchParams } from "react-router-dom";
 
-export const Filter = ({ options, filterName, onFilterChange }) => {
+export const FilterItem = ({ options, filterName, onFilterChange }) => {
   const [searchParams] = useSearchParams();
 
   const handleChange = (event) => {
@@ -9,8 +9,7 @@ export const Filter = ({ options, filterName, onFilterChange }) => {
   };
 
   return (
-    <div className="border-4 rounded-xl p-2 w-60">
-      <h2 className="text-3xl font-bold mb-6">Filters</h2>
+    <div>
       <h3 className="text-xl font-bold">{filterName}</h3>
       {options.map((option, index) => (
         <div key={index}>
