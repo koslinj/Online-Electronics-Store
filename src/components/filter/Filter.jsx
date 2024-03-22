@@ -1,7 +1,7 @@
 import { useSearchParams } from "react-router-dom";
 
 export const Filter = ({ options, filterName, onFilterChange }) => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
   const handleChange = (event) => {
     const value = event.target.value;
