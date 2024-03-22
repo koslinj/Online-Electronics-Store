@@ -10,8 +10,7 @@ import { useFiltering } from '@/hooks/useFiltering';
 export const ProductList = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const { category } = useParams();
-  const [producers, setProducers] = useState<string[]>([]);
-  const [ramValues, setRamValues] = useState<string[]>([]);
+  const [filters, setFilters] = useState<{ [key: string]: string[] }>({});
   const [allProducts, setAllProducts] = useState([]);
   const [categoryEntity, setCategoryEntity] = useState<Category>();
 
@@ -20,22 +19,21 @@ export const ProductList = () => {
       try {
         const _prod = await fetchProductsByCategory(category!);
         setAllProducts(_prod);
-        const uniqueProducerNames = new Set<string>();
-        const uniqueRamValues = new Set<string>();
+        const uniqueFilters: { [key: string]: Set<string> } = {};
         _prod.forEach((json: Product) => {
           for (let i = 0; i < json.filterNames.length; ++i) {
-            // TODO nie robic tego tak manualnie ifami ...
-            // powinienem jakos z bazy ciagnac wszystkie rodzaje Filtrow ktore sa uzywane dla tego typu produktow
-            // np dla Laptopow gamingowych
-            if (json.filterNames[i] == "Producent") uniqueProducerNames.add(json.filterValues[i]);
-            else uniqueRamValues.add(json.filterValues[i]);
+            if (!uniqueFilters[json.filterNames[i]]) {
+              uniqueFilters[json.filterNames[i]] = new Set<string>();
+            }
+            uniqueFilters[json.filterNames[i]].add(json.filterValues[i]);
           }
-        })
-        const arrayOfUniqueProducerNames = Array.from(uniqueProducerNames)
-        const arrayOfUniqueRamValues = Array.from(uniqueRamValues)
+        });
 
-        setProducers(arrayOfUniqueProducerNames)
-        setRamValues(arrayOfUniqueRamValues)
+        const updatedFilters: { [key: string]: string[] } = {};
+        for (const filterName in uniqueFilters) {
+          updatedFilters[filterName] = Array.from(uniqueFilters[filterName]);
+        }
+        setFilters(updatedFilters);
 
         const _catEntity = await fetchCategoryByUrlName(category!);
         setCategoryEntity(_catEntity);
@@ -48,16 +46,16 @@ export const ProductList = () => {
 
   const { filteredProducts } = useFiltering(allProducts);
 
-  const handleFilterChange = (filterName: any, filterValue: any) => {
-    const currentProducers = searchParams.getAll(filterName);
+  const handleFilterChange = (filterName: string, filterValue: string) => {
+    const currentValues = searchParams.getAll(filterName);
 
-    if (currentProducers.includes(filterValue)) {
-      const updatedProducers = currentProducers.filter(producer => producer !== filterValue);
+    if (currentValues.includes(filterValue)) {
+      const updatedValues = currentValues.filter(value => value !== filterValue);
 
       setSearchParams(params => {
         params.delete(filterName);
-        updatedProducers.forEach(producer => {
-          params.append(filterName, producer);
+        updatedValues.forEach(value => {
+          params.append(filterName, value);
         });
         return params;
       });
@@ -71,20 +69,14 @@ export const ProductList = () => {
 
   return (
     <div className='flex mt-10'>
-      <Filter
-        options={producers}
-        // TODO powinienem jakos z bazy ciagnac wszystkie rodzaje Filtrow ktore sa uzywane dla tego typu produktow
-        // np dla Laptopow gamingowych
-        filterName={"Producent"}
-        onFilterChange={handleFilterChange}
-      />
-      <Filter
-        options={ramValues}
-        // TODO powinienem jakos z bazy ciagnac wszystkie rodzaje Filtrow ktore sa uzywane dla tego typu produktow
-        // np dla Laptopow gamingowych
-        filterName={"Pamięć RAM"}
-        onFilterChange={handleFilterChange}
-      />
+      {Object.entries(filters).map(([filterName, options]) => (
+        <Filter
+          key={filterName}
+          options={options}
+          filterName={filterName}
+          onFilterChange={handleFilterChange}
+        />
+      ))}
       <div>
         <h2 className='text-2xl font-bold m-4'>{categoryEntity?.name}</h2>
         <div className='flex gap-2'>
