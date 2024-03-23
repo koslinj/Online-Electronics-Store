@@ -56,7 +56,7 @@ export const PriceFilter = () => {
 
   return (
     <div>
-      <h3 className="text-xl font-bold">Cena</h3>
+      <h3 className="text-lg font-bold">Cena</h3>
       <div className="flex items-center justify-around">
         <input
           type="text"

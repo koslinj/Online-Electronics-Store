@@ -11,16 +11,18 @@ export const ProductListPage = () => {
   const { filteredProducts } = useFiltering(allProducts);
 
   return (
-    <div className='flex mt-10'>
-      <Filter filters={Object.entries(filters)} />
-      <div>
-        <h2 className='text-2xl font-bold m-4'>{categoryEntity?.name}</h2>
-        <div className='flex gap-2'>
-          {filteredProducts.map((product) => (
-            <Link to={encodeURIComponent(product.name)}>
-              <ProductCard key={product.id} product={product} />
-            </Link>
-          ))}
+    <div className='mt-8'>
+      <h2 className='text-3xl font-bold mb-2 ml-1'>{categoryEntity?.name}</h2>
+      <div className='flex'>
+        <Filter filters={Object.entries(filters)} />
+        <div>
+          <div className='flex gap-2'>
+            {filteredProducts.map((product) => (
+              <Link key={product.id} to={encodeURIComponent(product.name)}>
+                <ProductCard product={product} />
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </div>
