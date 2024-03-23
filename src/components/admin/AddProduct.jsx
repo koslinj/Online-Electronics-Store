@@ -4,6 +4,7 @@ import { NameInput } from "./addProductForm/NameInput";
 import { DescriptionInput } from "./addProductForm/DescriptionInput";
 import { PriceInput } from "./addProductForm/PriceInput";
 import { CategoryInput } from "./addProductForm/CategoryInput";
+import { ImageInput } from "./addProductForm/ImageInput";
 
 export const AddProduct = () => {
   const [image, setImage] = useState(null);
@@ -48,7 +49,7 @@ export const AddProduct = () => {
           'Content-Type': 'multipart/form-data'
         }
       });
-      console.log('Product uploaded successfully:', response);
+      console.log('Product uploaded successfully:', response.data);
     } catch (error) {
       console.error('Error uploading product:', error);
     }
@@ -66,10 +67,7 @@ export const AddProduct = () => {
         <DescriptionInput description={description} setDescription={setDescription} />
         <PriceInput price={price} handlePriceChange={handlePriceChange} />
         <CategoryInput categoryName={categoryName} setCategoryName={setCategoryName} />
-        <div>
-          <label>Upload Image:</label>
-          <input type="file" accept="image/*" onChange={(e) => setImage(e.target.files[0])} />
-        </div>
+        <ImageInput setImage={setImage} />
         <br />
         {filterNames.map((name, index) => (
           <div key={index}>
