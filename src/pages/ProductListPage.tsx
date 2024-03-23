@@ -16,7 +16,7 @@ export const ProductListPage = () => {
       <div className='flex'>
         <Filter filters={Object.entries(filters)} />
         <div>
-          <div className='flex gap-2'>
+          <div className='flex gap-2 flex-wrap'>
             {filteredProducts.map((product) => (
               <Link key={product.id} to={encodeURIComponent(product.name)}>
                 <ProductCard product={product} />
