@@ -1,5 +1,9 @@
 import axios from "axios";
 import { useState } from "react";
+import { NameInput } from "./addProductForm/NameInput";
+import { DescriptionInput } from "./addProductForm/DescriptionInput";
+import { PriceInput } from "./addProductForm/PriceInput";
+import { CategoryInput } from "./addProductForm/CategoryInput";
 
 export const AddProduct = () => {
   const [image, setImage] = useState(null);
@@ -58,22 +62,10 @@ export const AddProduct = () => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Product Name:</label>
-          <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
-        </div>
-        <div>
-          <label>Product Description:</label>
-          <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
-        </div>
-        <div>
-          <label>Price:</label>
-          <input type="text" value={price} onChange={handlePriceChange} />
-        </div>
-        <div>
-          <label>Category Name:</label>
-          <input type="text" value={categoryName} onChange={(e) => setCategoryName(e.target.value)} />
-        </div>
+        <NameInput name={name} setName={setName} />
+        <DescriptionInput description={description} setDescription={setDescription} />
+        <PriceInput price={price} handlePriceChange={handlePriceChange} />
+        <CategoryInput categoryName={categoryName} setCategoryName={setCategoryName} />
         <div>
           <label>Upload Image:</label>
           <input type="file" accept="image/*" onChange={(e) => setImage(e.target.files[0])} />
