@@ -54,7 +54,7 @@ export const BottomNavbar = () => {
 
   return (
     <div className="bg-gray-200 shadow-lg">
-      <div className="max-w-7xl mx-auto px-6 flex gap-6 items-center">
+      <div className="max-w-7xl mx-auto px-6 flex gap-6 items-center flex-wrap">
         {categories.map((item) => (
           <Dropdown
             key={item.urlGeneralCategory}
