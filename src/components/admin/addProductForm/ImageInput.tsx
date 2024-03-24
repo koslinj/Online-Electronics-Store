@@ -57,6 +57,7 @@ export const ImageInput = ({ setImage }: { setImage: Dispatch<SetStateAction<Fil
 
   return (
     <div className='max-w-80'>
+      <p className='text-lg font-semibold'>{t('image')}</p>
       <Dragger
         name="avatar"
         showUploadList={false}

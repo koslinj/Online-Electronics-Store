@@ -6,6 +6,8 @@ import { PriceInput } from "./PriceInput";
 import { CategoryInput } from "./CategoryInput";
 import { ImageInput } from "./ImageInput";
 import { useTranslation } from "react-i18next";
+import { FiltersInput } from "./FiltersInput";
+import { FaCheckCircle } from "react-icons/fa";
 
 export const AddProduct = () => {
   const [image, setImage] = useState(null);
@@ -17,23 +19,6 @@ export const AddProduct = () => {
   const [filterValues, setFilterValues] = useState([]);
 
   const { t } = useTranslation()
-
-  const handlePriceChange = (e) => {
-    const value = e.target.value.replace(/\D/, "")
-    setPrice(value)
-  };
-
-  const handleNameChange = (index, event) => {
-    const newNames = [...filterNames];
-    newNames[index] = event.target.value;
-    setFilterNames(newNames);
-  };
-
-  const handleValueChange = (index, event) => {
-    const newValues = [...filterValues];
-    newValues[index] = event.target.value;
-    setFilterValues(newValues);
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -58,38 +43,24 @@ export const AddProduct = () => {
     }
   };
 
-  const addNewField = () => {
-    setFilterNames([...filterNames, '']);
-    setFilterValues([...filterValues, '']);
-  };
-
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="space-y-2">
         <NameInput name={name} setName={setName} />
         <DescriptionInput description={description} setDescription={setDescription} />
-        <PriceInput price={price} handlePriceChange={handlePriceChange} />
+        <PriceInput price={price} setPrice={setPrice} />
         <CategoryInput categoryName={categoryName} setCategoryName={setCategoryName} />
         <ImageInput setImage={setImage} />
-        <br />
-        {filterNames.map((name, index) => (
-          <div key={index}>
-            <input
-              type="text"
-              placeholder="Filter Name"
-              value={name}
-              onChange={(event) => handleNameChange(index, event)}
-            />
-            <input
-              type="text"
-              placeholder="Filter Value"
-              value={filterValues[index]}
-              onChange={(event) => handleValueChange(index, event)}
-            />
-          </div>
-        ))}
-        <button type="button" onClick={addNewField}>{t('add_filter')}</button>
-        <button type="submit">{t('upload_product')}</button>
+        <FiltersInput
+          filterNames={filterNames}
+          setFilterNames={setFilterNames}
+          filterValues={filterValues}
+          setFilterValues={setFilterValues}
+        />
+        <button type="submit" className="flex items-center gap-2 p-3 bg-green-100 hover:bg-green-300 hover:scale-110 duration-200 border-2 border-black rounded-xl">
+          <FaCheckCircle className="size-9" />
+          <p className="text-lg font-semibold">{t('upload_product')}</p>
+        </button>
       </form>
     </div>
   );
