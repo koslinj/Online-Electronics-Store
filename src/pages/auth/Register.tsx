@@ -126,7 +126,7 @@ export const Register = () => {
           />
           <p className="text-red-600">{errors?.password}</p>
         </div>
-        <button type="submit" className="bg-green-700 text-white rounded-lg p-2">
+        <button type="submit" className="bg-green-700 text-white rounded-lg p-2 duration-300 active:bg-green-900 hover:scale-105">
           {t("createAccount")}
         </button>
       </form>
