@@ -68,7 +68,10 @@ i18next
           filterValue: "Filter Value",
           badEmail: "Email is invalid!",
           badPassword: "Password is too short!",
+          badFirstName: "Name is invalid!",
+          badLastName: "Surname is invalid!",
           failedLogin: "Unable to Log in, invalid E-mail or Password!",
+          existingEmail: "Account with such Email already exists!",
         }
       },
       pl: {
@@ -130,7 +133,10 @@ i18next
           filterValue: "Wartość filtru",
           badEmail: "Email nie jest poprawny!",
           badPassword: "Hasło jest za krótkie!",
+          badFirstName: "Imię nie jest poprawne!",
+          badLastName: "Nazwisko nie jest poprawne!",
           failedLogin: "Nie udało się zalogować, błedny E-mail lub Hasło!",
+          existingEmail: "Konto z takim adresem E-mail już istnieje!",
         }
       }
     }
