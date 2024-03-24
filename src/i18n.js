@@ -56,6 +56,13 @@ i18next
           showrooms: "ELECTROstore showrooms",
           filters: "Filters",
           uploadImage: "Upload image...",
+          productName: "Name",
+          description: "Description",
+          price: "Price",
+          category: "Category",
+          choose_category: "Choose Category...",
+          add_filter: "Add Filter",
+          upload_product: "Upload Product",
         }
       },
       pl: {
@@ -105,6 +112,13 @@ i18next
           showrooms: "Salony ELECTROstore",
           filters: "Filtry",
           uploadImage: "Preślij zdjęcie...",
+          productName: "Nazwa",
+          description: "Opis",
+          price: "Cena",
+          category: "Kategoria",
+          choose_category: "Wybierz kategorię...",
+          add_filter: "Dodaj filtr",
+          upload_product: "Prześlij produkt",
         }
       }
     }

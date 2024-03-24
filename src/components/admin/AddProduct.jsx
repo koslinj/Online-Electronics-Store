@@ -5,6 +5,7 @@ import { DescriptionInput } from "./addProductForm/DescriptionInput";
 import { PriceInput } from "./addProductForm/PriceInput";
 import { CategoryInput } from "./addProductForm/CategoryInput";
 import { ImageInput } from "./addProductForm/ImageInput";
+import { useTranslation } from "react-i18next";
 
 export const AddProduct = () => {
   const [image, setImage] = useState(null);
@@ -14,6 +15,8 @@ export const AddProduct = () => {
   const [categoryName, setCategoryName] = useState('');
   const [filterNames, setFilterNames] = useState([]);
   const [filterValues, setFilterValues] = useState([]);
+
+  const { t } = useTranslation()
 
   const handlePriceChange = (e) => {
     const value = e.target.value.replace(/\D/, "")
@@ -85,8 +88,8 @@ export const AddProduct = () => {
             />
           </div>
         ))}
-        <button type="button" onClick={addNewField}>Add Filter</button>
-        <button type="submit">Upload Product</button>
+        <button type="button" onClick={addNewField}>{t('add_filter')}</button>
+        <button type="submit">{t('upload_product')}</button>
       </form>
     </div>
   );

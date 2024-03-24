@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { fetchCategories } from "@/api/categories";
+import { useTranslation } from "react-i18next";
 
 export const CategoryInput = ({ categoryName, setCategoryName }) => {
   const [categories, setCategories] = useState([]);
+  const { t } = useTranslation()
 
   useEffect(() => {
 
@@ -22,13 +24,13 @@ export const CategoryInput = ({ categoryName, setCategoryName }) => {
 
   return (
     <label>
-      <p className='text-lg font-semibold'>Kategoria</p>
+      <p className='text-lg font-semibold'>{t("category")}</p>
       <select
         className='p-1 outline-none border-gray-400 border-2 rounded-md'
         value={categoryName}
         onChange={(e) => setCategoryName(e.target.value)}
       >
-        <option value="">Wybierz kategorie...</option>
+        <option value="">{t('choose_category')}</option>
         {categories.map((category, index) => (
           <option key={index} value={category}>{category}</option>
         ))}
