@@ -17,7 +17,7 @@ export const ImageInput = ({ setImage }: { setImage: Dispatch<SetStateAction<Fil
         content:
           <div className='flex items-center gap-3'>
             <MdError className='size-10 text-red-500' />
-            <p className='text-2xl'>To nie jest zdjęcie!</p>
+            <p className='text-xl'>To nie jest zdjęcie!</p>
           </div>,
         icon: <></>
       });
@@ -29,7 +29,7 @@ export const ImageInput = ({ setImage }: { setImage: Dispatch<SetStateAction<Fil
         content:
           <div className='flex items-center gap-3'>
             <MdError className='size-10 text-red-500' />
-            <p className='text-2xl'>Zdjęcie musi być mniejsze niż 2MB!</p>
+            <p className='text-xl'>Zdjęcie musi być mniejsze niż 2MB!</p>
           </div>,
         icon: <></>
       });
@@ -47,7 +47,7 @@ export const ImageInput = ({ setImage }: { setImage: Dispatch<SetStateAction<Fil
       content:
         <div className='flex items-center gap-3'>
           <FaCheckCircle className='size-10 text-green-500' />
-          <p className='text-2xl'>Zdjęcie zostało załadowane!</p>
+          <p className='text-xl'>Zdjęcie zostało załadowane!</p>
         </div>,
       icon: <></>
     });
