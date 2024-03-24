@@ -1,4 +1,4 @@
-import { AddProduct } from "@/components/admin/AddProduct"
+import { AddProduct } from "@/components/admin/addProductForm/AddProduct"
 import { LogoutButton } from "../../components/LogoutButton"
 
 export const Admin = () => {

@@ -1,10 +1,10 @@
 import axios from "axios";
 import { useState } from "react";
-import { NameInput } from "./addProductForm/NameInput";
-import { DescriptionInput } from "./addProductForm/DescriptionInput";
-import { PriceInput } from "./addProductForm/PriceInput";
-import { CategoryInput } from "./addProductForm/CategoryInput";
-import { ImageInput } from "./addProductForm/ImageInput";
+import { NameInput } from "./NameInput";
+import { DescriptionInput } from "./DescriptionInput";
+import { PriceInput } from "./PriceInput";
+import { CategoryInput } from "./CategoryInput";
+import { ImageInput } from "./ImageInput";
 import { useTranslation } from "react-i18next";
 
 export const AddProduct = () => {
