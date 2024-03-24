@@ -13,16 +13,14 @@ export const ProductListPage = () => {
   return (
     <div className='mt-8'>
       <h2 className='text-3xl font-bold mb-2 ml-1'>{categoryEntity?.name}</h2>
-      <div className='flex'>
+      <div className='flex justify-start items-start'>
         <Filter filters={Object.entries(filters)} />
-        <div>
-          <div className='flex gap-2 flex-wrap'>
-            {filteredProducts.map((product) => (
-              <Link key={product.id} to={encodeURIComponent(product.name)}>
-                <ProductCard product={product} />
-              </Link>
-            ))}
-          </div>
+        <div className='flex gap-2 flex-wrap ml-5'>
+          {filteredProducts.map((product) => (
+            <Link key={product.id} to={encodeURIComponent(product.name)}>
+              <ProductCard product={product} />
+            </Link>
+          ))}
         </div>
       </div>
     </div>

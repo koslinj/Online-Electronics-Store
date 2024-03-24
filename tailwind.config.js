@@ -15,6 +15,14 @@ module.exports = {
       boxShadow: {
         'equal': '0 0 5px rgba(0, 0, 0, 0.6)',
       },
+      width: {
+        '76': '19rem'
+      },
+      height: {
+        '100': '26rem',
+        '110': '28rem',
+        '120': '30rem',
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

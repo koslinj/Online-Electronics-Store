@@ -12,7 +12,7 @@ export const Filter = ({ filters }: Props) => {
   const { t } = useTranslation()
 
   return (
-    <div className="border-2 border-gray-400 rounded-xl p-2 w-60">
+    <div className="border-2 border-gray-400 rounded-xl p-2 min-w-64 w-64">
       <h2 className="text-2xl font-bold mb-6">{t('filters')}</h2>
       <div className='space-y-5'>
         <PriceFilter />
