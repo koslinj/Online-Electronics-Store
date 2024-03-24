@@ -10,6 +10,7 @@ import { Root } from "../pages/Root";
 import { Register } from "../pages/auth/Register";
 import { SearchResultsPage } from "../pages/SearchResultsPage";
 import { ProductPage } from "@/pages/ProductPage";
+import { Cart } from "@/pages/Cart";
 
 const Routes = () => {
 
@@ -22,6 +23,10 @@ const Routes = () => {
         {
           path: "/",
           element: <Home />,
+        },
+        {
+          path: "/cart",
+          element: <Cart />,
         },
         {
           path: "/categories/:generalCategory",
