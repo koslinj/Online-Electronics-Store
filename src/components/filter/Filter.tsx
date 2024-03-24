@@ -19,7 +19,10 @@ export const Filter = ({ filters }: Props) => {
         {filters.map(([filterName, options]) => (
           <FilterItem
             key={filterName}
-            options={options}
+            options={filterName === "Pamięć RAM"
+              ? options.sort((a, b) => parseInt(a.slice(0, -2)) - parseInt(b.slice(0, -2)))
+              : options.sort()
+            }
             filterName={filterName}
           />
         ))}
