@@ -1,63 +1,22 @@
+import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { Product } from '@/types';
-import React, { ReactNode, createContext, useContext, useEffect, useReducer } from 'react';
+import { ReactNode, createContext, useContext, useState } from 'react';
 
-// Define types for the items in the cart
 interface CartItem {
   product: Product
   quantity: number
 }
 
-// Define the shape of the cart state
-interface CartState {
-  items: CartItem[];
-}
-
-// Define the actions that can be dispatched to the reducer
-type CartAction =
-  | { type: 'ADD_ITEM'; payload: CartItem }
-  | { type: 'REMOVE_ITEM'; payload: number }
-  | { type: 'CLEAR_CART' }
-  | { type: 'LOAD_CART_ITEMS'; payload: CartItem[] };
-
-// Create a reducer function to handle state updates
-const cartReducer = (state: CartState, action: CartAction): CartState => {
-  switch (action.type) {
-    case 'ADD_ITEM':
-      const existingItemIndex = state.items.findIndex(item => item.product.id === action.payload.product.id);
-      if (existingItemIndex !== -1) {
-        const updatedItems = [...state.items];
-        updatedItems[existingItemIndex].quantity += action.payload.quantity;
-        localStorage.setItem('cartItems', JSON.stringify(updatedItems))
-        return { ...state, items: updatedItems };
-      } else {
-        const newItems = [...state.items, action.payload];
-        localStorage.setItem('cartItems', JSON.stringify(newItems));
-        return { ...state, items: newItems };
-      }
-    case 'REMOVE_ITEM':
-      const filteredItems = state.items.filter(item => item.product.id !== action.payload);
-      localStorage.setItem('cartItems', JSON.stringify(filteredItems))
-      return { ...state, items: filteredItems };
-    case 'CLEAR_CART':
-      localStorage.removeItem('cartItems'); // Clear cart items from localStorage
-      return { ...state, items: [] };
-    case 'LOAD_CART_ITEMS':
-      return { ...state, items: action.payload };
-    default:
-      return state;
-  }
-};
-
 // Create the CartContext
 const CartContext = createContext<{
-  cart: CartState;
-  addItemToCart: (product: Product, quantity?: number) => void;
-  removeItemFromCart: (itemId: number) => void;
+  cart: CartItem[];
+  addOne: (product: Product) => void;
+  removeOne: (product: Product) => void;
   clearCart: () => void;
 }>({
-  cart: { items: [] },
-  addItemToCart: () => { },
-  removeItemFromCart: () => { },
+  cart: [],
+  addOne: () => { },
+  removeOne: () => { },
   clearCart: () => { },
 });
 
@@ -71,34 +30,56 @@ interface CartProviderProps {
 }
 // Create the CartProvider component
 export const CartProvider = ({ children }: CartProviderProps) => {
-  const [state, dispatch] = useReducer(cartReducer, { items: [] });
+  const [cartItems, setCartItems] = useLocalStorage<CartItem[]>("shopping-cart", [])
 
-  // Load cart items from localStorage when component mounts
-  useEffect(() => {
-    const storedCartItems = localStorage.getItem('cartItems');
-    if (storedCartItems) {
-      dispatch({ type: 'LOAD_CART_ITEMS', payload: JSON.parse(storedCartItems) });
+  function getProductQuantity(product: Product) {
+    const quantity = cartItems.find(item => item.product.id === product.id)?.quantity
+    if (quantity === undefined) {
+      return 0
     }
-  }, []);
+    return quantity
+  }
 
-  const addItemToCart = (product: Product, quantity = 1) => {
-    dispatch({ type: 'ADD_ITEM', payload: { product, quantity } });
+  const addOne = (product: Product) => {
+    const quantity = getProductQuantity(product)
+
+    if (quantity === 0) {
+      setCartItems([...cartItems, { product: product, quantity: 1 }])
+    } else {
+      setCartItems(cartItems.map(
+        item =>
+          item.product.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+      ))
+    }
   };
 
-  const removeItemFromCart = (itemId: number) => {
-    dispatch({ type: 'REMOVE_ITEM', payload: itemId });
+  const removeOne = (product: Product) => {
+    const quantity = getProductQuantity(product)
+
+    if (quantity === 1) {
+      setCartItems(cartItems.filter(item => item.product.id !== product.id))
+    } else {
+      setCartItems(cartItems.map(
+        item =>
+          item.product.id === product.id
+            ? { ...item, quantity: item.quantity - 1 }
+            : item
+      ))
+    }
   };
 
   const clearCart = () => {
-    dispatch({ type: 'CLEAR_CART' });
+    setCartItems([])
   };
 
   return (
     <CartContext.Provider
       value={{
-        cart: state,
-        addItemToCart,
-        removeItemFromCart,
+        cart: cartItems,
+        addOne,
+        removeOne,
         clearCart,
       }}
     >

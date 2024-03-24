@@ -8,7 +8,7 @@ interface Props {
 }
 
 export const ProductCard = ({ product }: Props) => {
-  const { cart, addItemToCart, removeItemFromCart, clearCart } = useCart();
+  const { addOne } = useCart();
 
   const formattedPrice = product.price.toLocaleString('pl-PL', {
     style: 'currency',
@@ -29,8 +29,7 @@ export const ProductCard = ({ product }: Props) => {
 
   const handleAddToCart = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
-    console.log(product)
-    addItemToCart(product)
+    addOne(product)
   }
 
   return (
