@@ -66,6 +66,9 @@ i18next
           image: "Image",
           select_filter: "Choose Filter",
           filterValue: "Filter Value",
+          badEmail: "Email is invalid!",
+          badPassword: "Password is too short!",
+          failedLogin: "Unable to Log in, invalid E-mail or Password!",
         }
       },
       pl: {
@@ -125,6 +128,9 @@ i18next
           image: "Zdjęcie",
           select_filter: "Wybierz filtr",
           filterValue: "Wartość filtru",
+          badEmail: "Email nie jest poprawny!",
+          badPassword: "Hasło jest za krótkie!",
+          failedLogin: "Nie udało się zalogować, błedny E-mail lub Hasło!",
         }
       }
     }
