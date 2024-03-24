@@ -64,7 +64,7 @@ i18next
           add_filter: "Add Filter",
           upload_product: "Upload Product",
           image: "Image",
-          filterName: "Filter Name",
+          select_filter: "Choose Filter",
           filterValue: "Filter Value",
         }
       },
@@ -123,7 +123,7 @@ i18next
           add_filter: "Dodaj filtr",
           upload_product: "Prześlij produkt",
           image: "Zdjęcie",
-          filterName: "Nazwa filtru",
+          select_filter: "Wybierz filtr",
           filterValue: "Wartość filtru",
         }
       }

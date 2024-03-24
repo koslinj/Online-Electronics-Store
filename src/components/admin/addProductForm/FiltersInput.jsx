@@ -1,8 +1,20 @@
 import { useTranslation } from "react-i18next";
 import { MdAddCircleOutline } from "react-icons/md";
+import { useState, useEffect } from "react";
+import { fetchFilters } from "@/api/filters";
 
 export const FiltersInput = ({ filterNames, setFilterNames, filterValues, setFilterValues }) => {
   const { t } = useTranslation()
+  const [filterOptions, setFilterOptions] = useState([]);
+
+  useEffect(() => {
+    const fetchFilterOptions = async () => {
+      const options = await fetchFilters();
+      console.log(options)
+      setFilterOptions(options);
+    };
+    fetchFilterOptions();
+  }, []);
 
   const handleNameChange = (index, event) => {
     const newNames = [...filterNames];
@@ -24,27 +36,31 @@ export const FiltersInput = ({ filterNames, setFilterNames, filterValues, setFil
   return (
     <div>
       <p className='text-lg font-semibold'>{t('filters')}</p>
-      {filterNames.length > 0 &&
+      {filterValues.length > 0 && (
         <div className="shadow-equal rounded-lg p-2">
-          {filterNames.map((name, index) => (
+          {filterValues.map((filter, index) => (
             <div key={index} className="flex gap-2 mb-2">
-              <input
+              <select
                 className='p-1 outline-none border-gray-400 border-2 rounded-md flex-grow'
-                type="text"
-                placeholder={t("filterName")}
-                value={name}
+                value={filter.filterName}
                 onChange={(event) => handleNameChange(index, event)}
-              />
+              >
+                <option value="">{t('select_filter')}</option>
+                {filterOptions.map((option, idx) => (
+                  <option key={idx} value={option.name}>{option.name}</option>
+                ))}
+              </select>
               <input
                 className='p-1 outline-none border-gray-400 border-2 rounded-md flex-grow'
                 type="text"
                 placeholder={t("filterValue")}
-                value={filterValues[index]}
+                value={filter.filterValue}
                 onChange={(event) => handleValueChange(index, event)}
               />
             </div>
           ))}
-        </div>}
+        </div>
+      )}
       <button type="button" onClick={addNewField} className="mt-2 shadow-equal rounded-lg p-1 flex items-center gap-1">
         <MdAddCircleOutline className="size-7" />
         {t('add_filter')}
