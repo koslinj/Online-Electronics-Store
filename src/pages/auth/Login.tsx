@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { useAuth } from "../../providers/AuthProvider";
 import { Link } from "react-router-dom";
 import axios, { AxiosError } from "axios";
@@ -19,9 +19,10 @@ export const Login = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState<{ email?: string, password?: string, failed?: string }>();
+  const [errors, setErrors] = useState<{ email?: string, password?: string }>();
 
-  const handleLogin = async () => {
+  const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
     let result = User.safeParse({ email: email, password: password })
     if (!result.success) {
@@ -73,7 +74,7 @@ export const Login = () => {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="shadow-equal rounded-lg p-4 flex flex-col gap-8 my-6 w-72">
+      <form onSubmit={handleLogin} className="shadow-equal rounded-lg p-4 flex flex-col gap-8 my-6 w-72">
         <h2 className="font-bold text-2xl">{t("login")}</h2>
         <div className="h-12">
           <input
@@ -97,10 +98,10 @@ export const Login = () => {
           <p className="text-red-600">{errors?.password}</p>
         </div>
 
-        <button onClick={handleLogin} className="bg-green-700 text-white rounded-lg p-2 duration-300 active:bg-green-900 hover:scale-105">
+        <button type="submit" className="bg-green-700 text-white rounded-lg p-2 duration-300 active:bg-green-900 hover:scale-105">
           {t("login")}
         </button>
-      </div>
+      </form>
 
       <h2 className="text-xl mb-4">{t("noAccount")}</h2>
       <Link to="/register">
