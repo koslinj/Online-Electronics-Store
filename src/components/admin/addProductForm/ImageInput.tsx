@@ -1,12 +1,14 @@
 import { Dispatch, SetStateAction, useState } from 'react';
-import { PlusOutlined } from '@ant-design/icons';
 import { message } from 'antd';
 import { MdError } from 'react-icons/md';
 import Dragger from 'antd/es/upload/Dragger';
 import { FaCheckCircle } from 'react-icons/fa';
+import { GoPlus } from 'react-icons/go';
+import { useTranslation } from 'react-i18next';
 
-export const ImageInput = ({ setImage }: {setImage: Dispatch<SetStateAction<File>>}) => {
+export const ImageInput = ({ setImage }: { setImage: Dispatch<SetStateAction<File>> }) => {
   const [imageUrl, setImageUrl] = useState<string>();
+  const { t } = useTranslation()
 
   const handleBeforeUpload = (file: File) => {
     const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png' || file.type === 'image/webp';
@@ -54,7 +56,7 @@ export const ImageInput = ({ setImage }: {setImage: Dispatch<SetStateAction<File
   };
 
   return (
-    <div className='max-w-96'>
+    <div className='max-w-80'>
       <Dragger
         name="avatar"
         showUploadList={false}
@@ -63,10 +65,10 @@ export const ImageInput = ({ setImage }: {setImage: Dispatch<SetStateAction<File
         {imageUrl ? (
           <img src={imageUrl} alt="Product Image" />
         ) : (
-          <button className='border-0 bg-none' type="button">
-            <PlusOutlined />
-            <p className='mt-3'>Upload</p>
-          </button>
+          <div className='flex flex-col justify-center items-center my-2'>
+            <GoPlus className='size-16' />
+            <p className='text-lg'>{t('uploadImage')}</p>
+          </div>
         )}
       </Dragger>
     </div>

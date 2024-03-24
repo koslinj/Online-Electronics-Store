@@ -54,7 +54,8 @@ i18next
           monFri: "mon. - fri.",
           satSun: "sat. - sun.",
           showrooms: "ELECTROstore showrooms",
-          filters: "Filters"
+          filters: "Filters",
+          uploadImage: "Upload image...",
         }
       },
       pl: {
@@ -102,7 +103,8 @@ i18next
           monFri: "pon. - pt.",
           satSun: "sob. - niedz.",
           showrooms: "Salony ELECTROstore",
-          filters: "Filtry"
+          filters: "Filtry",
+          uploadImage: "Preślij zdjęcie...",
         }
       }
     }
