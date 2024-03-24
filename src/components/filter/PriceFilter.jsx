@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 export const PriceFilter = () => {
-  const [min, setMin] = useState("");
-  const [max, setMax] = useState("");
   const [searchParams, setSearchParams] = useSearchParams();
+  const [min, setMin] = useState(searchParams.get("Od") || "");
+  const [max, setMax] = useState(searchParams.get("Do") || "");
 
   const handleChange = (value, name) => {
     if (value == "") {
