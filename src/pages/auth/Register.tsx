@@ -109,7 +109,7 @@ export const Register = () => {
         <div className="h-12">
           <input
             className={`py-1 px-2 outline-none border-2 rounded-md w-full ${errors?.email ? 'border-red-600' : 'border-gray-700'}`}
-            type="email"
+            type="text"
             placeholder="E-mail"
             value={email}
             onChange={handleEmailChange}
