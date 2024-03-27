@@ -45,7 +45,7 @@ export const AddProduct = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit} className="space-y-2">
+      <form onSubmit={handleSubmit} className="space-y-2 p-4 flex flex-col shadow-equal rounded-xl">
         <NameInput name={name} setName={setName} />
         <DescriptionInput description={description} setDescription={setDescription} />
         <PriceInput price={price} setPrice={setPrice} />
