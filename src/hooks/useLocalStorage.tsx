@@ -13,6 +13,20 @@ export function useLocalStorage<T>(key: string, initialValue: T | (() => T)) {
   })
 
   useEffect(() => {
+    const handleStorageChange = (event: any) => {
+      if (event.key === 'shopping-cart') {
+        setValue(JSON.parse(event.newValue));
+      }
+    };
+    console.log('odpalone')
+    window.addEventListener('storage', handleStorageChange);
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
+  }, []);
+
+  useEffect(() => {
     localStorage.setItem(key, JSON.stringify(value))
   }, [key, value])
 
