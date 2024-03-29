@@ -18,7 +18,6 @@ export function useLocalStorage<T>(key: string, initialValue: T | (() => T)) {
         setValue(JSON.parse(event.newValue));
       }
     };
-    console.log('odpalone')
     window.addEventListener('storage', handleStorageChange);
 
     return () => {
