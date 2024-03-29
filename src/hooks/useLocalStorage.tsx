@@ -14,10 +14,11 @@ export function useLocalStorage<T>(key: string, initialValue: T | (() => T)) {
 
   useEffect(() => {
     const handleStorageChange = (event: any) => {
-      if (event.key === 'shopping-cart') {
+      if (event.key === key) {
         setValue(JSON.parse(event.newValue));
       }
     };
+    
     window.addEventListener('storage', handleStorageChange);
 
     return () => {
