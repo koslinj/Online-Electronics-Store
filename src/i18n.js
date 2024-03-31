@@ -76,6 +76,8 @@ i18next
           existingEmail: "Account with such Email already exists!",
           products: 'Products',
           orders: 'Orders',
+          adminPanel: 'Admin Panel',
+          logout: 'Log out',
         }
       },
       pl: {
@@ -145,6 +147,8 @@ i18next
           existingEmail: "Konto z takim adresem E-mail już istnieje!",
           products: 'Produkty',
           orders: 'Zamówienia',
+          adminPanel: 'Panel Administratora',
+          logout: 'Wyloguj się',
         }
       }
     }

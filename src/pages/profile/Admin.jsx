@@ -3,14 +3,16 @@ import { LogoutButton } from "../../components/LogoutButton"
 import { Sidebar } from "@/components/admin/sidebar/Sidebar"
 import { useState } from "react"
 import { RemoveProduct } from "@/components/admin/removeProductsForm/RemoveProducts"
+import { useTranslation } from "react-i18next"
 
 export const Admin = () => {
+  const { t } = useTranslation()
   const [selectedMenuItem, setSelectedMenuItem] = useState('0sub1');
 
   return (
     <div>
       <div className="flex justify-between items-center mb-2 mt-6 flex-wrap">
-        <h1 className="text-4xl font-semibold">Admin Panel</h1>
+        <h1 className="text-4xl font-semibold">{t('adminPanel')}</h1>
         <LogoutButton />
       </div>
       <div className="flex flex-wrap">
