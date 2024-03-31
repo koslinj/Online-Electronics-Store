@@ -45,19 +45,21 @@ export const AddProduct = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit} className="space-y-2 p-4 flex flex-col shadow-equal rounded-xl">
-        <NameInput name={name} setName={setName} />
-        <DescriptionInput description={description} setDescription={setDescription} />
-        <PriceInput price={price} setPrice={setPrice} />
-        <CategoryInput categoryName={categoryName} setCategoryName={setCategoryName} />
-        <ImageInput setImage={setImage} />
-        <FiltersInput
-          filterNames={filterNames}
-          setFilterNames={setFilterNames}
-          filterValues={filterValues}
-          setFilterValues={setFilterValues}
-        />
-        <button type="submit" className="flex items-center gap-2 p-3 bg-green-100 hover:bg-green-300 hover:scale-110 duration-200 border-2 border-black rounded-xl">
+      <form onSubmit={handleSubmit} className="p-4 shadow-equal rounded-xl min-w-96">
+        <div className="space-y-2 flex flex-col">
+          <NameInput name={name} setName={setName} />
+          <DescriptionInput description={description} setDescription={setDescription} />
+          <PriceInput price={price} setPrice={setPrice} />
+          <CategoryInput categoryName={categoryName} setCategoryName={setCategoryName} />
+          <ImageInput setImage={setImage} />
+          <FiltersInput
+            filterNames={filterNames}
+            setFilterNames={setFilterNames}
+            filterValues={filterValues}
+            setFilterValues={setFilterValues}
+          />
+        </div>
+        <button type="submit" className="mt-8 mx-auto flex items-center gap-2 p-3 bg-green-100 hover:bg-green-300 hover:scale-110 duration-200 border-2 border-black rounded-xl">
           <FaCheckCircle className="size-9" />
           <p className="text-lg font-semibold">{t('upload_product')}</p>
         </button>
