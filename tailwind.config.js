@@ -18,6 +18,11 @@ module.exports = {
       width: {
         '76': '19rem'
       },
+      minWidth: {
+        '100': '26rem',
+        '110': '28rem',
+        '120': '30rem',
+      },
       height: {
         '100': '26rem',
         '110': '28rem',

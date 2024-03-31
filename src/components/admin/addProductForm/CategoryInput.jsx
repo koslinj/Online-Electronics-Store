@@ -21,7 +21,6 @@ export const CategoryInput = ({ categoryName, setCategoryName }) => {
       try {
         const data = await fetchCategories()
         const namesArray = data.map(item => ({ value: item.name, label: item.name }));
-        console.log(namesArray)
         setCategories(namesArray)
 
       } catch (error) {
@@ -35,7 +34,7 @@ export const CategoryInput = ({ categoryName, setCategoryName }) => {
   return (
     <div>
       <label>
-        <p className='text-lg font-semibold'>{t("category")}</p>
+        <p className='text-xl font-semibold'>{t("category")}</p>
         <ConfigProvider
           theme={{
             components: {
@@ -57,7 +56,6 @@ export const CategoryInput = ({ categoryName, setCategoryName }) => {
             placeholder={t('choose_category')}
             optionFilterProp="children"
             onChange={(value) => { setCategoryName(value); console.log(value) }}
-            onSearch={() => { }}
             filterOption={filterOption}
             options={categories}
             style={{

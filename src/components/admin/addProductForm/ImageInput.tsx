@@ -56,22 +56,24 @@ export const ImageInput = ({ setImage }: { setImage: Dispatch<SetStateAction<Fil
   };
 
   return (
-    <div className='max-w-80'>
-      <p className='text-lg font-semibold'>{t('image')}</p>
-      <Dragger
-        name="avatar"
-        showUploadList={false}
-        beforeUpload={handleBeforeUpload}
-      >
-        {imageUrl ? (
-          <img src={imageUrl} alt="Product Image" />
-        ) : (
-          <div className='flex flex-col justify-center items-center my-2'>
-            <GoPlus className='size-16' />
-            <p className='text-lg'>{t('uploadImage')}</p>
-          </div>
-        )}
-      </Dragger>
+    <div>
+      <p className='text-xl font-semibold'>{t('image')}</p>
+      <div className='mx-auto w-80'>
+        <Dragger
+          name="avatar"
+          showUploadList={false}
+          beforeUpload={handleBeforeUpload}
+        >
+          {imageUrl ? (
+            <img src={imageUrl} alt="Product Image" />
+          ) : (
+            <div className='flex flex-col justify-center items-center my-2'>
+              <GoPlus className='size-16' />
+              <p className='text-lg'>{t('uploadImage')}</p>
+            </div>
+          )}
+        </Dragger>
+      </div>
     </div>
   );
 };
