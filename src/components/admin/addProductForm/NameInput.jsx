@@ -6,7 +6,7 @@ export const NameInput = ({ name, setName }) => {
   return (
     <div>
       <label>
-        <p className='text-xl font-semibold'>{t('productName')}</p>
+        <p className='text-lg font-semibold'>{t('productName')}</p>
         <input
           className='p-1 w-full outline-none border-gray-400 border-2 rounded-md'
           type="text"

@@ -24,7 +24,7 @@ export const FiltersInput = ({ filterNames, setFilterNames, filterValues, setFil
 
   return (
     <div>
-      <p className='text-xl font-semibold'>{t('filters')}</p>
+      <p className='text-lg font-semibold'>{t('filters')}</p>
       {filterValues.length > 0 && (
         <div>
           {filterValues.map((filter, index) => (

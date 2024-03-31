@@ -44,8 +44,8 @@ export const AddProduct = () => {
   };
 
   return (
-    <div className="p-4 shadow-equal rounded-xl min-w-110">
-      <h2 className="text-4xl font-semibold text-center">{t('add_product')}</h2>
+    <div className="p-4 shadow-equal rounded-xl max-w-md">
+      <h2 className="text-3xl font-semibold text-center">{t('add_product')}</h2>
       <form onSubmit={handleSubmit} >
         <div className="space-y-2 flex flex-col">
           <NameInput name={name} setName={setName} />

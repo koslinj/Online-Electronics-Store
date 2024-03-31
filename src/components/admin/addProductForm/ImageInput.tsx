@@ -57,7 +57,7 @@ export const ImageInput = ({ setImage }: { setImage: Dispatch<SetStateAction<Fil
 
   return (
     <div>
-      <p className='text-xl font-semibold'>{t('image')}</p>
+      <p className='text-lg font-semibold'>{t('image')}</p>
       <div className='mx-auto w-80'>
         <Dragger
           name="avatar"
@@ -69,7 +69,7 @@ export const ImageInput = ({ setImage }: { setImage: Dispatch<SetStateAction<Fil
           ) : (
             <div className='flex flex-col justify-center items-center my-2'>
               <GoPlus className='size-16' />
-              <p className='text-lg'>{t('uploadImage')}</p>
+              <p className='text-base'>{t('uploadImage')}</p>
             </div>
           )}
         </Dragger>

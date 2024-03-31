@@ -34,15 +34,15 @@ export const CategoryInput = ({ categoryName, setCategoryName }) => {
   return (
     <div>
       <label>
-        <p className='text-xl font-semibold'>{t("category")}</p>
+        <p className='text-lg font-semibold'>{t("category")}</p>
         <ConfigProvider
           theme={{
             components: {
               Select: {
                 colorTextPlaceholder: 'rgb(156 163 175)',
                 colorBorder: 'rgb(156 163 175)',
-                fontSizeIcon: 18,
-                fontSize: 18,
+                fontSizeIcon: 16,
+                fontSize: 16,
                 optionPadding: 10,
                 controlHeight: 40
               }

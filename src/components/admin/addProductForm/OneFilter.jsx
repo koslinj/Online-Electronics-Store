@@ -30,8 +30,8 @@ export const OneFilter = ({ index, filter, handleNameChange, handleValueChange }
             Select: {
               colorTextPlaceholder: 'rgb(156 163 175)',
               colorBorder: 'rgb(156 163 175)',
-              fontSizeIcon: 18,
-              fontSize: 18,
+              fontSizeIcon: 16,
+              fontSize: 16,
               optionPadding: 10,
               controlHeight: 40
             }
