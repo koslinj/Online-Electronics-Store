@@ -58,7 +58,7 @@ export const ImageInput = ({ setImage }: { setImage: Dispatch<SetStateAction<Fil
   return (
     <div>
       <p className='text-lg font-semibold'>{t('image')}</p>
-      <div className='mx-auto w-80'>
+      <div className='mx-auto max-w-80'>
         <Dragger
           name="avatar"
           showUploadList={false}

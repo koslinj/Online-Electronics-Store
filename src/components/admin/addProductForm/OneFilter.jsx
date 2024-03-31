@@ -16,44 +16,45 @@ export const OneFilter = ({ index, filter, handleNameChange, handleValueChange }
     const fetchFilterOptions = async () => {
       const data = await fetchFilters();
       const optionsArray = data.map(item => ({ value: item.name, label: item.name }));
-      console.log(optionsArray)
       setFilterOptions(optionsArray);
     };
     fetchFilterOptions();
   }, []);
 
   return (
-    <div className="flex gap-2 mb-2">
-      <ConfigProvider
-        theme={{
-          components: {
-            Select: {
-              colorTextPlaceholder: 'rgb(156 163 175)',
-              colorBorder: 'rgb(156 163 175)',
-              fontSizeIcon: 16,
-              fontSize: 16,
-              optionPadding: 10,
-              controlHeight: 40
+    <div className="flex gap-2 mb-2 flex-wrap">
+      <div className="flex-1">
+        <ConfigProvider
+          theme={{
+            components: {
+              Select: {
+                colorTextPlaceholder: 'rgb(156 163 175)',
+                colorBorder: 'rgb(156 163 175)',
+                fontSizeIcon: 16,
+                fontSize: 16,
+                optionPadding: 10,
+                controlHeight: 40
+              }
             }
-          }
-        }}
-      >
-        <Select
-          showSearch
-          onDropdownVisibleChange={() => setFocused(!focused)}
-          suffixIcon={focused ? <FaSearch color="rgb(100 100 100)" /> : <FaChevronDown color="rgb(100 100 100)" />}
-          placeholder={t('select_filter')}
-          optionFilterProp="children"
-          onChange={(value) => { handleNameChange(index, value); console.log(value) }}
-          filterOption={filterOption}
-          options={filterOptions}
-          style={{
-            width: "100%"
           }}
-        />
-      </ConfigProvider>
+        >
+          <Select
+            showSearch
+            onDropdownVisibleChange={() => setFocused(!focused)}
+            suffixIcon={focused ? <FaSearch color="rgb(100 100 100)" /> : <FaChevronDown color="rgb(100 100 100)" />}
+            placeholder={t('select_filter')}
+            optionFilterProp="children"
+            onChange={(value) => { handleNameChange(index, value); console.log(value) }}
+            filterOption={filterOption}
+            options={filterOptions}
+            style={{
+              width: '100%'
+            }}
+          />
+        </ConfigProvider>
+      </div>
       <input
-        className='p-1 outline-none border-gray-400 border-2 rounded-md flex-grow'
+        className='p-1 outline-none border-gray-400 border-2 rounded-md flex-1'
         type="text"
         placeholder={t("filterValue")}
         value={filter.filterValue}

@@ -8,13 +8,13 @@ export const Admin = () => {
 
   return (
     <div>
-      <h1 className="text-3xl font-semibold my-6">Admin Panel</h1>
-      <div className="flex">
+      <h1 className="text-3xl font-semibold my-4">Admin Panel</h1>
+      <div className="flex flex-wrap">
         <div>
           <Sidebar setSelectedMenuItem={setSelectedMenuItem} />
           <LogoutButton />
         </div>
-        <div className="w-full">
+        <div className="flex-1">
           {selectedMenuItem === '0' && (
             <AddProduct />
           )}
