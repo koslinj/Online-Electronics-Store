@@ -8,6 +8,7 @@ import { ImageInput } from "./ImageInput";
 import { useTranslation } from "react-i18next";
 import { FiltersInput } from "./FiltersInput";
 import { FaCheckCircle } from "react-icons/fa";
+import { message } from "antd"
 
 export const AddProduct = () => {
   const [image, setImage] = useState(null);
@@ -38,6 +39,14 @@ export const AddProduct = () => {
         }
       });
       console.log('Product uploaded successfully:', response.data);
+      message.success({
+        content:
+          <div className='flex items-center gap-3'>
+            <FaCheckCircle className='size-10 text-green-500' />
+            <p className='text-xl'>Produkt został dodany!</p>
+          </div>,
+        icon: <></>
+      });
     } catch (error) {
       console.error('Error uploading product:', error);
     }
