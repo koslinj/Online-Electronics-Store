@@ -38,13 +38,13 @@ export const Sidebar = ({ setSelectedMenuItem }: { setSelectedMenuItem: Dispatch
   };
 
   return (
-    <div className='w-56 mr-4 border-2 border-gray-400 rounded-xl'>
+    <div className='w-56 mr-4 border-2 border-gray-400 rounded-xl h-full'>
       <Menu
       style={{
         borderRadius: '14px',
         padding: '8px'
       }}
-        defaultSelectedKeys={['0sub0']}
+        defaultSelectedKeys={['0sub1']}
         defaultOpenKeys={['0']}
         mode="inline"
         onSelect={handleMenuSelect}
