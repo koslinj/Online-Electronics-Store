@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { fetchCategories } from "@/api/categories";
 import { useTranslation } from "react-i18next";
 import { ConfigProvider, Select } from 'antd';
+import { FaChevronDown, FaSearch } from "react-icons/fa";
 
 // Filter `option.label` match the user type `input`
 const filterOption = (input, option) =>
@@ -11,6 +12,7 @@ const filterOption = (input, option) =>
 
 export const CategoryInput = ({ categoryName, setCategoryName }) => {
   const [categories, setCategories] = useState([]);
+  const [focused, setFocused] = useState(false)
   const { t } = useTranslation()
 
   useEffect(() => {
@@ -32,45 +34,37 @@ export const CategoryInput = ({ categoryName, setCategoryName }) => {
 
   return (
     <div>
-      <ConfigProvider
-        theme={{
-          components: {
-            Select: {
-              colorTextPlaceholder: 'rgb(156 163 175)',
-              colorBorder: 'rgb(156 163 175)',
-              fontSizeIcon: 18,
-              fontSize: 18,
-              optionPadding: 10
-            }
-          }
-        }}
-      >
-        <Select
-          showSearch
-          placeholder={t('choose_category')}
-          optionFilterProp="children"
-          onChange={(value) => { setCategoryName(value); console.log(value) }}
-          onSearch={() => { }}
-          filterOption={filterOption}
-          options={categories}
-          style={{
-            color: 'red',
-            width: "100%"
-          }}
-        />
-      </ConfigProvider>
       <label>
         <p className='text-lg font-semibold'>{t("category")}</p>
-        {/* <select
-          className='p-1 py-2 w-full outline-none border-gray-400 border-2 rounded-md'
-          value={categoryName}
-          onChange={(e) => setCategoryName(e.target.value)}
+        <ConfigProvider
+          theme={{
+            components: {
+              Select: {
+                colorTextPlaceholder: 'rgb(156 163 175)',
+                colorBorder: 'rgb(156 163 175)',
+                fontSizeIcon: 18,
+                fontSize: 18,
+                optionPadding: 10,
+                controlHeight: 40
+              }
+            }
+          }}
         >
-          <option value="">{t('choose_category')}</option>
-          {categories.map((category, index) => (
-            <option className="hover:bg-gray-200" key={index} value={category}>{category}</option>
-          ))}
-        </select> */}
+          <Select
+            showSearch
+            onDropdownVisibleChange={() => setFocused(!focused)}
+            suffixIcon={focused ? <FaSearch color="rgb(100 100 100)" /> : <FaChevronDown color="rgb(100 100 100)" />}
+            placeholder={t('choose_category')}
+            optionFilterProp="children"
+            onChange={(value) => { setCategoryName(value); console.log(value) }}
+            onSearch={() => { }}
+            filterOption={filterOption}
+            options={categories}
+            style={{
+              width: "100%"
+            }}
+          />
+        </ConfigProvider>
       </label>
     </div>
   )
