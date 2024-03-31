@@ -12,7 +12,7 @@ export const ProductListPage = () => {
 
   return (
     <div className='mt-8'>
-      <h2 className='text-3xl font-bold mb-2 ml-1'>{categoryEntity?.name}</h2>
+      <h2 className='text-4xl font-semibold mb-2 ml-1'>{categoryEntity?.name}</h2>
       <div className='flex justify-start items-start'>
         <Filter filters={Object.entries(filters)} />
         <div className='flex gap-2 flex-wrap ml-5'>
