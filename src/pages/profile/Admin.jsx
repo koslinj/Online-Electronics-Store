@@ -4,7 +4,7 @@ import { Sidebar } from "@/components/admin/sidebar/Sidebar"
 import { useState } from "react"
 
 export const Admin = () => {
-  const [selectedMenuItem, setSelectedMenuItem] = useState('0');
+  const [selectedMenuItem, setSelectedMenuItem] = useState('0sub0');
 
   return (
     <div>
@@ -15,7 +15,7 @@ export const Admin = () => {
           <LogoutButton />
         </div>
         <div className="flex-1">
-          {selectedMenuItem === '0' && (
+          {selectedMenuItem === '0sub0' && (
             <AddProduct />
           )}
           {selectedMenuItem === '1' && (

@@ -63,7 +63,8 @@ i18next
           choose_category: "Choose Category...",
           add_filter: "Add Filter",
           upload_product: "Upload product",
-          add_product: "Add a product",
+          add_product: "Add product",
+          remove_product: "Remove product",
           image: "Image",
           select_filter: "Choose Filter",
           filterValue: "Filter Value",
@@ -73,6 +74,8 @@ i18next
           badLastName: "Surname is invalid!",
           failedLogin: "Unable to Log in, invalid E-mail or Password!",
           existingEmail: "Account with such Email already exists!",
+          products: 'Products',
+          orders: 'Orders',
         }
       },
       pl: {
@@ -130,6 +133,7 @@ i18next
           add_filter: "Dodaj filtr",
           upload_product: "Prześlij produkt",
           add_product: "Dodaj produkt",
+          remove_product: "Usuń produkt",
           image: "Zdjęcie",
           select_filter: "Wybierz filtr",
           filterValue: "Wartość filtru",
@@ -139,6 +143,8 @@ i18next
           badLastName: "Nazwisko nie jest poprawne!",
           failedLogin: "Nie udało się zalogować, błedny E-mail lub Hasło!",
           existingEmail: "Konto z takim adresem E-mail już istnieje!",
+          products: 'Produkty',
+          orders: 'Zamówienia',
         }
       }
     }

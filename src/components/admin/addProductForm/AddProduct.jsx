@@ -44,7 +44,7 @@ export const AddProduct = () => {
   };
 
   return (
-    <div className="p-4 shadow-equal rounded-xl max-w-3xl">
+    <div className="p-4 border-2 border-gray-400 rounded-xl max-w-3xl">
       <h2 className="text-2xl font-semibold text-center mb-4">{t('add_product')}</h2>
       <form onSubmit={handleSubmit} >
         <div className="flex gap-8 flex-wrap">
