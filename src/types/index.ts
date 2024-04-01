@@ -10,6 +10,13 @@ export interface Product {
   filterValues: string[]
 }
 
+export interface Opinion {
+  id: number
+  stars: number
+  content: string
+  createdAt: Date
+}
+
 export interface Category {
   id: number
   generalCategory: string

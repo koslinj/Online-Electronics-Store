@@ -1,5 +1,6 @@
 import { fetchProductByName } from "@/api/products";
 import { ImageModal } from "@/components/productPage/ImageModal";
+import { Opinions } from "@/components/productPage/Opinions";
 import { PriceAndCart } from "@/components/productPage/PriceAndCart";
 import { ProductFilters } from "@/components/productPage/ProductFilters";
 import { Product } from "@/types";
@@ -42,6 +43,7 @@ export const ProductPage = () => {
         </div>
       </div>
       <p>{product?.description}</p>
+      <Opinions product={product} />
       <ImageModal showModal={showModal} setShowModal={setShowModal} product={product} />
     </div>
   )
