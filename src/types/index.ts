@@ -15,6 +15,7 @@ export interface Opinion {
   stars: number
   content: string
   createdAt: Date
+  user: string
 }
 
 export interface Category {
