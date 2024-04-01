@@ -11,11 +11,13 @@ export interface CartItem {
 const CartContext = createContext<{
   cart: CartItem[];
   addOne: (product: Product) => void;
+  add: (product: Product, n: number) => void;
   removeOne: (product: Product) => void;
   clearCart: () => void;
 }>({
   cart: [],
   addOne: () => { },
+  add: () => { },
   removeOne: () => { },
   clearCart: () => { },
 });
@@ -39,6 +41,21 @@ export const CartProvider = ({ children }: CartProviderProps) => {
     }
     return quantity
   }
+
+  const add = (product: Product, n: number) => {
+    const quantity = getProductQuantity(product)
+
+    if (quantity === 0) {
+      setCartItems([...cartItems, { product: product, quantity: n }])
+    } else {
+      setCartItems(cartItems.map(
+        item =>
+          item.product.id === product.id
+            ? { ...item, quantity: item.quantity + n }
+            : item
+      ))
+    }
+  };
 
   const addOne = (product: Product) => {
     const quantity = getProductQuantity(product)
@@ -79,6 +96,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
       value={{
         cart: cartItems,
         addOne,
+        add,
         removeOne,
         clearCart,
       }}

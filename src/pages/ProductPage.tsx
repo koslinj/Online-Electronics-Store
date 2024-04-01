@@ -1,5 +1,6 @@
 import { fetchProductByName } from "@/api/products";
 import { ImageModal } from "@/components/productPage/ImageModal";
+import { PriceAndCart } from "@/components/productPage/PriceAndCart";
 import { ProductFilters } from "@/components/productPage/ProductFilters";
 import { Product } from "@/types";
 import { useEffect, useMemo, useState } from "react";
@@ -34,9 +35,9 @@ export const ProductPage = () => {
             <span className="text-gray-600 font-normal">{t('from')}</span>
             {product?.filterValues[product.filterNames.indexOf("Producent")]}
           </p>
-          <div className="flex gap-x-10 flex-wrap">
+          <div className="flex gap-x-10 flex-wrap items-start">
             <ProductFilters product={product} />
-            <ProductFilters product={product} />
+            <PriceAndCart product={product} />
           </div>
         </div>
       </div>
