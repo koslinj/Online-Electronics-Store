@@ -82,6 +82,7 @@ i18next
           logout: 'Log out',
           page: 'page',
           pieces: 'pcs.',
+          from: 'from: ',
         }
       },
       pl: {
@@ -157,6 +158,7 @@ i18next
           logout: 'Wyloguj się',
           page: 'stronę',
           pieces: 'szt.',
+          from: 'od: ',
         }
       }
     }
