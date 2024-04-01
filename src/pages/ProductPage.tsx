@@ -1,9 +1,8 @@
 import { fetchProductByName } from "@/api/products";
+import { ImageModal } from "@/components/productPage/ImageModal";
 import { Product } from "@/types";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Modal from "react-modal";
-import { X } from "lucide-react";
 
 export const ProductPage = () => {
   const { productName } = useParams();
@@ -29,29 +28,7 @@ export const ProductPage = () => {
         <h3 className="text-2xl font-semibold">{product?.name}</h3>
         <p>{product?.description}</p>
       </div>
-      <Modal
-        ariaHideApp={false}
-        style={{
-          content: {
-            color: 'lightsteelblue',
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            left: "50%",
-            transform: "translateX(-50%)",
-            padding: "0px",
-            border: "2px solid black",
-            borderRadius: "16px",
-          }
-        }}
-        isOpen={showModal}
-        onRequestClose={() => setShowModal(false)}
-      >
-        <img className="w-full" src={product?.imageUrl} alt={product?.name} />
-        <button onClick={() => setShowModal(false)}>
-          <X className="size-12 text-black hover:scale-125 absolute top-5 right-5 duration-200" />
-        </button>
-      </Modal>
+      <ImageModal showModal={showModal} setShowModal={setShowModal} product={product} />
     </div>
   )
 }
