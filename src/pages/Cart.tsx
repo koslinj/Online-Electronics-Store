@@ -8,7 +8,7 @@ export const Cart = () => {
   const { cart, addOne, removeOne, clearCart } = useCart();
 
   return (
-    <div className="max-w-2xl">
+    <div className="max-w-4xl">
       <div className="mb-2 mt-6 flex justify-between">
         <h1 className="text-4xl font-semibold">{t('cart')}</h1>
         {cart.length > 0 && (
