@@ -1,12 +1,14 @@
 import { useCart } from "@/providers/CartProvider"
+import { useTranslation } from "react-i18next";
 
 export const Cart = () => {
+  const { t } = useTranslation()
   const { cart, addOne, removeOne, clearCart } = useCart();
 
   return (
     <div className="mt-8">
       <div className="max-w-lg">
-        <p className="text-3xl font-semibold">Cart</p>
+        <p className="text-3xl font-semibold">{t('cart')}</p>
         {cart.map(item => (
           <div key={item.product.id} className="flex justify-between items-center">
             <div className="flex items-center">
