@@ -5,8 +5,12 @@ import { Dropdown } from "../Dropdown"
 import { SearchBar } from "./SearchBar"
 import { CartButton } from "./CartButton"
 import { LanguageButtons } from "./LanguageButtons"
+import { useCart } from "@/providers/CartProvider"
+import { useTranslation } from "react-i18next"
 
 export const TopNavbar = () => {
+  const { t } = useTranslation()
+  const { cart } = useCart();
 
   return (
     <div className="px-1 lg:px-6 py-1 flex gap-x-10 items-center justify-between lg:justify-center max-w-7xl mx-auto flex-wrap">
@@ -24,9 +28,17 @@ export const TopNavbar = () => {
           side="left"
           element={<CartButton />}
         >
-          <div className="hover:bg-gray-200 rounded-lg p-2 text-nowrap">Shopping Link 1</div>
-          <div className="hover:bg-gray-200 rounded-lg p-2 text-nowrap">Shopping Link 2</div>
-          <div className="hover:bg-gray-200 rounded-lg p-2 text-nowrap">Shopping Link 3</div>
+          {cart.map((item) => (
+            <div className="rounded-lg p-2 flex gap-x-2 items-center w-72">
+              <img className="w-20" src={item.product.imageUrl} alt={item.product.name} />
+              <div>
+                <Link to={`/products/${item.product.categoryUrl}/${encodeURIComponent(item.product.name)}`}>
+                  <p className="font-semibold hover:underline">{item.product.name}</p>
+                </Link>
+                <p className="mt-2 text-blue-900">{item.quantity} {t('pieces')}</p>
+              </div>
+            </div>
+          ))}
         </Dropdown>
       </div>
     </div>

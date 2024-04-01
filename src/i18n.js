@@ -81,6 +81,7 @@ i18next
           adminPanel: 'Admin Panel',
           logout: 'Log out',
           page: 'page',
+          pieces: 'pcs.',
         }
       },
       pl: {
@@ -155,6 +156,7 @@ i18next
           adminPanel: 'Panel Administratora',
           logout: 'Wyloguj się',
           page: 'stronę',
+          pieces: 'szt.',
         }
       }
     }
