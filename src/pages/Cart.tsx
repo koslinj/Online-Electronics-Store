@@ -1,40 +1,24 @@
+import { CartItems } from "@/components/cart/CartItems";
 import { useCart } from "@/providers/CartProvider"
 import { useTranslation } from "react-i18next";
+import { BsTrash } from 'react-icons/bs'
 
 export const Cart = () => {
   const { t } = useTranslation()
   const { cart, addOne, removeOne, clearCart } = useCart();
 
   return (
-    <div className="mt-8">
-      <div className="max-w-lg">
-        <p className="text-3xl font-semibold">{t('cart')}</p>
-        {cart.map(item => (
-          <div key={item.product.id} className="flex justify-between items-center">
-            <div className="flex items-center">
-              <img
-                className="w-20"
-                src={item.product.imageUrl}
-                alt={item.product.name}
-              />
-              <p>{item.product.name}</p>
-            </div>
-            <div className="flex gap-2">
-              <p>{item.product.price * item.quantity}</p>
-              <button onClick={() => removeOne(item.product)}>
-                -
-              </button>
-              <p>{item.quantity}</p>
-              <button onClick={() => addOne(item.product)}>
-                +
-              </button>
-            </div>
-          </div>
-        ))}
-        <button onClick={clearCart}>
-          Clear Cart
-        </button>
+    <div className="max-w-2xl">
+      <div className="mb-2 mt-6 flex justify-between">
+        <h1 className="text-4xl font-semibold">{t('cart')}</h1>
+        {cart.length > 0 && (
+          <button onClick={clearCart} className="flex items-center gap-2 hover:bg-gray-200 p-2 rounded-md duration-150">
+            <BsTrash className="size-6" />
+            <p>{t('clearCart')}</p>
+          </button>
+        )}
       </div>
+      <CartItems />
     </div>
   )
 }
