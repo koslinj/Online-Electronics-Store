@@ -35,7 +35,7 @@ export const ProductPage = () => {
             <span className="text-gray-600 font-normal">{t('from')}</span>
             {product?.filterValues[product.filterNames.indexOf("Producent")]}
           </p>
-          <div className="flex gap-x-10 flex-wrap items-start">
+          <div className="mt-8 flex gap-x-10 flex-wrap items-start">
             <ProductFilters product={product} />
             <PriceAndCart product={product} />
           </div>

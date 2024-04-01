@@ -17,7 +17,7 @@ export const ProductFilters = ({ product }: Props) => {
   }, [product?.filterNames, product?.filterValues]);
 
   return (
-    <div className="my-6 py-3 border-y-2 border-gray-400 space-y-2">
+    <div className="py-3 border-y-2 border-gray-400 space-y-2">
       {sortedFilters?.slice(0, 4).map((filter, index) => (
         <div className="flex justify-start gap-2" key={index}>
           <p className="text-gray-600">{filter.name}:</p>
