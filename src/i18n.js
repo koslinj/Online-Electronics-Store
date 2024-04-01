@@ -15,6 +15,7 @@ i18next
           yourAccount: "Your account",
           cart: "Cart",
           searchPlaceholder: "What are you looking for?",
+          searchProduct: "Seacrh for a product",
           login: "Log in",
           noAccount: "Do not have account?",
           createAccount: "Create an account",
@@ -78,6 +79,7 @@ i18next
           orders: 'Orders',
           adminPanel: 'Admin Panel',
           logout: 'Log out',
+          page: 'page',
         }
       },
       pl: {
@@ -86,6 +88,7 @@ i18next
           yourAccount: "Twoje konto",
           cart: "Koszyk",
           searchPlaceholder: "Czego szukasz?",
+          searchProduct: "Wyszukaj produkt",
           login: "Zaloguj się",
           noAccount: "Nie masz konta?",
           createAccount: "Załóż konto",
@@ -149,6 +152,7 @@ i18next
           orders: 'Zamówienia',
           adminPanel: 'Panel Administratora',
           logout: 'Wyloguj się',
+          page: 'stronę',
         }
       }
     }
