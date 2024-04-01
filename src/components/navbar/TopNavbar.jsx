@@ -21,12 +21,12 @@ export const TopNavbar = () => {
       <div className="flex items-center gap-2 justify-center">
         <AccountButton />
         <Dropdown
-          side={"left"}
+          side="left"
           element={<CartButton />}
         >
-          <div className="hover:bg-green-300 p-2">Shopping Link 1</div>
-          <div className="hover:bg-green-300 p-2">Shopping Link 2</div>
-          <div className="hover:bg-green-300 p-2">Shopping Link 3</div>
+          <div className="hover:bg-gray-200 rounded-lg p-2 text-nowrap">Shopping Link 1</div>
+          <div className="hover:bg-gray-200 rounded-lg p-2 text-nowrap">Shopping Link 2</div>
+          <div className="hover:bg-gray-200 rounded-lg p-2 text-nowrap">Shopping Link 3</div>
         </Dropdown>
       </div>
     </div>
