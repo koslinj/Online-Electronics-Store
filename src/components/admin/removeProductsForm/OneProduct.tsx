@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Dispatch, SetStateAction } from 'react';
 import { BsTrash } from 'react-icons/bs'
 import { FaInfoCircle } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 interface Props {
   product: Product
@@ -42,7 +43,9 @@ export const OneProduct = ({ product, setProducts }: Props) => {
       <div className="flex gap-4 items-center flex-wrap">
         <img className="size-20 sm:size-36 object-contain" src={product.imageUrl} alt={product.name} />
         <div className='space-y-1'>
-          <p className='font-bold break-words'>{product.name}</p>
+          <Link to={`/products/${product.categoryUrl}/${encodeURIComponent(product.name)}`}>
+            <p className='font-bold break-words hover:underline'>{product.name}</p>
+          </Link>
           <p>{formattedPrice}</p>
           <p>{product.categoryName}</p>
         </div>
