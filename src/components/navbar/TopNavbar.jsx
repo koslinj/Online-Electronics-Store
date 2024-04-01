@@ -27,9 +27,10 @@ export const TopNavbar = () => {
         <Dropdown
           side="left"
           element={<CartButton />}
+          size={cart.length}
         >
           {cart.map((item) => (
-            <div className="rounded-lg p-2 flex gap-x-2 items-center w-72">
+            <div key={item.product.id} className="rounded-lg p-2 flex gap-x-2 items-center w-72">
               <img className="w-20" src={item.product.imageUrl} alt={item.product.name} />
               <div>
                 <Link to={`/products/${item.product.categoryUrl}/${encodeURIComponent(item.product.name)}`}>
