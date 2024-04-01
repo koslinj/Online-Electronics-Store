@@ -16,7 +16,7 @@ export const CartButton = () => {
         <p className="text-xs">{t('cart')}</p>
         {cart.length > 0 && (
           <div className='absolute top-1 right-1 text-base font-semibold bg-blue-600 text-white size-6 rounded-full flex justify-center items-center'>
-            {cart.length}
+            {cart.reduce((total, item) => total + item.quantity, 0)}
           </div>
         )}
       </div>
