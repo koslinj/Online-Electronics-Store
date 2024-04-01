@@ -18,7 +18,7 @@ export const TopNavbar = () => {
       </Link>
       <SearchBar />
       <LanguageButtons />
-      <div className="flex items-center justify-center">
+      <div className="flex items-center gap-2 justify-center">
         <AccountButton />
         <Dropdown
           side={"left"}

@@ -7,8 +7,10 @@ export const AccountButton = () => {
 
   return (
     <Link to="/profile">
-      <div className="flex flex-col justify-center items-center cursor-pointer rounded-md p-2 hover:bg-green-200">
-        <GoPerson className="w-6 h-6" />
+      <div
+        className="flex flex-col justify-center items-center cursor-pointer rounded-md p-2 hover:bg-gray-200 duration-200 hover:shadow-lg group"
+      >
+        <GoPerson className="w-6 h-6 group-hover:size-8 duration-200" />
         <p className="text-xs">{t('yourAccount')}</p>
       </div>
     </Link>
