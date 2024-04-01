@@ -10,7 +10,7 @@ export const CartButton = () => {
   return (
     <Link to="cart">
       <div
-        className="px-3 flex flex-col justify-center items-center cursor-pointer rounded-md p-2 hover:bg-gray-200 duration-200 hover:shadow-lg group"
+        className="min-w-16 px-3 flex flex-col justify-center items-center cursor-pointer rounded-md p-2 group-hover:bg-gray-200 duration-200 hover:shadow-lg group"
       >
         <FiShoppingCart className="size-6" />
         <p className="text-xs">{t('cart')}</p>
