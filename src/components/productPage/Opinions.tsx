@@ -17,7 +17,6 @@ export const Opinions = ({ product }: Props) => {
       if (product.id) {
         const _ops = await fetchOpinionsByProductId(product.id)
         setOpinions(_ops!)
-        console.log(_ops)
       }
     }
 
