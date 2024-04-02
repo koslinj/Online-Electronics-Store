@@ -5,7 +5,7 @@ import { Stars } from "./Stars";
 import { format } from "date-fns";
 
 interface Props {
-  product: Product | undefined
+  product: Product
 }
 
 export const Opinions = ({ product }: Props) => {
@@ -14,8 +14,8 @@ export const Opinions = ({ product }: Props) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      if (product?.id) {
-        const _ops = await fetchOpinionsByProductId(product?.id)
+      if (product.id) {
+        const _ops = await fetchOpinionsByProductId(product.id)
         setOpinions(_ops!)
         console.log(_ops)
       }
@@ -23,7 +23,7 @@ export const Opinions = ({ product }: Props) => {
 
     fetchData()
 
-  }, [product?.id])
+  }, [product.id])
 
   return (
     <div className="mt-8">

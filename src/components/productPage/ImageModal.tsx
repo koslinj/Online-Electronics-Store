@@ -6,7 +6,7 @@ import { Product } from "@/types";
 interface Props {
   showModal: boolean
   setShowModal: Dispatch<SetStateAction<boolean>>
-  product: Product | undefined
+  product: Product
 }
 
 export const ImageModal = ({ showModal, setShowModal, product }: Props) => {
@@ -29,7 +29,7 @@ export const ImageModal = ({ showModal, setShowModal, product }: Props) => {
       isOpen={showModal}
       onRequestClose={() => setShowModal(false)}
     >
-      <img className="w-full" src={product?.imageUrl} alt={product?.name} />
+      <img className="w-full" src={product.imageUrl} alt={product.name} />
       <button onClick={() => setShowModal(false)}>
         <X className="size-12 text-black hover:scale-125 absolute top-5 right-5 duration-200" />
       </button>
