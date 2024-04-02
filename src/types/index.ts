@@ -16,6 +16,7 @@ export interface Opinion {
   content: string
   createdAt: Date
   user: string
+  productId: number
 }
 
 export interface Category {

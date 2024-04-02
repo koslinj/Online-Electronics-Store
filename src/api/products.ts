@@ -26,3 +26,12 @@ export const fetchProductByName = async (name: string) => {
     console.error('Error fetching data:', error);
   }
 }
+
+export const fetchProductById = async (id: number) => {
+  try {
+    const response = await axios.get(`http://localhost:8080/api/products/${id}`);
+    return response.data
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+}

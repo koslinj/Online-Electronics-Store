@@ -1,9 +1,8 @@
-import { fetchOpinionsByProductId, fetchOpinionsByUsername } from "@/api/opinions";
-import { Opinion, Product } from "@/types";
+import { fetchOpinionsByUsername } from "@/api/opinions";
+import { Opinion } from "@/types";
 import { useEffect, useState } from "react";
-import { Stars } from "../productPage/Stars";
-import { format } from "date-fns";
 import { useTranslation } from "react-i18next";
+import { UserPanelOneOpinion } from "./UserPanelOneOpinion";
 
 interface Props {
   user: {
@@ -16,7 +15,6 @@ interface Props {
 export const UserPanelOpinions = ({ user }: Props) => {
   const { t } = useTranslation()
   const [opinions, setOpinions] = useState<Opinion[]>([])
-  const formatStr = 'dd/MM/yyyy'
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,17 +28,11 @@ export const UserPanelOpinions = ({ user }: Props) => {
 
   return (
     <div>
-      <h2 className="text-3xl">{t('opinions')}</h2>
-      <div className="mt-8">
+      <h2 className="text-3xl mb-8">{t('opinions')}</h2>
+      <h3 className="text-2xl">{t('yourOpinions')}<span className="text-gray-500">({opinions.length})</span></h3>
+      <div className="mt-2 border-t-2 border-gray-400">
         {opinions?.map(opinion => (
-          <div key={opinion.id} className="space-y-1">
-            <p className="font-semibold italic">{opinion.user}</p>
-            <div className="flex gap-x-4">
-              <Stars n={opinion.stars} />
-              <p>{format(opinion.createdAt, formatStr)}</p>
-            </div>
-            <p className="text-lg">{opinion.content}</p>
-          </div>
+          <UserPanelOneOpinion opinion={opinion} />
         ))}
       </div>
     </div>
