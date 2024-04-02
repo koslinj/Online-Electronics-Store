@@ -3,10 +3,11 @@ import { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { UserSidebar } from "@/components/admin/sidebar/UserSidebar"
 import { UserPanelOpinions } from "@/components/user/UserPanelOpinions"
+import { UserPanelOrderingData } from "@/components/user/UserPanelOrderingData"
 
-export const User = ({user}) => {
+export const User = ({ user }) => {
   const { t } = useTranslation()
-  const [selectedMenuItem, setSelectedMenuItem] = useState('0sub1');
+  const [selectedMenuItem, setSelectedMenuItem] = useState('0');
 
   return (
     <div>
@@ -19,7 +20,7 @@ export const User = ({user}) => {
         <div className="flex-1">
           {selectedMenuItem === '0' && <p>{t('orders')}</p>}
           {selectedMenuItem === '1' && <UserPanelOpinions user={user} />}
-          {selectedMenuItem === '2' && <p>{t('orderingData')}</p>}
+          {selectedMenuItem === '2' && <UserPanelOrderingData />}
           {selectedMenuItem === '3' && <p>{t('accountSettings')}</p>}
         </div>
       </div>
