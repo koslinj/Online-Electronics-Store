@@ -19,6 +19,7 @@ export const Profile = () => {
         });
 
         const data = response.data;
+        console.log(data)
 
         if (isMounted) {
           setUser(data);
@@ -41,7 +42,7 @@ export const Profile = () => {
     };
   }, [setToken]);
 
-  if (user?.role === "USER") return <User />
+  if (user?.role === "USER") return <User user={user} />
   if (user?.role === "ADMIN") return <Admin />
 
   return <p>Loading...</p>

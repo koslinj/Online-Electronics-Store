@@ -24,7 +24,16 @@ function getItem(
   } as MenuItem;
 }
 
-export const UserSidebar = ({ setSelectedMenuItem }: { setSelectedMenuItem: Dispatch<SetStateAction<string>> }) => {
+interface Props {
+  setSelectedMenuItem: Dispatch<SetStateAction<string>>
+  user: {
+    username: string
+    role: string
+    firstName: string
+  }
+}
+
+export const UserSidebar = ({ setSelectedMenuItem, user }: Props) => {
   const { t } = useTranslation()
 
   const items: MenuItem[] = [
@@ -40,10 +49,14 @@ export const UserSidebar = ({ setSelectedMenuItem }: { setSelectedMenuItem: Disp
 
   return (
     <div className='w-64 mr-4 border-r-2 border-gray-400'>
+      <div className='ml-4 mb-4'>
+        <p className='text-xl'>Cześć,</p>
+        <p className='text-xl font-semibold'>{user.firstName}</p>
+      </div>
       <Menu
-      style={{
-        borderRadius: '14px',
-      }}
+        style={{
+          borderRadius: '14px',
+        }}
         defaultSelectedKeys={['0']}
         mode="inline"
         onSelect={handleMenuSelect}

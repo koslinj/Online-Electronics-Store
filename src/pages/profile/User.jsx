@@ -3,7 +3,7 @@ import { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { UserSidebar } from "@/components/admin/sidebar/UserSidebar"
 
-export const User = () => {
+export const User = ({user}) => {
   const { t } = useTranslation()
   const [selectedMenuItem, setSelectedMenuItem] = useState('0sub1');
 
@@ -14,7 +14,7 @@ export const User = () => {
         <LogoutButton />
       </div>
       <div className="flex flex-wrap">
-        <UserSidebar setSelectedMenuItem={setSelectedMenuItem} />
+        <UserSidebar user={user} setSelectedMenuItem={setSelectedMenuItem} />
         <div className="flex-1">
           {selectedMenuItem === '0' && <p>{t('orders')}</p>}
           {selectedMenuItem === '1' && <p>{t('opinions')}</p>}
