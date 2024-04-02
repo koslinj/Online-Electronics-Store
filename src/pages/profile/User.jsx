@@ -2,6 +2,7 @@ import { LogoutButton } from "../../components/LogoutButton"
 import { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { UserSidebar } from "@/components/admin/sidebar/UserSidebar"
+import { UserPanelOpinions } from "@/components/user/UserPanelOpinions"
 
 export const User = ({user}) => {
   const { t } = useTranslation()
@@ -17,7 +18,7 @@ export const User = ({user}) => {
         <UserSidebar user={user} setSelectedMenuItem={setSelectedMenuItem} />
         <div className="flex-1">
           {selectedMenuItem === '0' && <p>{t('orders')}</p>}
-          {selectedMenuItem === '1' && <p>{t('opinions')}</p>}
+          {selectedMenuItem === '1' && <UserPanelOpinions user={user} />}
           {selectedMenuItem === '2' && <p>{t('orderingData')}</p>}
           {selectedMenuItem === '3' && <p>{t('accountSettings')}</p>}
         </div>

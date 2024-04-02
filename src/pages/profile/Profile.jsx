@@ -19,7 +19,6 @@ export const Profile = () => {
         });
 
         const data = response.data;
-        console.log(data)
 
         if (isMounted) {
           setUser(data);
