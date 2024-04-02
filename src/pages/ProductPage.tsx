@@ -45,11 +45,11 @@ export const ProductPage = () => {
     <div>
       {product && (
         <>
-          <div className="flex mt-10 max-w-6xl mx-auto py-6">
-            <div className="w-2/5 pr-4">
+          <div className="flex mt-10 mx-auto py-6 flex-wrap">
+            <div className="pr-4 max-w-[500px]">
               <img className="cursor-pointer duration-200 rounded-lg border-2" src={product.imageUrl} alt={product.name} onClick={() => setShowModal(true)} />
             </div>
-            <div className="w-3/5">
+            <div className="">
               <h3 className="text-2xl font-semibold mb-1">{product.name}</h3>
               <p className="font-semibold">
                 <span className="text-gray-600 font-normal">{t('from')}</span>
