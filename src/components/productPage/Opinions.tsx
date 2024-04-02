@@ -6,27 +6,15 @@ import { format } from "date-fns";
 
 interface Props {
   product: Product
+  opinions: Opinion[]
 }
 
-export const Opinions = ({ product }: Props) => {
-  const [opinions, setOpinions] = useState<Opinion[]>([])
+export const Opinions = ({ product, opinions }: Props) => {
   const formatStr = 'dd/MM/yyyy'
-
-  useEffect(() => {
-    const fetchData = async () => {
-      if (product.id) {
-        const _ops = await fetchOpinionsByProductId(product.id)
-        setOpinions(_ops!)
-      }
-    }
-
-    fetchData()
-
-  }, [product.id])
 
   return (
     <div className="mt-8">
-      {opinions?.map(opinion => (
+      {opinions.map(opinion => (
         <div key={opinion.id} className="space-y-1">
           <p className="font-semibold italic">{opinion.user}</p>
           <div className="flex gap-x-4">

@@ -1,29 +1,63 @@
+import { fetchOpinionsByProductId } from "@/api/opinions";
 import { fetchProductByName } from "@/api/products";
 import { AddOpinion } from "@/components/productPage/AddOpinion";
 import { ImageModal } from "@/components/productPage/ImageModal";
 import { Opinions } from "@/components/productPage/Opinions";
 import { PriceAndCart } from "@/components/productPage/PriceAndCart";
 import { ProductFilters } from "@/components/productPage/ProductFilters";
-import { Product } from "@/types";
+import { Opinion, Product } from "@/types";
+import axios from "axios";
 import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
+
+interface User {
+  username: string
+  role: string
+  firstName: string
+}
 
 export const ProductPage = () => {
   const { t } = useTranslation()
   const { productName } = useParams();
   const [product, setProduct] = useState<Product>()
   const [showModal, setShowModal] = useState(false)
+  const [user, setUser] = useState<User | null>(null);
+  const [opinions, setOpinions] = useState<Opinion[]>([])
 
   useEffect(() => {
     const fetchData = async () => {
       const _prod = await fetchProductByName(productName!);
       setProduct(_prod);
     }
+    const fetchUser = async () => {
+      try {
+        const response = await axios.get('http://localhost:8080/api/user');
+        setUser(response.data);
+      } catch (error) {
+        setUser(null)
+      }
+    };
 
+    fetchUser();
     fetchData()
 
   }, [productName])
+
+  const fetchOpinions = async () => {
+    if (product) {
+      const _ops = await fetchOpinionsByProductId(product.id)
+      setOpinions(_ops!)
+    }
+  }
+
+  useEffect(() => {
+    fetchOpinions()
+  }, [product])
+
+  const onOpinionAdded = () => {
+    fetchOpinions();
+  };
 
   return (
     <div>
@@ -46,8 +80,8 @@ export const ProductPage = () => {
             </div>
           </div>
           <p>{product.description}</p>
-          <AddOpinion />
-          <Opinions product={product} />
+          <AddOpinion product={product} user={user} onOpinionAdded={onOpinionAdded} />
+          <Opinions product={product} opinions={opinions} />
           <ImageModal showModal={showModal} setShowModal={setShowModal} product={product} />
         </>
       )}
