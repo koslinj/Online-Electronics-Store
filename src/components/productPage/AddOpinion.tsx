@@ -1,23 +1,18 @@
 import { useState } from 'react';
-import { Button, ConfigProvider, Modal, Rate, Input } from 'antd';
+import { ConfigProvider, Modal, Rate, Input } from 'antd';
 
 const { TextArea } = Input;
 
 export const AddOpinion = () => {
   const [open, setOpen] = useState(false);
-  const [confirmLoading, setConfirmLoading] = useState(false);
-  const [modalText, setModalText] = useState('Content of the modal');
 
   const showModal = () => {
     setOpen(true);
   };
 
   const handleOk = () => {
-    setModalText('The modal will be closed after two seconds');
-    setConfirmLoading(true);
     setTimeout(() => {
       setOpen(false);
-      setConfirmLoading(false);
     }, 2000);
   };
 
@@ -37,12 +32,11 @@ export const AddOpinion = () => {
       <Modal
         title={<p className='text-lg font-bold'>Dodaj opinię</p>}
         open={open}
-        onOk={handleOk}
-        confirmLoading={confirmLoading}
         onCancel={handleCancel}
         footer={(_, { OkBtn, CancelBtn }) => (
           <>
             <button
+              onClick={handleOk}
               className='rounded-lg bg-black text-white hover:bg-gray-700 duration-150 p-2'
             >
               Dodaj opinię
