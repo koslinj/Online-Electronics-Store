@@ -83,10 +83,14 @@ i18next
           products: 'Products',
           orders: 'Orders',
           adminPanel: 'Admin Panel',
+          userPanel: 'User Panel',
           logout: 'Log out',
           page: 'page',
           pieces: 'pcs.',
           from: 'from: ',
+          opinions: 'Opinions',
+          orderingData: 'Ordering data',
+          accountSettings: 'Account settings',
         }
       },
       pl: {
@@ -163,10 +167,14 @@ i18next
           products: 'Produkty',
           orders: 'Zamówienia',
           adminPanel: 'Panel Administratora',
+          userPanel: 'Panel Użytkownika',
           logout: 'Wyloguj się',
           page: 'stronę',
           pieces: 'szt.',
           from: 'od: ',
+          opinions: 'Opinie',
+          orderingData: 'Dane do zamówień',
+          accountSettings: 'Ustawienia konta',
         }
       }
     }
