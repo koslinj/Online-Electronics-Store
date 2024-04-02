@@ -71,21 +71,39 @@ export const AddAddress = ({ user }: Props) => {
         {t('addAddress')}
       </button>
       <Modal
-        title={<p className='text-lg font-bold'>{t('addAddress')}</p>}
+        title={<p className='text-xl mb-4 font-bold'>{t('addAddress')}</p>}
         open={open}
         onCancel={handleCancel}
         footer={(_, { OkBtn, CancelBtn }) => (
           <button
             onClick={handleSubmit}
-            className='rounded-lg bg-black text-white hover:bg-gray-700 duration-150 p-2'
+            className='w-full rounded-lg bg-black text-white text-lg hover:bg-gray-700 duration-150 p-3 mt-4'
           >
             {t('addAddress')}
           </button>
         )}
       >
-        <form onSubmit={handleSubmit}>
-
-        </form>
+        <ConfigProvider
+          theme={{
+            components: {
+              Input: {
+                colorTextPlaceholder: '#888',
+                colorBorder: '#888',
+                fontSize: 18,
+                paddingBlock: 6,
+              }
+            }
+          }}
+        >
+          <form onSubmit={handleSubmit} className='space-y-6'>
+            <Input placeholder='Imię i nazwisko' />
+            <Input placeholder='Ulica i numer' />
+            <Input placeholder='Kod pocztowy' />
+            <Input placeholder='Miejscowość' />
+            <Input placeholder='Telefon' />
+            <Input placeholder='E-mail' />
+          </form>
+        </ConfigProvider>
       </Modal>
     </>
   );

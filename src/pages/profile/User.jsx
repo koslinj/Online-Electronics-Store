@@ -20,7 +20,7 @@ export const User = ({ user }) => {
         <div className="flex-1">
           {selectedMenuItem === '0' && <p>{t('orders')}</p>}
           {selectedMenuItem === '1' && <UserPanelOpinions user={user} />}
-          {selectedMenuItem === '2' && <UserPanelOrderingData />}
+          {selectedMenuItem === '2' && <UserPanelOrderingData user={user} />}
           {selectedMenuItem === '3' && <p>{t('accountSettings')}</p>}
         </div>
       </div>
