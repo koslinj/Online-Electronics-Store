@@ -1,11 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { AddAddress } from './AddAddress'
-
-interface User {
-  username: string
-  role: string
-  firstName: string
-}
+import { User } from '@/types'
 
 interface Props {
   user: User

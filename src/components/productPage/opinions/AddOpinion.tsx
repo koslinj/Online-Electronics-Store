@@ -2,17 +2,11 @@ import { FormEvent, useState } from 'react';
 import { ConfigProvider, Modal, Rate, Input, message } from 'antd';
 import axios from 'axios'; // Import Axios library
 import { FaCheckCircle } from 'react-icons/fa';
-import { Product } from '@/types';
+import { Product, User } from '@/types';
 import { MdError } from 'react-icons/md';
 import { t } from 'i18next';
 
 const { TextArea } = Input;
-
-interface User {
-  username: string
-  role: string
-  firstName: string
-}
 
 interface Props {
   product: Product

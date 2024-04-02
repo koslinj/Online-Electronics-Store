@@ -19,6 +19,12 @@ export interface Opinion {
   productId: number
 }
 
+export interface User {
+  username: string
+  role: string
+  firstName: string
+}
+
 export interface Category {
   id: number
   generalCategory: string

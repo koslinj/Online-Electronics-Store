@@ -4,13 +4,7 @@ import axios from 'axios'; // Import Axios library
 import { FaCheckCircle } from 'react-icons/fa';
 import { MdError } from 'react-icons/md';
 import { t } from 'i18next';
-
-
-interface User {
-  username: string
-  role: string
-  firstName: string
-}
+import { User } from '@/types';
 
 interface Props {
   user: User
@@ -90,7 +84,7 @@ export const AddAddress = ({ user }: Props) => {
         )}
       >
         <form onSubmit={handleSubmit}>
-          
+
         </form>
       </Modal>
     </>

@@ -1,4 +1,4 @@
-import { Opinion, Product } from "@/types";
+import { Opinion, Product, User } from "@/types";
 import { Stars } from "../Stars";
 import { format } from "date-fns";
 import { fetchOpinionsByProductId } from "@/api/opinions";
@@ -7,11 +7,6 @@ import { useTranslation } from "react-i18next";
 import { GeneralRating } from "./GeneralRating";
 import { AddOpinion } from "./AddOpinion";
 
-interface User {
-  username: string
-  role: string
-  firstName: string
-}
 
 interface Props {
   product: Product
