@@ -4,6 +4,7 @@ import axios from 'axios'; // Import Axios library
 import { FaCheckCircle } from 'react-icons/fa';
 import { Product } from '@/types';
 import { MdError } from 'react-icons/md';
+import { t } from 'i18next';
 
 const { TextArea } = Input;
 
@@ -76,12 +77,16 @@ export const AddOpinion = ({ product, user, onOpinionAdded }: Props) => {
 
   return (
     <>
-      <button
-        className='rounded-xl bg-black text-white hover:bg-gray-700 duration-150 p-2'
-        onClick={showModal}
-      >
-        Add Opinion
-      </button>
+      <div className='border-2 border-gray-400 rounded-xl p-5 text-center space-y-3'>
+        <p className='text-3xl font-semibold'>Masz ten produkt ?</p>
+        <p className='text-lg text-gray-500'>Oceń {product.name} i pomóż innym w wyborze</p>
+        <button
+          className='rounded-xl bg-black text-white hover:bg-gray-700 duration-150 p-2 px-8'
+          onClick={showModal}
+        >
+          {t('addOpinion')}
+        </button>
+      </div>
       <Modal
         title={<p className='text-lg font-bold'>Dodaj opinię</p>}
         open={open}
@@ -100,6 +105,7 @@ export const AddOpinion = ({ product, user, onOpinionAdded }: Props) => {
             components: {
               Rate: {
                 starBg: 'rgb(200 200 200)',
+                starColor: '#ffd100',
                 starSize: 30
               }
             }

@@ -1,8 +1,6 @@
-import { fetchOpinionsByProductId } from "@/api/opinions";
 import { fetchProductByName } from "@/api/products";
-import { AddOpinion } from "@/components/productPage/AddOpinion";
 import { ImageModal } from "@/components/productPage/ImageModal";
-import { Opinions } from "@/components/productPage/Opinions";
+import { Opinions } from "@/components/productPage/opinions/Opinions";
 import { PriceAndCart } from "@/components/productPage/PriceAndCart";
 import { ProductFilters } from "@/components/productPage/ProductFilters";
 import { Opinion, Product } from "@/types";
@@ -23,7 +21,6 @@ export const ProductPage = () => {
   const [product, setProduct] = useState<Product>()
   const [showModal, setShowModal] = useState(false)
   const [user, setUser] = useState<User | null>(null);
-  const [opinions, setOpinions] = useState<Opinion[]>([])
 
   useEffect(() => {
     const fetchData = async () => {
@@ -43,21 +40,6 @@ export const ProductPage = () => {
     fetchData()
 
   }, [productName])
-
-  const fetchOpinions = async () => {
-    if (product) {
-      const _ops = await fetchOpinionsByProductId(product.id)
-      setOpinions(_ops!)
-    }
-  }
-
-  useEffect(() => {
-    fetchOpinions()
-  }, [product])
-
-  const onOpinionAdded = () => {
-    fetchOpinions();
-  };
 
   return (
     <div>
@@ -80,8 +62,7 @@ export const ProductPage = () => {
             </div>
           </div>
           <p>{product.description}</p>
-          <AddOpinion product={product} user={user} onOpinionAdded={onOpinionAdded} />
-          <Opinions product={product} opinions={opinions} />
+          <Opinions product={product} user={user} />
           <ImageModal showModal={showModal} setShowModal={setShowModal} product={product} />
         </>
       )}
