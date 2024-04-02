@@ -94,6 +94,9 @@ i18next
           accountSettings: 'Account settings',
           hello: 'Hello,',
           yourOpinions: 'Your opinions ',
+          orderingDataDesc: "Here you will find saved addresses and order details. This way, you don't have to enter them during shopping.",
+          infoAndAddress: "Recipient information and delivery addresses",
+          addAddress: "Add delivery address",
         }
       },
       pl: {
@@ -181,6 +184,9 @@ i18next
           accountSettings: 'Ustawienia konta',
           hello: 'Cześć,',
           yourOpinions: 'Twoje opinie ',
+          orderingDataDesc: 'W tym miejscu znajdziesz zapisane adresy i dane do zamówień. Dzięki temu nie musisz ich wpisywać w trakcie zakupów.',
+          infoAndAddress: "Dane odbiorcy i adresy dostawy",
+          addAddress: "Dodaj adres dostawy",
         }
       }
     }

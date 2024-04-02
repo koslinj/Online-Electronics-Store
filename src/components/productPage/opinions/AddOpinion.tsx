@@ -88,7 +88,7 @@ export const AddOpinion = ({ product, user, onOpinionAdded }: Props) => {
         </button>
       </div>
       <Modal
-        title={<p className='text-lg font-bold'>Dodaj opinię</p>}
+        title={<p className='text-lg font-bold'>{t('addOpinion')}</p>}
         open={open}
         onCancel={handleCancel}
         footer={(_, { OkBtn, CancelBtn }) => (
@@ -96,7 +96,7 @@ export const AddOpinion = ({ product, user, onOpinionAdded }: Props) => {
             onClick={handleSubmit}
             className='rounded-lg bg-black text-white hover:bg-gray-700 duration-150 p-2'
           >
-            Dodaj opinię
+            {t('addOpinion')}
           </button>
         )}
       >

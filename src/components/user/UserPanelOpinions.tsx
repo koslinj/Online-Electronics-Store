@@ -28,7 +28,7 @@ export const UserPanelOpinions = ({ user }: Props) => {
 
   return (
     <div>
-      <h2 className="text-3xl mb-8">{t('opinions')}</h2>
+      <h2 className="text-3xl font-semibold mb-8">{t('opinions')}</h2>
       <h3 className="text-2xl">{t('yourOpinions')}<span className="text-gray-500">({opinions.length})</span></h3>
       <div className="mt-2 border-t-2 border-gray-400">
         {opinions?.map(opinion => (
