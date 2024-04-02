@@ -91,6 +91,7 @@ i18next
           opinions: 'Opinions',
           orderingData: 'Ordering data',
           accountSettings: 'Account settings',
+          hello: 'Hello,',
         }
       },
       pl: {
@@ -175,6 +176,7 @@ i18next
           opinions: 'Opinie',
           orderingData: 'Dane do zamówień',
           accountSettings: 'Ustawienia konta',
+          hello: 'Cześć,',
         }
       }
     }
