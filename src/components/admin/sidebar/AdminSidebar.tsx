@@ -22,7 +22,7 @@ function getItem(
   } as MenuItem;
 }
 
-export const Sidebar = ({ setSelectedMenuItem }: { setSelectedMenuItem: Dispatch<SetStateAction<string>> }) => {
+export const AdminSidebar = ({ setSelectedMenuItem }: { setSelectedMenuItem: Dispatch<SetStateAction<string>> }) => {
   const { t } = useTranslation()
 
   const items: MenuItem[] = [

@@ -1,6 +1,6 @@
 import { AddProduct } from "@/components/admin/addProductForm/AddProduct"
 import { LogoutButton } from "../../components/LogoutButton"
-import { Sidebar } from "@/components/admin/sidebar/Sidebar"
+import { AdminSidebar } from "@/components/admin/sidebar/AdminSidebar"
 import { useState } from "react"
 import { RemoveProduct } from "@/components/admin/removeProductsForm/RemoveProducts"
 import { useTranslation } from "react-i18next"
@@ -16,7 +16,7 @@ export const Admin = () => {
         <LogoutButton />
       </div>
       <div className="flex flex-wrap">
-        <Sidebar setSelectedMenuItem={setSelectedMenuItem} />
+        <AdminSidebar setSelectedMenuItem={setSelectedMenuItem} />
         <div className="flex-1">
           {selectedMenuItem === '0sub0' && <AddProduct />}
           {selectedMenuItem === '0sub1' && <RemoveProduct />}
