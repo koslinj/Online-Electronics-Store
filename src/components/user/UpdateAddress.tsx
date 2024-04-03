@@ -103,6 +103,7 @@ export const UpdateAddress = ({ user, address, onUpdate }: Props) => {
             <Input placeholder='Miejscowość' value={city} onChange={e => setCity(e.target.value)} />
             <Input placeholder='Telefon' value={phone} onChange={e => setPhone(e.target.value)} />
             <Input placeholder='E-mail' value={email} onChange={e => setEmail(e.target.value)} />
+            <button type='submit' />
           </form>
         </ConfigProvider>
       </Modal>
