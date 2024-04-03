@@ -49,7 +49,7 @@ export const UpdateAddress = ({ user, address, onUpdate }: Props) => {
         content:
           <div className='flex items-center gap-3'>
             <FaCheckCircle className='size-10 text-green-500' />
-            <p className='text-xl'>Dane do zamówień zostały dodane!</p>
+            <p className='text-xl'>Dane do zamówień zostały zaktualizowane!</p>
           </div>,
         icon: <></>
       });
