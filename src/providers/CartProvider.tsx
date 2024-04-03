@@ -12,12 +12,14 @@ const CartContext = createContext<{
   cart: CartItem[];
   addOne: (product: Product) => void;
   add: (product: Product, n: number) => void;
+  removeAll: (product: Product) => void;
   removeOne: (product: Product) => void;
   clearCart: () => void;
 }>({
   cart: [],
   addOne: () => { },
   add: () => { },
+  removeAll: () => { },
   removeOne: () => { },
   clearCart: () => { },
 });
@@ -72,6 +74,10 @@ export const CartProvider = ({ children }: CartProviderProps) => {
     }
   };
 
+  const removeAll = (product: Product) => {
+    setCartItems(cartItems.filter(item => item.product.id !== product.id))
+  };
+
   const removeOne = (product: Product) => {
     const quantity = getProductQuantity(product)
 
@@ -97,6 +103,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
         cart: cartItems,
         addOne,
         add,
+        removeAll,
         removeOne,
         clearCart,
       }}
