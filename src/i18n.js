@@ -100,6 +100,9 @@ i18next
           editAddress: "Edit delivery address",
           edit: "Edit",
           delete: "Delete",
+          sureData: "Are you sure you want to delete this data?",
+          sureDataDesc: "If you do this, it won't be possible to select them when placing a new order.",
+          cancel: "Cancel",
         }
       },
       pl: {
@@ -193,6 +196,9 @@ i18next
           editAddress: "Edytuj adres dostawy",
           edit: "Edytuj",
           delete: "Usuń",
+          sureData: "Czy na pewno chcesz usunąć te dane?",
+          sureDataDesc: "Jeśli to zrobisz, nie będzie można ich wybrać w trakcie składania nowego zamówienia.",
+          cancel: "Anuluj",
         }
       }
     }

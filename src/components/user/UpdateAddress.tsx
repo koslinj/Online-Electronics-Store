@@ -66,7 +66,7 @@ export const UpdateAddress = ({ user, address, onUpdate }: Props) => {
   return (
     <>
       <button
-        className='rounded-lg p-2 hover:bg-blue-100'
+        className='rounded-lg p-2 hover:bg-blue-100 duration-200'
         onClick={showModal}
       >
         {t('edit')}

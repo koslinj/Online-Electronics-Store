@@ -1,6 +1,7 @@
 import { Address, User } from '@/types'
 import React from 'react'
 import { UpdateAddress } from './UpdateAddress'
+import { DeleteAddress } from './DeleteAddress'
 
 interface Props {
   address: Address
@@ -17,11 +18,7 @@ export const UserPanelOneOrderingData = ({ address, user, onUpdate }: Props) => 
       <p className='text-lg'>{address.phone}</p>
       <p className='text-lg'>{address.email}</p>
       <div className='mt-4 text-blue-600 font-semibold flex gap-4'>
-        <button
-          className='rounded-lg p-2 hover:bg-blue-100'
-        >
-          Usuń
-        </button>
+        <DeleteAddress address={address} onUpdate={onUpdate} />
         <UpdateAddress user={user} address={address} onUpdate={onUpdate} />
       </div>
     </div>
