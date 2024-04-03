@@ -1,6 +1,7 @@
 import { CartItem, useCart } from '@/providers/CartProvider'
 import { FaPlus } from "react-icons/fa";
 import { FaMinus } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 export const OneCartItem = ({ item }: { item: CartItem }) => {
   const { addOne, removeOne } = useCart();
@@ -21,7 +22,9 @@ export const OneCartItem = ({ item }: { item: CartItem }) => {
           src={item.product.imageUrl}
           alt={item.product.name}
         />
-        <p>{item.product.name}</p>
+        <Link to={`/products/${item.product.categoryUrl}/${encodeURIComponent(item.product.name)}`}>
+          <p className='text-lg hover:underline font-semibold'>{item.product.name}</p>
+        </Link>
       </div>
       <div className="flex gap-1 items-center">
         <p className='text-lg mr-5'>{formattedPrice}</p>
