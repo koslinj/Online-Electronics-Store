@@ -97,6 +97,7 @@ i18next
           orderingDataDesc: "Here you will find saved addresses and order details. This way, you don't have to enter them during shopping.",
           infoAndAddress: "Recipient information and delivery addresses",
           addAddress: "Add delivery address",
+          editAddress: "Edit delivery address",
           edit: "Edit",
           delete: "Delete",
         }
@@ -189,6 +190,7 @@ i18next
           orderingDataDesc: 'W tym miejscu znajdziesz zapisane adresy i dane do zamówień. Dzięki temu nie musisz ich wpisywać w trakcie zakupów.',
           infoAndAddress: "Dane odbiorcy i adresy dostawy",
           addAddress: "Dodaj adres dostawy",
+          editAddress: "Edytuj adres dostawy",
           edit: "Edytuj",
           delete: "Usuń",
         }

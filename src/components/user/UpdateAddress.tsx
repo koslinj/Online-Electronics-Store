@@ -72,7 +72,7 @@ export const UpdateAddress = ({ user, address, onUpdate }: Props) => {
         {t('edit')}
       </button>
       <Modal
-        title={<p className='text-xl mb-4 font-bold'>{t('addAddress')}</p>}
+        title={<p className='text-xl mb-4 font-bold'>{t('editAddress')}</p>}
         open={open}
         onCancel={handleCancel}
         footer={(_, { OkBtn, CancelBtn }) => (
@@ -80,7 +80,7 @@ export const UpdateAddress = ({ user, address, onUpdate }: Props) => {
             onClick={handleSubmit}
             className='w-full rounded-lg bg-black text-white text-lg hover:bg-gray-700 duration-150 p-3 mt-4'
           >
-            {t('addAddress')}
+            {t('editAddress')}
           </button>
         )}
       >
