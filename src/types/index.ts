@@ -25,6 +25,17 @@ export interface User {
   firstName: string
 }
 
+export interface Address {
+  id: number
+  fullName: string
+  street: string
+  zipCode: string
+  city: string
+  phone: string
+  email: string
+  username: string
+}
+
 export interface Category {
   id: number
   generalCategory: string
