@@ -12,6 +12,12 @@ interface Props {
 
 export const AddAddress = ({ user }: Props) => {
   const [open, setOpen] = useState(false);
+  const [fullName, setFullName] = useState("")
+  const [street, setStreet] = useState("")
+  const [zipCode, setZipCode] = useState("")
+  const [city, setCity] = useState("")
+  const [phone, setPhone] = useState("")
+  const [email, setEmail] = useState("")
 
   const showModal = () => {
     setOpen(true);
@@ -19,41 +25,33 @@ export const AddAddress = ({ user }: Props) => {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
-    if (user) {
-      const formData = new FormData();
-      // formData.append('stars', stars.toString());
-      // formData.append('content', content);
-      // formData.append('username', user.username);
-      // formData.append('productId', product.id.toString());
+    const formData = new FormData();
+    formData.append('fullName', fullName);
+    formData.append('street', street);
+    formData.append('zipCode', zipCode);
+    formData.append('city', city);
+    formData.append('phone', phone);
+    formData.append('email', email);
+    formData.append('username', user.username);
 
-      try {
-        const response = await axios.post('http://localhost:8080/api/opinions', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
-        });
-        console.log('Product uploaded successfully:', response.data);
-        setOpen(false)
-        message.success({
-          content:
-            <div className='flex items-center gap-3'>
-              <FaCheckCircle className='size-10 text-green-500' />
-              <p className='text-xl'>Opinia została dodana!</p>
-            </div>,
-          icon: <></>
-        });
-      } catch (error) {
-        console.error('Error uploading product:', error);
-      }
-    } else {
-      message.error({
+    try {
+      const response = await axios.post('http://localhost:8080/api/addresses', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+      console.log('Product uploaded successfully:', response.data);
+      setOpen(false)
+      message.success({
         content:
           <div className='flex items-center gap-3'>
-            <MdError className='size-10 text-red-500' />
-            <p className='text-xl'>Musisz być zalogowany aby móc dodać opinię!</p>
+            <FaCheckCircle className='size-10 text-green-500' />
+            <p className='text-xl'>Dane do zamówień zostały dodane!</p>
           </div>,
         icon: <></>
       });
+    } catch (error) {
+      console.error('Error uploading product:', error);
     }
   };
 
@@ -96,12 +94,12 @@ export const AddAddress = ({ user }: Props) => {
           }}
         >
           <form onSubmit={handleSubmit} className='space-y-6'>
-            <Input placeholder='Imię i nazwisko' />
-            <Input placeholder='Ulica i numer' />
-            <Input placeholder='Kod pocztowy' />
-            <Input placeholder='Miejscowość' />
-            <Input placeholder='Telefon' />
-            <Input placeholder='E-mail' />
+            <Input placeholder='Imię i nazwisko' value={fullName} onChange={e => setFullName(e.target.value)} />
+            <Input placeholder='Ulica i numer' value={street} onChange={e => setStreet(e.target.value)} />
+            <Input placeholder='Kod pocztowy' value={zipCode} onChange={e => setZipCode(e.target.value)} />
+            <Input placeholder='Miejscowość' value={city} onChange={e => setCity(e.target.value)} />
+            <Input placeholder='Telefon' value={phone} onChange={e => setPhone(e.target.value)} />
+            <Input placeholder='E-mail' value={email} onChange={e => setEmail(e.target.value)} />
           </form>
         </ConfigProvider>
       </Modal>
