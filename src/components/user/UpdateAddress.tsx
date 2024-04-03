@@ -4,21 +4,22 @@ import axios from 'axios'; // Import Axios library
 import { FaCheckCircle } from 'react-icons/fa';
 import { MdError } from 'react-icons/md';
 import { t } from 'i18next';
-import { User } from '@/types';
+import { Address, User } from '@/types';
 
 interface Props {
   user: User
+  address: Address
   onUpdate: () => void
 }
 
-export const AddAddress = ({ user, onUpdate }: Props) => {
+export const UpdateAddress = ({ user, address, onUpdate }: Props) => {
   const [open, setOpen] = useState(false);
-  const [fullName, setFullName] = useState("")
-  const [street, setStreet] = useState("")
-  const [zipCode, setZipCode] = useState("")
-  const [city, setCity] = useState("")
-  const [phone, setPhone] = useState("")
-  const [email, setEmail] = useState("")
+  const [fullName, setFullName] = useState(address.fullName)
+  const [street, setStreet] = useState(address.street)
+  const [zipCode, setZipCode] = useState(address.zipCode)
+  const [city, setCity] = useState(address.city)
+  const [phone, setPhone] = useState(address.phone)
+  const [email, setEmail] = useState(address.email)
 
   const showModal = () => {
     setOpen(true);
@@ -36,7 +37,7 @@ export const AddAddress = ({ user, onUpdate }: Props) => {
     formData.append('username', user.username);
 
     try {
-      const response = await axios.post('http://localhost:8080/api/addresses', formData, {
+      const response = await axios.put(`http://localhost:8080/api/addresses/${address.id}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
@@ -65,10 +66,10 @@ export const AddAddress = ({ user, onUpdate }: Props) => {
   return (
     <>
       <button
-        className='rounded-xl bg-black text-white hover:bg-gray-700 duration-150 p-3 px-5'
+        className='rounded-lg p-2 hover:bg-blue-100'
         onClick={showModal}
       >
-        {t('addAddress')}
+        {t('edit')}
       </button>
       <Modal
         title={<p className='text-xl mb-4 font-bold'>{t('addAddress')}</p>}
