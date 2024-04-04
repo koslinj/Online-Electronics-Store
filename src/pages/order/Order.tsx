@@ -1,6 +1,6 @@
-import { DeliveryAddress } from '@/components/navbar/order/DeliveryAddress'
-import { DeliveryMethod } from '@/components/navbar/order/DeliveryMethod'
-import { Payment } from '@/components/navbar/order/Payment';
+import { DeliveryAddress } from '@/components/order/DeliveryAddress'
+import { DeliveryMethod } from '@/components/order/DeliveryMethod'
+import { Payment } from '@/components/order/Payment';
 import { useAuth } from '@/providers/AuthProvider';
 import { useCart } from '@/providers/CartProvider';
 import { User } from '@/types';

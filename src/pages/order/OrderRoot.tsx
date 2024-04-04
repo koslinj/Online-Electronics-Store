@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom'
 import { Footer } from '@/components/footer/Footer';
-import { TopNavbarOrder } from '@/components/navbar/order/TopNavbarOrder';
+import { TopNavbarOrder } from '@/components/order/TopNavbarOrder';
 
 export const OrderRoot = () => {
 

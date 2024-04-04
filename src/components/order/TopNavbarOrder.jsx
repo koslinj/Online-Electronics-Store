@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import boltLogo from "@/images/bolt_logo.png"
-import { LanguageButtons } from "../LanguageButtons"
+import { LanguageButtons } from "../navbar/LanguageButtons"
 import { useCart } from "@/providers/CartProvider"
 import { useTranslation } from "react-i18next"
 import { OrderStepIndicator } from "./OrderStepIndicator"
