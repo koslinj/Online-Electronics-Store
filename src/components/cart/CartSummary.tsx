@@ -1,5 +1,6 @@
 import { useCart } from "@/providers/CartProvider";
 import { FaChevronRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 
 export const CartSummary = () => {
@@ -19,12 +20,14 @@ export const CartSummary = () => {
         <p>Łączna kwota</p>
         <p>{formattedPrice}</p>
       </div>
-      <button
-        className="mt-5 flex gap-2 items-center justify-center text-white bg-green-600 hover:bg-green-700 active:bg-green-900 p-3 w-full rounded-lg duration-200"
-      >
-        <p className="text-lg font-semibold">Przejdź do dostawy</p>
-        <FaChevronRight className="size-5 translate-y-0.5" />
-      </button>
+      <Link to='/order'>
+        <div
+          className="mt-5 flex gap-2 items-center justify-center text-white bg-green-600 hover:bg-green-700 active:bg-green-900 p-3 w-full rounded-lg duration-200"
+        >
+          <p className="text-lg font-semibold">Przejdź do dostawy</p>
+          <FaChevronRight className="size-5 translate-y-0.5" />
+        </div>
+      </Link>
     </div>
   )
 }
