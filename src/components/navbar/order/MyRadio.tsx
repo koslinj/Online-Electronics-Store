@@ -10,9 +10,10 @@ interface Props {
   }
   icon: string
   address?: Address
+  price?: number
 }
 
-export const MyRadio = ({ state, value, content, icon, address }: Props) => {
+export const MyRadio = ({ state, value, content, icon, address, price = 0 }: Props) => {
   return (
     <Radio
       className={`hover:bg-gray-200 flex duration-300 p-4 pr-20 relative rounded-lg border-2 ${state === value ? 'border-black' : 'border-white'}`}
@@ -20,13 +21,13 @@ export const MyRadio = ({ state, value, content, icon, address }: Props) => {
     >
       {content && (
         <>
-          <div>
+          <div className='py-2'>
             <p className='text-lg font-semibold'>{content.title}</p>
             <p className='text-base text-gray-500'>{content.desc}</p>
           </div>
           <div className='absolute right-2 top-1/2 -translate-y-1/2 text-center'>
-            <img className='w-12' src={icon} alt="" />
-            <p className='text-base font-semibold'>0 zł</p>
+            <img className='w-11' src={icon} alt="" />
+            <p className='text-base font-semibold'>{price} zł</p>
           </div>
         </>
       )}

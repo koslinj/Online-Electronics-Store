@@ -44,7 +44,7 @@ export const DeliveryMethod = () => {
             }
           }}
         >
-          <Radio.Group className='rounded-lg border-gray-400 border-2' onChange={onChange} value={value}>
+          <Radio.Group name='method' className='rounded-lg border-gray-400 border-2' onChange={onChange} value={value}>
             <Space direction="vertical">
               <MyRadio state={value} value={1} content={contents[0]} icon={transportIcon} />
               <MyRadio state={value} value={2} content={contents[1]} icon={shopIcon} />

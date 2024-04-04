@@ -1,5 +1,6 @@
 import { DeliveryAddress } from '@/components/navbar/order/DeliveryAddress'
 import { DeliveryMethod } from '@/components/navbar/order/DeliveryMethod'
+import { Payment } from '@/components/navbar/order/Payment';
 import { useAuth } from '@/providers/AuthProvider';
 import { User } from '@/types';
 import axios from 'axios';
@@ -44,6 +45,7 @@ export const Order = () => {
             <div className='space-y-6'>
               <DeliveryMethod />
               <DeliveryAddress user={user} />
+              <Payment />
             </div>
             <div>
               Przejdź do podsumowania

@@ -64,7 +64,7 @@ export const DeliveryAddress = ({ user }: Props) => {
             }
           }}
         >
-          <Radio.Group onChange={onChange} value={value}>
+          <Radio.Group name='address' onChange={onChange} value={value}>
             <Space direction="vertical">
               {orderingData.map(item => (
                 <MyRadio key={item.id} state={value} value={item.id} icon={transportIcon} address={item} />
