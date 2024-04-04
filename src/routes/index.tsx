@@ -11,6 +11,8 @@ import { Register } from "../pages/auth/Register";
 import { SearchResultsPage } from "../pages/SearchResultsPage";
 import { ProductPage } from "@/pages/ProductPage";
 import { Cart } from "@/pages/Cart";
+import { Order } from "@/pages/order/Order";
+import { OrderRoot } from "@/pages/order/OrderRoot";
 
 const Routes = () => {
 
@@ -61,6 +63,16 @@ const Routes = () => {
             {
               path: "/profile",
               element: <Profile />
+            }
+          ]
+        },
+        {
+          path: "/",
+          element: <OrderRoot />,
+          children: [
+            {
+              path: "/order",
+              element: <Order />
             }
           ]
         }
