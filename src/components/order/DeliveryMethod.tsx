@@ -21,7 +21,7 @@ const contents = [
 ]
 
 export const DeliveryMethod = () => {
-  const [value, setValue] = useState(1);
+  const [value, setValue] = useState(0);
 
   const onChange = (e: RadioChangeEvent) => {
     console.log('radio checked', e.target.value);
@@ -46,9 +46,9 @@ export const DeliveryMethod = () => {
         >
           <Radio.Group name='method' className='rounded-lg border-gray-400 border-2 w-full' onChange={onChange} value={value}>
             <Space className='w-full' direction="vertical">
-              <MyRadio state={value} value={1} content={contents[0]} icon={transportIcon} />
-              <MyRadio state={value} value={2} content={contents[1]} icon={shopIcon} />
-              <MyRadio state={value} value={3} content={contents[2]} icon={inpostIcon} />
+              <MyRadio state={value} value={0} content={contents[0]} icon={transportIcon} />
+              <MyRadio state={value} value={1} content={contents[1]} icon={shopIcon} />
+              <MyRadio state={value} value={2} content={contents[2]} icon={inpostIcon} />
             </Space>
           </Radio.Group>
         </ConfigProvider>
