@@ -40,7 +40,7 @@ export const Payment = () => {
 
   return (
     <div className='bg-white p-4 rounded-xl'>
-      <p className='text-xl font-semibold mb-3'>Sposób dostawy</p>
+      <p className='text-xl font-semibold mb-3'>Płatność</p>
       <div>
         <ConfigProvider
           theme={{
