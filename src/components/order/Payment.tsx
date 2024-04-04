@@ -54,8 +54,8 @@ export const Payment = () => {
             }
           }}
         >
-          <Radio.Group name='payment' className='rounded-lg border-gray-400 border-2' onChange={onChange} value={value}>
-            <Space direction="vertical">
+          <Radio.Group name='payment' className='w-full rounded-lg border-gray-400 border-2' onChange={onChange} value={value}>
+            <Space className='w-full' direction="vertical">
               <MyRadio state={value} value={1} content={contents[0]} icon={przelewy24Icon} />
               <MyRadio state={value} value={2} content={contents[1]} icon={visaIcon} />
               <MyRadio state={value} value={3} content={contents[2]} icon={blikIcon} />
