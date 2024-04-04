@@ -25,7 +25,7 @@ export const MyRadio = ({ state, value, content, icon, address, price = 0 }: Pro
             <p className='text-lg font-semibold'>{content.title}</p>
             <p className='text-base text-gray-500'>{content.desc}</p>
           </div>
-          <div className='absolute right-2 top-1/2 -translate-y-1/2 text-center'>
+          <div className='absolute right-4 top-1/2 -translate-y-1/2 text-center'>
             <img className='w-11' src={icon} alt="" />
             <p className='text-base font-semibold'>{price} zł</p>
           </div>
