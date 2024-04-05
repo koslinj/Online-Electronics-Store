@@ -44,7 +44,7 @@ export const AdminSidebar = ({ setSelectedMenuItem }: { setSelectedMenuItem: Dis
         borderRadius: '14px',
         padding: '8px'
       }}
-        defaultSelectedKeys={['0sub1']}
+        defaultSelectedKeys={['1']}
         defaultOpenKeys={['0']}
         mode="inline"
         onSelect={handleMenuSelect}
