@@ -14,7 +14,7 @@ interface Props {
 
 export const GoToSummary = ({ method, payment }: Props) => {
   const { t } = useTranslation()
-  const { cart } = useCart()
+  const { cart, setOrderingState } = useCart()
 
   const cartSum = cart.reduce((total, item) => total + item.quantity * item.product.price, 0)
   const restSum = method?.price + payment?.price

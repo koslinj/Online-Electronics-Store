@@ -1,6 +1,6 @@
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { Product } from '@/types';
-import { ReactNode, createContext, useContext, useState } from 'react';
+import { Dispatch, ReactNode, SetStateAction, createContext, useContext, useState } from 'react';
 
 export interface CartItem {
   product: Product
@@ -10,6 +10,8 @@ export interface CartItem {
 // Create the CartContext
 const CartContext = createContext<{
   cart: CartItem[];
+  orderingState: "inProgress" | "summary"
+  setOrderingState: Dispatch<SetStateAction<"inProgress" | "summary">>
   addOne: (product: Product) => void;
   add: (product: Product, n: number) => void;
   removeAll: (product: Product) => void;
@@ -17,6 +19,8 @@ const CartContext = createContext<{
   clearCart: () => void;
 }>({
   cart: [],
+  orderingState: "inProgress",
+  setOrderingState: () => { },
   addOne: () => { },
   add: () => { },
   removeAll: () => { },
@@ -35,6 +39,7 @@ interface CartProviderProps {
 // Create the CartProvider component
 export const CartProvider = ({ children }: CartProviderProps) => {
   const [cartItems, setCartItems] = useLocalStorage<CartItem[]>("shopping-cart", [])
+  const [orderingState, setOrderingState] = useState<"inProgress" | "summary">("inProgress")
 
   function getProductQuantity(product: Product) {
     const quantity = cartItems.find(item => item.product.id === product.id)?.quantity
@@ -101,6 +106,8 @@ export const CartProvider = ({ children }: CartProviderProps) => {
     <CartContext.Provider
       value={{
         cart: cartItems,
+        orderingState,
+        setOrderingState,
         addOne,
         add,
         removeAll,

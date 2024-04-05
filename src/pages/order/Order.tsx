@@ -3,11 +3,13 @@ import { DeliveryMethod } from '@/components/order/DeliveryMethod'
 import { GoToSummary } from '@/components/order/GoToSummary';
 import { Payment } from '@/components/order/Payment';
 import { useAuth } from '@/providers/AuthProvider';
+import { useCart } from '@/providers/CartProvider';
 import { User } from '@/types';
 import axios from 'axios';
 import { useEffect, useState } from 'react'
 
 export const Order = () => {
+  const { cart, setOrderingState } = useCart()
   const [user, setUser] = useState<User>();
   const { setToken } = useAuth()
   const [method, setMethod] = useState<any>(null);
@@ -30,6 +32,8 @@ export const Order = () => {
   }
 
   useEffect(() => {
+    setOrderingState('inProgress')
+
     getFromLocalStorage()
   }, []);
 

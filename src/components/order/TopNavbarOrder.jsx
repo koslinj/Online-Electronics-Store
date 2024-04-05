@@ -7,7 +7,7 @@ import { OrderStepIndicator } from "./OrderStepIndicator"
 
 export const TopNavbarOrder = () => {
   const { t } = useTranslation()
-  const { cart } = useCart();
+  const { cart, orderingState } = useCart();
 
   return (
     <div className="px-1 lg:px-6 py-1 flex gap-x-20 items-center justify-between lg:justify-center max-w-7xl mx-auto flex-wrap">
@@ -18,11 +18,24 @@ export const TopNavbarOrder = () => {
         </div>
       </Link>
       <div className="flex flex-grow gap-4 items-center">
-        <OrderStepIndicator index={1} name="Koszyk" state="done" />
-        <div className="h-[3px] bg-gray-400 flex-grow"></div>
-        <OrderStepIndicator index={2} name="Dostawa i płatność" state="inProgress" />
-        <div className="h-[3px] bg-gray-400 flex-grow"></div>
-        <OrderStepIndicator index={3} name="Podsumowanie" state="future" />
+        {orderingState === 'inProgress' && (
+          <>
+            <OrderStepIndicator index={1} name="Koszyk" state="done" />
+            <div className="h-[3px] bg-gray-400 flex-grow"></div>
+            <OrderStepIndicator index={2} name="Dostawa i płatność" state="inProgress" />
+            <div className="h-[3px] bg-gray-400 flex-grow"></div>
+            <OrderStepIndicator index={3} name="Podsumowanie" state="future" />
+          </>
+        )}
+        {orderingState === 'summary' && (
+          <>
+            <OrderStepIndicator index={1} name="Koszyk" state="done" />
+            <div className="h-[3px] bg-gray-400 flex-grow"></div>
+            <OrderStepIndicator index={2} name="Dostawa i płatność" state="done" />
+            <div className="h-[3px] bg-gray-400 flex-grow"></div>
+            <OrderStepIndicator index={3} name="Podsumowanie" state="inProgress" />
+          </>
+        )}
       </div>
       <LanguageButtons />
     </div>
