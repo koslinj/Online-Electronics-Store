@@ -13,6 +13,7 @@ import { ProductPage } from "@/pages/ProductPage";
 import { Cart } from "@/pages/Cart";
 import { Order } from "@/pages/order/Order";
 import { OrderRoot } from "@/pages/order/OrderRoot";
+import { Summary } from "@/pages/order/Summary";
 
 const Routes = () => {
 
@@ -73,6 +74,10 @@ const Routes = () => {
             {
               path: "/order",
               element: <Order />
+            },
+            {
+              path: "/order/summary",
+              element: <Summary />
             }
           ]
         }
