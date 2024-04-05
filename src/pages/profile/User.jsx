@@ -3,7 +3,7 @@ import { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { UserSidebar } from "@/components/admin/sidebar/UserSidebar"
 import { UserPanelOpinions } from "@/components/user/opinions/UserPanelOpinions"
-import { UserPanelOrderingData } from "@/components/user/UserPanelOrderingData"
+import { UserPanelOrderingData } from "@/components/user/orderingData/UserPanelOrderingData"
 import { UserPanelOrders } from "@/components/user/orders/UserPanelOrders"
 
 export const User = ({ user }) => {
