@@ -1,5 +1,5 @@
 import { ConfigProvider, Radio, RadioChangeEvent, Space } from 'antd'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { MyRadio } from './MyRadio';
 import przelewy24Icon from "@/images/przelewy24_icon.webp"
 import visaIcon from "@/images/visa_icon.png"
@@ -39,9 +39,20 @@ const contents = [
 export const Payment = () => {
   const [value, setValue] = useState(0);
 
+  useEffect(() => {
+    const storedValue = localStorage.getItem('payment');
+    if (storedValue !== null) {
+      const i = contents.findIndex(item => item.title === JSON.parse(storedValue).title)
+      setValue(i);
+    }
+  }, []);
+
   const onChange = (e: RadioChangeEvent) => {
     console.log('radio checked', e.target.value);
     setValue(e.target.value);
+
+    const payment = contents[e.target.value];
+    localStorage.setItem('payment', JSON.stringify(payment));
   };
 
   return (
