@@ -4,10 +4,11 @@ import { AdminSidebar } from "@/components/admin/sidebar/AdminSidebar"
 import { useState } from "react"
 import { RemoveProduct } from "@/components/admin/removeProductsForm/RemoveProducts"
 import { useTranslation } from "react-i18next"
+import { AdminOrders } from "@/components/admin/orders/AdminOrders"
 
 export const Admin = () => {
   const { t } = useTranslation()
-  const [selectedMenuItem, setSelectedMenuItem] = useState('0sub1');
+  const [selectedMenuItem, setSelectedMenuItem] = useState('1');
 
   return (
     <div>
@@ -20,13 +21,7 @@ export const Admin = () => {
         <div className="flex-1">
           {selectedMenuItem === '0sub0' && <AddProduct />}
           {selectedMenuItem === '0sub1' && <RemoveProduct />}
-          {selectedMenuItem === '1' && (
-            <div>
-              {/* Render Orders Card */}
-              {/* Example: <OrdersCard /> */}
-              <h2>Orders Card</h2>
-            </div>
-          )}
+          {selectedMenuItem === '1' && <AdminOrders />}
         </div>
       </div>
     </div>
