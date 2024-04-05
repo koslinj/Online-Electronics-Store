@@ -31,12 +31,13 @@ const contents = [
   {
     title: "Przy odbiorze",
     desc: "",
-    icon: walletIcon
+    icon: walletIcon,
+    price: 25
   }
 ]
 
 export const Payment = () => {
-  const [value, setValue] = useState(1);
+  const [value, setValue] = useState(0);
 
   const onChange = (e: RadioChangeEvent) => {
     console.log('radio checked', e.target.value);
@@ -61,11 +62,9 @@ export const Payment = () => {
         >
           <Radio.Group name='payment' className='w-full rounded-lg border-gray-400 border-2' onChange={onChange} value={value}>
             <Space className='w-full' direction="vertical">
-              <MyRadio state={value} value={1} content={contents[0]} />
-              <MyRadio state={value} value={2} content={contents[1]} />
-              <MyRadio state={value} value={3} content={contents[2]} />
-              <MyRadio state={value} value={4} content={contents[3]} />
-              <MyRadio state={value} value={5} content={contents[4]} price={25} />
+              {contents.map((content, index) => (
+                <MyRadio key={index} state={value} value={index} content={content} />
+              ))}
             </Space>
           </Radio.Group>
         </ConfigProvider>

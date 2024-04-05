@@ -8,12 +8,12 @@ interface Props {
     title: string
     desc: string
     icon: string
+    price?: number
   }
   address?: Address
-  price?: number
 }
 
-export const MyRadio = ({ state, value, content, address, price = 0 }: Props) => {
+export const MyRadio = ({ state, value, content, address }: Props) => {
   return (
     <Radio
       className={`hover:bg-gray-200 flex duration-300 p-4 pr-20 relative rounded-lg border-2 ${state === value ? 'border-black' : 'border-white'}`}
@@ -27,7 +27,7 @@ export const MyRadio = ({ state, value, content, address, price = 0 }: Props) =>
           </div>
           <div className='absolute right-4 top-1/2 -translate-y-1/2 text-center'>
             <img className='w-11' src={content.icon} alt="" />
-            <p className='text-base font-semibold'>{price} zł</p>
+            <p className='text-base font-semibold'>{content.price || 0} zł</p>
           </div>
         </>
       )}
