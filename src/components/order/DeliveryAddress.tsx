@@ -14,9 +14,14 @@ export const DeliveryAddress = ({ user }: Props) => {
 
   useEffect(() => {
     const storedValue = localStorage.getItem('deliveryAddress');
-    if (storedValue !== null && orderingData) {
-      const found = orderingData.find(item => item.id === JSON.parse(storedValue).id)
-      setValue(found?.id || -1);
+    if (orderingData) {
+      if (storedValue !== null) {
+        const found = orderingData.find(item => item.id === JSON.parse(storedValue).id)
+        setValue(found?.id || -1);
+      } else if (value !== -1) {
+        const deliveryAddress = orderingData.find(item => item.id === value);
+        localStorage.setItem('deliveryAddress', JSON.stringify(deliveryAddress));
+      }
     }
   }, [orderingData]);
 

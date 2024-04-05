@@ -34,6 +34,9 @@ export const DeliveryMethod = () => {
     if (storedValue !== null) {
       const i = contents.findIndex(item => item.title === JSON.parse(storedValue).title)
       setValue(i);
+    } else {
+      const deliveryMethod = contents[value];
+      localStorage.setItem('deliveryMethod', JSON.stringify(deliveryMethod));
     }
   }, []);
 

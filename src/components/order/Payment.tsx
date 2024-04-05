@@ -48,6 +48,9 @@ export const Payment = () => {
     if (storedValue !== null) {
       const i = contents.findIndex(item => item.title === JSON.parse(storedValue).title)
       setValue(i);
+    } else {
+      const payment = contents[value];
+      localStorage.setItem('payment', JSON.stringify(payment));
     }
   }, []);
 
