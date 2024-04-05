@@ -40,7 +40,7 @@ const contents = [
   }
 ]
 
-export const Payment = () => {
+export const Payment = ({ onUpdate }: { onUpdate: () => void }) => {
   const [value, setValue] = useState(0);
 
   useEffect(() => {
@@ -60,6 +60,7 @@ export const Payment = () => {
 
     const payment = contents[e.target.value];
     localStorage.setItem('payment', JSON.stringify(payment));
+    onUpdate()
   };
 
   return (

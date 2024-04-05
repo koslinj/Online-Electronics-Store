@@ -6,9 +6,10 @@ import { fetchAddressesByUsername } from '@/api/addresses';
 
 interface Props {
   user: User
+  onUpdate: () => void
 }
 
-export const DeliveryAddress = ({ user }: Props) => {
+export const DeliveryAddress = ({ user, onUpdate }: Props) => {
   const [value, setValue] = useState(-1);
   const [orderingData, setOrderingData] = useState<Address[]>()
 
@@ -41,6 +42,7 @@ export const DeliveryAddress = ({ user }: Props) => {
 
     const deliveryAddress = orderingData?.find(item => item.id === e.target.value);
     localStorage.setItem('deliveryAddress', JSON.stringify(deliveryAddress));
+    onUpdate()
   };
 
   return (

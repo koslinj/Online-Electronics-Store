@@ -26,7 +26,7 @@ const contents = [
   }
 ]
 
-export const DeliveryMethod = () => {
+export const DeliveryMethod = ({ onUpdate }: { onUpdate: () => void }) => {
   const [value, setValue] = useState(0);
 
   useEffect(() => {
@@ -46,6 +46,7 @@ export const DeliveryMethod = () => {
 
     const deliveryMethod = contents[e.target.value];
     localStorage.setItem('deliveryMethod', JSON.stringify(deliveryMethod));
+    onUpdate()
   };
 
   return (

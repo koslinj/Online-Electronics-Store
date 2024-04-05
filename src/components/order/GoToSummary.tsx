@@ -1,15 +1,41 @@
 import { useCart } from '@/providers/CartProvider'
-import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { FaChevronRight } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 
-export const GoToSummary = () => {
+interface Props {
+  method: {
+    price: number
+  },
+  payment: {
+    price: number
+  }
+}
+
+export const GoToSummary = ({ method, payment }: Props) => {
   const { t } = useTranslation()
   const { cart } = useCart()
 
+  const cartSum = cart.reduce((total, item) => total + item.quantity * item.product.price, 0)
+  const restSum = method?.price + payment?.price
 
-  const formattedSum = cart.reduce((total, item) => total + item.quantity * item.product.price, 0).toLocaleString('pl-PL', {
+  const formattedMainSum = cartSum.toLocaleString('pl-PL', {
+    style: 'currency',
+    currency: 'PLN',
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+    useGrouping: true,
+  });
+
+  const formattedRestSum = restSum.toLocaleString('pl-PL', {
+    style: 'currency',
+    currency: 'PLN',
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+    useGrouping: true,
+  });
+
+  const formattedSum = (cartSum + restSum).toLocaleString('pl-PL', {
     style: 'currency',
     currency: 'PLN',
     minimumFractionDigits: 2,
@@ -44,11 +70,11 @@ export const GoToSummary = () => {
       <div className='text-lg py-4 space-y-1 border-b-[3px] border-gray-400 border-dotted'>
         <div className='flex justify-between items-center'>
           <p>Produkty i usługi</p>
-          <p>{formattedSum}</p>
+          <p>{formattedMainSum}</p>
         </div>
         <div className='flex justify-between items-center'>
           <p>Dostawa i płatność</p>
-          <p>{formattedSum}</p>
+          <p>{formattedRestSum}</p>
         </div>
       </div>
       <div className='py-5 flex justify-between items-center'>

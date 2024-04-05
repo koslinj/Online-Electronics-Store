@@ -10,6 +10,32 @@ import { useEffect, useState } from 'react'
 export const Order = () => {
   const [user, setUser] = useState<User>();
   const { setToken } = useAuth()
+  const [method, setMethod] = useState<any>(null);
+  const [address, setAddress] = useState<any>(null);
+  const [payment, setPayment] = useState<any>(null);
+
+  const getFromLocalStorage = () => {
+    let storedValue = localStorage.getItem('deliveryMethod');
+    if (storedValue !== null) {
+      setMethod(JSON.parse(storedValue));
+    }
+    storedValue = localStorage.getItem('deliveryAddress');
+    if (storedValue !== null) {
+      setAddress(JSON.parse(storedValue));
+    }
+    storedValue = localStorage.getItem('payment');
+    if (storedValue !== null) {
+      setPayment(JSON.parse(storedValue));
+    }
+  }
+
+  useEffect(() => {
+    getFromLocalStorage()
+  }, []);
+
+  const onUpdate = () => {
+    getFromLocalStorage()
+  }
 
   useEffect(() => {
     let isMounted = true;
@@ -44,11 +70,11 @@ export const Order = () => {
           <h1 className="text-4xl font-semibold mt-10 mb-8">Dostawa i płatność</h1>
           <div className='flex gap-10 flex-wrap items-start'>
             <div className='space-y-6 flex-grow'>
-              <DeliveryMethod />
-              <DeliveryAddress user={user} />
-              <Payment />
+              <DeliveryMethod onUpdate={onUpdate} />
+              <DeliveryAddress onUpdate={onUpdate} user={user} />
+              <Payment onUpdate={onUpdate} />
             </div>
-            <GoToSummary />
+            <GoToSummary method={method} payment={payment} />
           </div>
         </div>
       )
