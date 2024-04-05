@@ -10,23 +10,28 @@ import walletIcon from "@/images/wallet_icon.png"
 const contents = [
   {
     title: "Płatność online",
-    desc: ""
+    desc: "",
+    icon: przelewy24Icon
   },
   {
     title: "Karta płatnicza online",
-    desc: ""
+    desc: "",
+    icon: visaIcon
   },
   {
     title: "BLIK",
-    desc: ""
+    desc: "",
+    icon: blikIcon
   },
   {
     title: "Przelew tradycyjny",
-    desc: ""
+    desc: "",
+    icon: moneyIcon
   },
   {
     title: "Przy odbiorze",
-    desc: ""
+    desc: "",
+    icon: walletIcon
   }
 ]
 
@@ -56,11 +61,11 @@ export const Payment = () => {
         >
           <Radio.Group name='payment' className='w-full rounded-lg border-gray-400 border-2' onChange={onChange} value={value}>
             <Space className='w-full' direction="vertical">
-              <MyRadio state={value} value={1} content={contents[0]} icon={przelewy24Icon} />
-              <MyRadio state={value} value={2} content={contents[1]} icon={visaIcon} />
-              <MyRadio state={value} value={3} content={contents[2]} icon={blikIcon} />
-              <MyRadio state={value} value={4} content={contents[3]} icon={moneyIcon} />
-              <MyRadio state={value} value={5} content={contents[4]} icon={walletIcon} price={25} />
+              <MyRadio state={value} value={1} content={contents[0]} />
+              <MyRadio state={value} value={2} content={contents[1]} />
+              <MyRadio state={value} value={3} content={contents[2]} />
+              <MyRadio state={value} value={4} content={contents[3]} />
+              <MyRadio state={value} value={5} content={contents[4]} price={25} />
             </Space>
           </Radio.Group>
         </ConfigProvider>
