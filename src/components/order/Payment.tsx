@@ -60,7 +60,7 @@ export const Payment = () => {
             }
           }}
         >
-          <Radio.Group name='payment' className='w-full rounded-lg border-gray-400 border-2' onChange={onChange} value={value}>
+          <Radio.Group name='payment' className='w-full rounded-lg border-gray-300 border-2' onChange={onChange} value={value}>
             <Space className='w-full' direction="vertical">
               {contents.map((content, index) => (
                 <MyRadio key={index} state={value} value={index} content={content} />

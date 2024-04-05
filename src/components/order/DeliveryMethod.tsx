@@ -58,7 +58,7 @@ export const DeliveryMethod = () => {
             }
           }}
         >
-          <Radio.Group name='method' className='rounded-lg border-gray-400 border-2 w-full' onChange={onChange} value={value}>
+          <Radio.Group name='method' className='rounded-lg border-gray-300 border-2 w-full' onChange={onChange} value={value}>
             <Space className='w-full' direction="vertical">
               {contents.map((content, index) => (
                 <MyRadio key={index} state={value} value={index} content={content} />
