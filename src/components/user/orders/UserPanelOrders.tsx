@@ -1,7 +1,7 @@
 import { Opinion, Order } from "@/types";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { UserPanelOneOpinion } from "./opinions/UserPanelOneOpinion";
+import { UserPanelOneOpinion } from "../opinions/UserPanelOneOpinion";
 import { fetchOrdersByUsername } from "@/api/orders";
 import { UserPanelOneOrder } from "./UserPanelOneOrder";
 
