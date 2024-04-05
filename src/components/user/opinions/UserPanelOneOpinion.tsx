@@ -1,6 +1,6 @@
 import { Opinion, Product } from "@/types"
 import { format } from "date-fns"
-import { Stars } from "../productPage/Stars";
+import { Stars } from "../../productPage/Stars";
 import { useEffect, useState } from "react";
 import { fetchProductById } from "@/api/products";
 import { Link } from "react-router-dom";
