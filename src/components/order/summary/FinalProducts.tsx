@@ -7,7 +7,7 @@ export const FinalProducts = () => {
     <div className='bg-white p-4 rounded-xl'>
       <p className='text-2xl font-bold mb-3'>Produkty</p>
       {cart.map(item => (
-        <div className='flex justify-between gap-4'>
+        <div key={item.product.id} className='flex justify-between gap-4'>
           <div className="flex items-center gap-1">
             <img className="w-28" src={item.product.imageUrl} alt="" />
             <p className="text-xl font-semibold max-w-96">{item.product.name}</p>

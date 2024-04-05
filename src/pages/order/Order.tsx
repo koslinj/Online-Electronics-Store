@@ -7,8 +7,10 @@ import { useCart } from '@/providers/CartProvider';
 import { User } from '@/types';
 import axios from 'axios';
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 export const Order = () => {
+  const navigate = useNavigate()
   const { cart, setOrderingState } = useCart()
   const [user, setUser] = useState<User>();
   const { setToken } = useAuth()
@@ -42,6 +44,10 @@ export const Order = () => {
   }
 
   useEffect(() => {
+    if (cart.length < 1) {
+      navigate("/cart", {replace: true})
+    }
+
     let isMounted = true;
     const abortController = new AbortController();
 
