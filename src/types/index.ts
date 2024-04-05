@@ -19,6 +19,22 @@ export interface Opinion {
   productId: number
 }
 
+export interface OrderItem {
+  id: number
+  quantity: number
+  productId: number
+  purchaseOrderId: number
+}
+
+export interface Order {
+  id: number
+  createdAt: Date
+  user: string
+  state: string
+  sum: number
+  items: OrderItem[]
+}
+
 export interface User {
   username: string
   role: string
