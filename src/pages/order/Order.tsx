@@ -1,7 +1,7 @@
 import { DeliveryAddress } from '@/components/order/DeliveryAddress'
 import { DeliveryMethod } from '@/components/order/DeliveryMethod'
 import { GoToSummary } from '@/components/order/GoToSummary';
-import { Payment } from '@/components/order/Payment';
+import { PaymentMethod } from '@/components/order/PaymentMethod';
 import { useAuth } from '@/providers/AuthProvider';
 import { useCart } from '@/providers/CartProvider';
 import { User } from '@/types';
@@ -76,7 +76,7 @@ export const Order = () => {
             <div className='space-y-6 flex-grow'>
               <DeliveryMethod onUpdate={onUpdate} />
               <DeliveryAddress onUpdate={onUpdate} user={user} />
-              <Payment onUpdate={onUpdate} />
+              <PaymentMethod onUpdate={onUpdate} />
             </div>
             <GoToSummary method={method} payment={payment} />
           </div>

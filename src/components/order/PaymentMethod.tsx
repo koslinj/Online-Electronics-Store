@@ -40,7 +40,7 @@ const contents = [
   }
 ]
 
-export const Payment = ({ onUpdate }: { onUpdate: () => void }) => {
+export const PaymentMethod = ({ onUpdate }: { onUpdate: () => void }) => {
   const [value, setValue] = useState(0);
 
   useEffect(() => {
