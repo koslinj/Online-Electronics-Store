@@ -8,7 +8,7 @@ interface Props {
     title: string
     desc: string
     icon: string
-    price?: number
+    price: number
   }
   address?: Address
 }
@@ -27,7 +27,7 @@ export const MyRadio = ({ state, value, content, address }: Props) => {
           </div>
           <div className='absolute right-4 top-1/2 -translate-y-1/2 text-center'>
             <img className='w-11' src={content.icon} alt="" />
-            <p className='text-base font-semibold'>{content.price || 0} zł</p>
+            <p className='text-base font-semibold'>{content.price} zł</p>
           </div>
         </>
       )}

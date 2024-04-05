@@ -9,17 +9,20 @@ const contents = [
   {
     title: "Kurier – InPost, UPS, FedEx, DTS, PickPack",
     desc: "Dostawa w ciągu 5 dni roboczych",
-    icon: transportIcon
+    icon: transportIcon,
+    price: 10
   },
   {
     title: "Odbiór w salonie ELECTROstore",
     desc: "Dostawa na jutro",
-    icon: shopIcon
+    icon: shopIcon,
+    price: 0
   },
   {
     title: "InPost Paczkomat® 24/7",
     desc: "Dostawa w ciągu 5 dni roboczych",
-    icon: inpostIcon
+    icon: inpostIcon,
+    price: 12
   }
 ]
 

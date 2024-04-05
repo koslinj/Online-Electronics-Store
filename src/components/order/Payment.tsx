@@ -11,22 +11,26 @@ const contents = [
   {
     title: "Płatność online",
     desc: "",
-    icon: przelewy24Icon
+    icon: przelewy24Icon,
+    price: 0
   },
   {
     title: "Karta płatnicza online",
     desc: "",
-    icon: visaIcon
+    icon: visaIcon,
+    price: 0
   },
   {
     title: "BLIK",
     desc: "",
-    icon: blikIcon
+    icon: blikIcon,
+    price: 0
   },
   {
     title: "Przelew tradycyjny",
     desc: "",
-    icon: moneyIcon
+    icon: moneyIcon,
+    price: 0
   },
   {
     title: "Przy odbiorze",
