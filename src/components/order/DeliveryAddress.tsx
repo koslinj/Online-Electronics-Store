@@ -10,7 +10,15 @@ interface Props {
 
 export const DeliveryAddress = ({ user }: Props) => {
   const [value, setValue] = useState(-1);
-  const [orderingData, setOrderingData] = useState<Address[]>([])
+  const [orderingData, setOrderingData] = useState<Address[]>()
+
+  useEffect(() => {
+    const storedValue = localStorage.getItem('deliveryAddress');
+    if (storedValue !== null && orderingData) {
+      const found = orderingData.find(item => item.id === JSON.parse(storedValue).id)
+      setValue(found?.id || -1);
+    }
+  }, [orderingData]);
 
   const fetchData = async () => {
     const _ord = await fetchAddressesByUsername(user.username)
@@ -25,6 +33,9 @@ export const DeliveryAddress = ({ user }: Props) => {
   const onChange = (e: RadioChangeEvent) => {
     console.log('radio checked', e.target.value);
     setValue(e.target.value);
+
+    const deliveryAddress = orderingData?.find(item => item.id === e.target.value);
+    localStorage.setItem('deliveryAddress', JSON.stringify(deliveryAddress));
   };
 
   return (
@@ -45,7 +56,7 @@ export const DeliveryAddress = ({ user }: Props) => {
         >
           <Radio.Group name='address' onChange={onChange} value={value}>
             <Space direction="vertical">
-              {orderingData.map(item => (
+              {orderingData?.map(item => (
                 <MyRadio key={item.id} state={value} value={item.id} address={item} />
               ))}
             </Space>
