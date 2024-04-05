@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next"
 import { UserSidebar } from "@/components/admin/sidebar/UserSidebar"
 import { UserPanelOpinions } from "@/components/user/UserPanelOpinions"
 import { UserPanelOrderingData } from "@/components/user/UserPanelOrderingData"
+import { UserPanelOrders } from "@/components/user/UserPanelOrders"
 
 export const User = ({ user }) => {
   const { t } = useTranslation()
@@ -18,7 +19,7 @@ export const User = ({ user }) => {
       <div className="flex flex-wrap">
         <UserSidebar user={user} setSelectedMenuItem={setSelectedMenuItem} />
         <div className="flex-1">
-          {selectedMenuItem === '0' && <p>{t('orders')}</p>}
+          {selectedMenuItem === '0' && <UserPanelOrders user={user} />}
           {selectedMenuItem === '1' && <UserPanelOpinions user={user} />}
           {selectedMenuItem === '2' && <UserPanelOrderingData user={user} />}
           {selectedMenuItem === '3' && <p>{t('accountSettings')}</p>}
