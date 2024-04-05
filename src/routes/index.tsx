@@ -14,6 +14,7 @@ import { Cart } from "@/pages/Cart";
 import { Order } from "@/pages/order/Order";
 import { OrderRoot } from "@/pages/order/OrderRoot";
 import { Summary } from "@/pages/order/Summary";
+import { Confirmation } from "@/pages/order/Confirmation";
 
 const Routes = () => {
 
@@ -78,6 +79,10 @@ const Routes = () => {
             {
               path: "/order/summary",
               element: <Summary />
+            },
+            {
+              path: "/order/confirmation",
+              element: <Confirmation />
             }
           ]
         }

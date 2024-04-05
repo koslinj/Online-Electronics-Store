@@ -1,4 +1,5 @@
 import { useCart } from '@/providers/CartProvider'
+import { User } from '@/types'
 import { useTranslation } from 'react-i18next'
 import { FaChevronRight } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
@@ -9,10 +10,11 @@ interface Props {
   },
   payment: {
     price: number
-  }
+  },
+  user: User
 }
 
-export const FinalConfirm = ({ method, payment }: Props) => {
+export const FinalConfirm = ({ user, method, payment }: Props) => {
   const { cart } = useCart()
 
   const cartSum = cart.reduce((total, item) => total + item.quantity * item.product.price, 0)
@@ -58,7 +60,7 @@ export const FinalConfirm = ({ method, payment }: Props) => {
         <p className='text-xl'>Do zapłaty</p>
         <p className='text-2xl font-bold'>{formattedSum}</p>
       </div>
-      <Link to='/'>
+      <Link to='/order/confirmation' replace>
         <div
           className="flex gap-2 items-center justify-center text-white bg-green-600 hover:bg-green-700 active:bg-green-900 p-3 w-full rounded-lg duration-200"
         >
