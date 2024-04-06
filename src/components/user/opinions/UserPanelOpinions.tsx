@@ -1,15 +1,11 @@
 import { fetchOpinionsByUsername } from "@/api/opinions";
-import { Opinion } from "@/types";
+import { Opinion, User } from "@/types";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { UserPanelOneOpinion } from "./UserPanelOneOpinion";
 
 interface Props {
-  user: {
-    username: string
-    role: string
-    firstName: string
-  }
+  user: User
 }
 
 export const UserPanelOpinions = ({ user }: Props) => {

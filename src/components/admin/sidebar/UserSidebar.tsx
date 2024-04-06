@@ -5,6 +5,7 @@ import { GoChecklist } from "react-icons/go";
 import { FaRegCommentAlt } from "react-icons/fa";
 import { FaRegAddressCard } from "react-icons/fa";
 import { IoSettingsOutline } from "react-icons/io5";
+import { User } from '@/types';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -26,11 +27,7 @@ function getItem(
 
 interface Props {
   setSelectedMenuItem: Dispatch<SetStateAction<string>>
-  user: {
-    username: string
-    role: string
-    firstName: string
-  }
+  user: User
 }
 
 export const UserSidebar = ({ setSelectedMenuItem, user }: Props) => {
