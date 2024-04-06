@@ -60,23 +60,29 @@ export const ProductListPage = () => {
 
   return (
     <div className='mt-8'>
-      <h2 className='text-4xl font-semibold mb-2 ml-1'>{categoryEntity?.name}</h2>
+      <h2 className='text-4xl font-semibold mb-4 ml-1'>{categoryEntity?.name}</h2>
       <div className='flex justify-start items-start'>
-        <Filter filters={Object.entries(filters)} />
+        <Filter filters={Object.entries(filters)}>
+          <div>
+            <h3 className="text-lg font-bold mb-1">Szukaj</h3>
+            <SearchProductAdmin
+              handleSearchChange={handleSearchChange}
+              onSearch={onSearch}
+              searchQuery={searchQuery}
+            />
+          </div>
+        </Filter>
         <div>
-          <SearchProductAdmin
-            handleSearchChange={handleSearchChange}
-            onSearch={onSearch}
-            searchQuery={searchQuery}
-          />
-          <PaginationProducts
-            pageSize={pageSize}
-            setPageSize={setPageSize}
-            currentPage={currentPage}
-            setCurrentPage={setCurrentPage}
-            totalElements={totalElements}
-            searching={searching}
-          />
+          <div className='flex items-center justify-between mt-3 mb-6'>
+            <PaginationProducts
+              pageSize={pageSize}
+              setPageSize={setPageSize}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+              totalElements={totalElements}
+              searching={searching}
+            />
+          </div>
           <div className='flex gap-2 flex-wrap ml-5'>
             {!searching && currentProducts.map((product) => (
               <Link key={product.id} to={encodeURIComponent(product.name)}>

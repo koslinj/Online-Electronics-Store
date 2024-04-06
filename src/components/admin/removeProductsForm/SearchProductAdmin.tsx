@@ -27,7 +27,7 @@ export const SearchProductAdmin = ({ onSearch, handleSearchChange, searchQuery }
       <Search
         placeholder={t('searchProduct')}
         onSearch={onSearch}
-        style={{ width: 250 }}
+        style={{ width: 230 }}
         onChange={handleSearchChange}
         value={searchQuery}
       />
