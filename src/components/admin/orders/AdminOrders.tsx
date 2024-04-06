@@ -4,6 +4,7 @@ import { Order, Product } from "@/types";
 import axios from "axios";
 import { SearchProps } from "antd/es/input";
 import { OneOrder } from "./OneOrder";
+import { fetchOrdersPaginable } from "@/api/orders";
 
 
 export const AdminOrders = () => {
@@ -31,9 +32,12 @@ export const AdminOrders = () => {
 
   const fetchOrders = async () => {
     try {
-      const response = await axios.get(`http://localhost:8080/api/orders?page=${currentPage - 1}&size=${pageSize}`); // Adjust size as needed
-      setOrders(response.data.content);
-      setTotalElements(response.data.totalElements);
+      const res = await fetchOrdersPaginable(currentPage, pageSize) // Adjust size as needed
+      if (res) {
+        const { data, total } = res
+        setOrders(data);
+        setTotalElements(total);
+      } else console.error("Something went wrong")
     } catch (error) {
       console.error('Error fetching orders:', error);
     }

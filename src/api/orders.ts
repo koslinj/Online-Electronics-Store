@@ -11,3 +11,14 @@ export const fetchOrdersByUsername = async (username: string) => {
     console.error('Error fetching data:', error);
   }
 };
+
+export const fetchOrdersPaginable = async (currentPage: number, pageSize: number) => {
+  try {
+    const response = await axios.get(`http://localhost:8080/api/orders?page=${currentPage - 1}&size=${pageSize}`);
+    const rawData = response.data.content as any[]
+    const data: Order[] = rawData.map(item => ({ ...item, createdAt: new Date(item.createdAt * 1000) }))
+    return { data: data, total: response.data.totalElements }
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+};
