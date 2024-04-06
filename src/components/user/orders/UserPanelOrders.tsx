@@ -30,7 +30,7 @@ export const UserPanelOrders = ({ user }: Props) => {
   return (
     <div>
       <h2 className="text-3xl font-semibold mb-8">{t('orders')}</h2>
-      <h3 className="text-2xl">{t('yourOrders')}<span className="text-gray-500">({orders.length})</span></h3>
+      <h3 className="text-2xl">{t('yourOrders')}<span className="text-gray-500">({orders?.length})</span></h3>
       <div className="mt-2 pt-6 border-t-2 border-gray-400 space-y-6">
         {orders?.map(order => (
           <UserPanelOneOrder order={order} />
