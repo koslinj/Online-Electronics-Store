@@ -5,6 +5,7 @@ import axios from "axios";
 import { SearchProps } from "antd/es/input";
 import { OneOrder } from "./OneOrder";
 import { fetchOrdersPaginable } from "@/api/orders";
+import { PaginationAdmin } from "../removeProductsForm/PaginationAdmin";
 
 
 export const AdminOrders = () => {
@@ -61,12 +62,12 @@ export const AdminOrders = () => {
     <div className="p-4 pr-0 border-2 border-gray-400 rounded-xl">
       <h2 className="text-2xl font-semibold text-center mb-4">{t('orders')}</h2>
       <div>
-        {/* <div className="flex justify-between mr-8 flex-wrap gap-2">
-          <SearchProductAdmin
+        <div className="flex justify-between mr-8 flex-wrap gap-2">
+          {/* <SearchProductAdmin
             handleSearchChange={handleSearchChange}
             onSearch={onSearch}
             searchQuery={searchQuery}
-          />
+          /> */}
           <PaginationAdmin
             pageSize={pageSize}
             setPageSize={setPageSize}
@@ -75,7 +76,7 @@ export const AdminOrders = () => {
             totalElements={totalElements}
             searching={searching}
           />
-        </div> */}
+        </div>
         {orders?.map((order) => (
           <OneOrder key={order.id} order={order} setOrders={setOrders} />
         ))}
