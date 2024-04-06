@@ -51,7 +51,7 @@ export const Home = () => {
           >
             <CarouselContent className='py-2 px-6'>
               {products.slice(8, 14).map((product) => (
-                <CarouselItem key={product.id} className="basis-1/3">
+                <CarouselItem key={product.id} className="md:basis-1/2 lg:basis-1/3">
                   <Link to={`/products/${product.categoryUrl}/${encodeURIComponent(product.name)}`}>
                     <ProductCard product={product} />
                   </Link>
@@ -73,7 +73,7 @@ export const Home = () => {
           >
             <CarouselContent className='py-2 px-2'>
               {data.map((data) => (
-                <CarouselItem key={data.title} className="basis-1/3">
+                <CarouselItem key={data.title} className="md:basis-1/2 lg:basis-1/3">
                   <NewsCard data={data} />
                 </CarouselItem>
               ))}
