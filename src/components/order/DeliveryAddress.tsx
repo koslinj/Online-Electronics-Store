@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { MyRadio } from './MyRadio';
 import { Address, User } from '@/types';
 import { fetchAddressesByUsername } from '@/api/addresses';
+import { useNavigate } from 'react-router-dom';
 
 interface Props {
   user: User
@@ -10,6 +11,7 @@ interface Props {
 }
 
 export const DeliveryAddress = ({ user, onUpdate }: Props) => {
+  const navigate = useNavigate()
   const [value, setValue] = useState(-1);
   const [orderingData, setOrderingData] = useState<Address[]>()
 
@@ -18,7 +20,13 @@ export const DeliveryAddress = ({ user, onUpdate }: Props) => {
     if (orderingData) {
       if (storedValue !== null) {
         const found = orderingData.find(item => item.id === JSON.parse(storedValue).id)
-        setValue(found?.id || -1);
+        if (!found) {
+          const deliveryAddress = orderingData[0];
+          localStorage.setItem('deliveryAddress', JSON.stringify(deliveryAddress));
+          setValue(orderingData[0].id);
+        } else {
+          setValue(found.id);
+        }
       } else if (value !== -1) {
         const deliveryAddress = orderingData.find(item => item.id === value);
         localStorage.setItem('deliveryAddress', JSON.stringify(deliveryAddress));
@@ -28,6 +36,7 @@ export const DeliveryAddress = ({ user, onUpdate }: Props) => {
 
   const fetchData = async () => {
     const _ord = await fetchAddressesByUsername(user.username)
+    if (_ord.length <= 0) navigate("/cart")
     setOrderingData(_ord!)
     setValue(_ord[0]?.id)
   }
