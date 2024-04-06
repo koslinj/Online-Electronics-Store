@@ -22,7 +22,7 @@ export const User = ({ user }) => {
           {selectedMenuItem === '0' && <UserPanelOrders user={user} />}
           {selectedMenuItem === '1' && <UserPanelOpinions user={user} />}
           {selectedMenuItem === '2' && <UserPanelOrderingData user={user} />}
-          {selectedMenuItem === '3' && <p>{t('accountSettings')}</p>}
+          {selectedMenuItem === '3' && <h2 className="text-3xl font-semibold mb-8">{t('accountSettings')}</h2>}
         </div>
       </div>
     </div>
