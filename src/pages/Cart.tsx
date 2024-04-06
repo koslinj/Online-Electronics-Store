@@ -52,5 +52,17 @@ export const Cart = () => {
     }
   }
 
-  return <p>Loading...</p>
+  return (
+    <div>
+      <CartHeader />
+      <div className="flex gap-5 items-start">
+        <div className="max-w-4xl flex-grow">
+          <CartItems />
+        </div>
+        <div className='bg-red-100/65 rounded-xl px-4 py-7 border-2 border-gray-400 w-[340px]'>
+          <p className="text-3xl font-semibold text-center">Musisz się zalogować aby móc złożyć zamówienie!</p>
+        </div>
+      </div>
+    </div>
+  )
 }
