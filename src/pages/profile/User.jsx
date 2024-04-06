@@ -5,6 +5,7 @@ import { UserSidebar } from "@/components/admin/sidebar/UserSidebar"
 import { UserPanelOpinions } from "@/components/user/opinions/UserPanelOpinions"
 import { UserPanelOrderingData } from "@/components/user/orderingData/UserPanelOrderingData"
 import { UserPanelOrders } from "@/components/user/orders/UserPanelOrders"
+import { UserPanelSettings } from "@/components/user/settings/UserPanelSettings"
 
 export const User = ({ user }) => {
   const { t } = useTranslation()
@@ -22,7 +23,7 @@ export const User = ({ user }) => {
           {selectedMenuItem === '0' && <UserPanelOrders user={user} />}
           {selectedMenuItem === '1' && <UserPanelOpinions user={user} />}
           {selectedMenuItem === '2' && <UserPanelOrderingData user={user} />}
-          {selectedMenuItem === '3' && <h2 className="text-3xl font-semibold mb-8">{t('accountSettings')}</h2>}
+          {selectedMenuItem === '3' && <UserPanelSettings user={user} />}
         </div>
       </div>
     </div>
