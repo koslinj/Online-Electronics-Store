@@ -34,7 +34,7 @@ export const UserPanelOrderingData = ({ user }: Props) => {
         <h3 className='text-2xl'>{t('infoAndAddress')}</h3>
         <AddAddress user={user} onUpdate={onUpdate} />
       </div>
-      <div className='flex gap-6 mt-6'>
+      <div className='flex gap-6 mt-6 flex-wrap'>
         {orderingData.map(address => (
           <UserPanelOneOrderingData key={address.id} address={address} user={user} onUpdate={onUpdate} />
         ))}
