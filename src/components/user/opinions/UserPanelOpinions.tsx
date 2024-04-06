@@ -32,7 +32,7 @@ export const UserPanelOpinions = ({ user }: Props) => {
       <h3 className="text-2xl">{t('yourOpinions')}<span className="text-gray-500">({opinions.length})</span></h3>
       <div className="mt-2 border-t-2 border-gray-400">
         {opinions?.map(opinion => (
-          <UserPanelOneOpinion opinion={opinion} />
+          <UserPanelOneOpinion key={opinion.id} opinion={opinion} />
         ))}
       </div>
     </div>

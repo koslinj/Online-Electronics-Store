@@ -33,7 +33,7 @@ export const UserPanelOrders = ({ user }: Props) => {
       <h3 className="text-2xl">{t('yourOrders')}<span className="text-gray-500">({orders?.length})</span></h3>
       <div className="mt-2 pt-6 border-t-2 border-gray-400 space-y-6">
         {orders?.map(order => (
-          <UserPanelOneOrder order={order} />
+          <UserPanelOneOrder key={order.id} order={order} />
         ))}
       </div>
     </div>

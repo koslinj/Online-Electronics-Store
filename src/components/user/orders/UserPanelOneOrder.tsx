@@ -25,7 +25,7 @@ export const UserPanelOneOrder = ({ order }: Props) => {
         <p className='font-semibold text-xl my-2'>{format(order.createdAt, formatStr)}</p>
       </div>
       {order.items.map(item => (
-        <UserPanelOneOrderItem orderItem={item} />
+        <UserPanelOneOrderItem key={item.id} orderItem={item} />
       ))}
       <p className='font-semibold text-xl'>{formattedSum}</p>
     </div>
