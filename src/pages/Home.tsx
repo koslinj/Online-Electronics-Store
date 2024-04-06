@@ -44,9 +44,9 @@ export const Home = () => {
             opts={{ duration: 36, dragFree: true, slidesToScroll: 'auto' }}
             className="md:mx-12"
           >
-            <CarouselContent>
-              {products.slice(8, 16).map((product) => (
-                <CarouselItem key={product.id} className="basis-1/4">
+            <CarouselContent className='py-2 px-6'>
+              {products.slice(8, 14).map((product) => (
+                <CarouselItem key={product.id} className="basis-1/3">
                   <ProductCard product={product} />
                 </CarouselItem>
               ))}
