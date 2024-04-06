@@ -1,16 +1,26 @@
 import { Order } from '@/types'
-import { message } from 'antd'
+import { ConfigProvider, Select, message } from 'antd'
 import axios from 'axios'
 import { format } from 'date-fns'
-import { Dispatch, SetStateAction } from 'react'
-import { FaInfoCircle } from 'react-icons/fa'
+import { Dispatch, SetStateAction, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { FaChevronDown, FaInfoCircle, FaSearch } from 'react-icons/fa'
+
+const filterOption = (input: any, option: any) =>
+  (option?.label ?? '').toLowerCase().includes(input.toLowerCase());
 
 interface Props {
   order: Order
   setOrders: Dispatch<SetStateAction<Order[]>>
 }
 
+const states = ["Oczekuje na zatwierdzenie", "Zatwierdzone", "W dostawie", "Dostarczone"]
+const statesObjects = states.map(state => ({ label: state, value: state }));
+
 export const OneOrder = ({ order, setOrders }: Props) => {
+  const { t } = useTranslation()
+  const [focused, setFocused] = useState(false)
+  const [orderState, setOrderState] = useState(order.state)
   const formatStr = 'dd/MM/yyyy'
   const formattedSum = order.sum.toLocaleString('pl-PL', {
     style: 'currency',
@@ -22,8 +32,22 @@ export const OneOrder = ({ order, setOrders }: Props) => {
 
   const handleUpdate = async (id: number) => {
     try {
-      // await axios.put(`http://localhost:8080/api/products/${id}`);
-      // setProducts(prev => prev.filter(item => item.id !== id))
+      const formData = new FormData();
+      formData.append('state', orderState);
+
+      await axios.put(`http://localhost:8080/api/orders/${id}`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      })
+      setOrders(prevOrders => {
+        return prevOrders.map(order => {
+          if (order.id === id) {
+            return { ...order, state: orderState };
+          }
+          return order;
+        });
+      });
       message.info({
         content:
           <div className='flex items-center gap-3'>
@@ -45,13 +69,44 @@ export const OneOrder = ({ order, setOrders }: Props) => {
         <p>{order.user}</p>
         <p>{formattedSum}</p>
       </div>
-      <button
-        onClick={() => handleUpdate(order.id)}
-        type="submit"
-        className="p-2 mr-4 hover:scale-110 duration-200 border-2 border-black rounded-xl"
-      >
-        Zapisz
-      </button>
+      <div className='flex flex-col items-center justify-center gap-5 pb-4'>
+        <ConfigProvider
+          theme={{
+            components: {
+              Select: {
+                colorTextPlaceholder: 'rgb(156 163 175)',
+                colorBorder: 'rgb(156 163 175)',
+                fontSizeIcon: 16,
+                fontSize: 16,
+                optionPadding: 10,
+                controlHeight: 40
+              }
+            }
+          }}
+        >
+          <Select
+            showSearch
+            onDropdownVisibleChange={() => setFocused(!focused)}
+            suffixIcon={focused ? <FaSearch color="rgb(100 100 100)" /> : <FaChevronDown color="rgb(100 100 100)" />}
+            placeholder={t('choose_state')}
+            optionFilterProp="children"
+            value={orderState}
+            onChange={(value) => { setOrderState(value); console.log(value) }}
+            filterOption={filterOption}
+            options={statesObjects}
+            style={{
+              width: "240px"
+            }}
+          />
+        </ConfigProvider>
+        <button
+          onClick={() => handleUpdate(order.id)}
+          type="submit"
+          className="p-2 mr-4 hover:scale-110 duration-200 border-2 border-black rounded-xl"
+        >
+          Zapisz
+        </button>
+      </div>
     </div>
   )
 }
