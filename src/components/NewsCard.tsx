@@ -11,7 +11,7 @@ interface Props {
 
 export const NewsCard = ({ data }: Props) => {
   return (
-    <div>
+    <div className='cursor-pointer'>
       <div className='border-2 rounded-xl border-gray-300 px-2'>
         <img src={data.image} alt="" />
       </div>
