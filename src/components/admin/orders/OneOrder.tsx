@@ -1,6 +1,7 @@
 import { Order } from '@/types'
 import { message } from 'antd'
 import axios from 'axios'
+import { format } from 'date-fns'
 import { Dispatch, SetStateAction } from 'react'
 import { FaInfoCircle } from 'react-icons/fa'
 
@@ -10,7 +11,7 @@ interface Props {
 }
 
 export const OneOrder = ({ order, setOrders }: Props) => {
-
+  const formatStr = 'dd/MM/yyyy'
   const formattedSum = order.sum.toLocaleString('pl-PL', {
     style: 'currency',
     currency: 'PLN',
@@ -40,6 +41,7 @@ export const OneOrder = ({ order, setOrders }: Props) => {
     <div className="flex justify-between items-center border-b-2 border-b-gray-400 mb-3">
       <div>
         <p>{order.state}</p>
+        <p>{format(order.createdAt, formatStr)}</p>
         <p>{order.user}</p>
         <p>{formattedSum}</p>
       </div>
