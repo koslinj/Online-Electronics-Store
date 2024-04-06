@@ -1,15 +1,19 @@
-import { useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { Category, Product } from '@/types'; // Import types as needed
 import { fetchProductsByCategory } from '@/api/products';
 import { fetchCategoryByUrlName } from '@/api/categories';
 
-export const useProductListData = (category: string | undefined) => {
+export const useProductListData = (
+  category: string | undefined, 
+  searching: boolean,
+  setSearching: Dispatch<SetStateAction<boolean>>,
+  setSearchQuery: Dispatch<SetStateAction<string>>
+) => {
   const [allProducts, setAllProducts] = useState([]);
   const [categoryEntity, setCategoryEntity] = useState<Category>();
   const [filters, setFilters] = useState<{ [key: string]: string[] }>({});
 
-  useEffect(() => {
-    const fetchData = async () => {
+  const fetchData = async () => {
       try {
         const _prod = await fetchProductsByCategory(category!);
         setAllProducts(_prod);
@@ -37,10 +41,20 @@ export const useProductListData = (category: string | undefined) => {
         console.error('Error fetching data:', error);
       }
     };
+
+  useEffect(() => {
     if (category) {
       fetchData();
+      setSearching(false)
+      setSearchQuery("")
     }
   }, [category]);
 
-  return { allProducts, categoryEntity, filters };
+  useEffect(() => {
+    if (!searching) {
+      fetchData();
+    }
+  }, [searching]);
+
+  return { allProducts, setAllProducts, categoryEntity, filters };
 };

@@ -6,12 +6,12 @@ import { Filter } from '@/components/filter/Filter';
 import { PaginationProducts } from '@/components/PaginationProducts';
 import { useEffect, useState } from 'react';
 import { Product } from '@/types';
+import { SearchProps } from 'antd/es/input';
+import axios from 'axios';
+import { SearchProductAdmin } from '@/components/admin/removeProductsForm/SearchProductAdmin';
 
 export const ProductListPage = () => {
   const { category } = useParams();
-  const { allProducts, categoryEntity, filters } = useProductListData(category);
-
-  const [currentProducts, setCurrentProducts] = useState<Product[]>([])
 
   const [currentPage, setCurrentPage] = useState(1);
   const [totalElements, setTotalElements] = useState(1);
@@ -19,17 +19,44 @@ export const ProductListPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searching, setSearching] = useState(false);
 
+  const [currentProducts, setCurrentProducts] = useState<Product[]>([])
+
+  const { allProducts, setAllProducts, categoryEntity, filters } = useProductListData(
+    category,
+    searching,
+    setSearching,
+    setSearchQuery
+  );
   const { filteredProducts } = useFiltering(allProducts, setTotalElements, setCurrentPage);
 
   useEffect(() => {
     const indexOfLastProduct = currentPage * pageSize;
     const indexOfFirstProduct = indexOfLastProduct - pageSize;
     const curr = filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
-    console.log(currentPage)
-    console.log(pageSize)
 
     setCurrentProducts(curr)
   }, [filteredProducts, currentPage, pageSize])
+
+  const handleSearchChange = (e: any) => {
+    if (e.target.value === '') {
+      setSearching(false)
+    }
+    setSearchQuery(e.target.value)
+  }
+
+  const onSearch: SearchProps['onSearch'] = async (value, _e, info) => {
+    if (value === '') return
+    try {
+      const response = await axios.get(`http://localhost:8080/api/products`, {
+        params: { search: searchQuery, category: category }
+      });
+      setSearching(true)
+
+      setAllProducts(response.data);
+    } catch (error) {
+      console.error('Error fetching search results:', error);
+    }
+  }
 
   return (
     <div className='mt-8'>
@@ -37,6 +64,11 @@ export const ProductListPage = () => {
       <div className='flex justify-start items-start'>
         <Filter filters={Object.entries(filters)} />
         <div>
+          <SearchProductAdmin
+            handleSearchChange={handleSearchChange}
+            onSearch={onSearch}
+            searchQuery={searchQuery}
+          />
           <PaginationProducts
             pageSize={pageSize}
             setPageSize={setPageSize}
@@ -46,7 +78,12 @@ export const ProductListPage = () => {
             searching={searching}
           />
           <div className='flex gap-2 flex-wrap ml-5'>
-            {currentProducts.map((product) => (
+            {!searching && currentProducts.map((product) => (
+              <Link key={product.id} to={encodeURIComponent(product.name)}>
+                <ProductCard product={product} />
+              </Link>
+            ))}
+            {searching && filteredProducts.map((product) => (
               <Link key={product.id} to={encodeURIComponent(product.name)}>
                 <ProductCard product={product} />
               </Link>
