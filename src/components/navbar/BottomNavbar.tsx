@@ -61,7 +61,7 @@ export const BottomNavbar = () => {
             side="right"
             element={
               <Link to={`/categories/${item.urlGeneralCategory}`}>
-                <div className="w-36 leading-5 rounded-md p-1 group-hover:bg-white group-hover:scale-105 duration-200 flex items-center">
+                <div className="w-36 h-12 leading-5 rounded-md p-1 group-hover:bg-white group-hover:scale-105 duration-200 flex items-center justify-between">
                   <div>{item.generalCategory}</div>
                   <div>
                     <IoIosArrowDown className="size-5 group-hover:-rotate-180 duration-300" />
