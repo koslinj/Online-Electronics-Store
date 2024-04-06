@@ -27,7 +27,10 @@ export const PaginationAdmin = ({ pageSize, setPageSize, currentPage, setCurrent
           <Select
             defaultValue={pageSize}
             style={{ width: 120 }}
-            onChange={(value) => setPageSize(value)}
+            onChange={(value) => {
+              setPageSize(value)
+              setCurrentPage(0)
+            }}
             options={[
               { value: 5, label: `5 / ${t("page")}` },
               { value: 10, label: `10 / ${t("page")}` },
