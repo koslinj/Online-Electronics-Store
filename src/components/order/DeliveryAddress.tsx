@@ -29,7 +29,7 @@ export const DeliveryAddress = ({ user, onUpdate }: Props) => {
   const fetchData = async () => {
     const _ord = await fetchAddressesByUsername(user.username)
     setOrderingData(_ord!)
-    setValue(_ord[0].id)
+    setValue(_ord[0]?.id)
   }
 
   useEffect(() => {
