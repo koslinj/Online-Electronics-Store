@@ -1,8 +1,12 @@
 import { Product } from "@/types";
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
-export function useFiltering(allProducts: Product[]) {
+export function useFiltering(
+  allProducts: Product[],
+  setTotalElements: Dispatch<SetStateAction<number>>,
+  setCurrentPage: Dispatch<SetStateAction<number>>
+) {
   const [searchParams] = useSearchParams();
   const [filteredProducts, setFilteredProducts] = useState<Product[]>(allProducts);
 
@@ -54,6 +58,8 @@ export function useFiltering(allProducts: Product[]) {
       }
     }
 
+    setTotalElements(filteredProducts.length)
+    setCurrentPage(1)
     setFilteredProducts(filteredProducts);
   }, [searchParams, allProducts]);
 
