@@ -9,6 +9,26 @@ import { Product, Sorting } from '@/types';
 import { SearchProps } from 'antd/es/input';
 import axios from 'axios';
 import { SearchProductAdmin } from '@/components/admin/removeProductsForm/SearchProductAdmin';
+import { ConfigProvider, Select } from 'antd';
+
+const sortingOptions = [
+  {
+    label: "Od A do Z",
+    value: "Od A do Z"
+  },
+  {
+    label: "Od Z do A",
+    value: "Od Z do A"
+  },
+  {
+    label: "Od najtańszych",
+    value: "Od najtańszych"
+  },
+  {
+    label: "Od najdroższych",
+    value: "Od najdroższych"
+  }
+]
 
 export const ProductListPage = () => {
   const { category } = useParams();
@@ -29,15 +49,20 @@ export const ProductListPage = () => {
     setSearching,
     setSearchQuery
   );
-  const { filteredProducts } = useFiltering(allProducts, setTotalElements, setCurrentPage, sorting);
 
-  useEffect(() => {
+  const refreshCurrentProducts = (products: Product[]) => {
     const indexOfLastProduct = currentPage * pageSize;
     const indexOfFirstProduct = indexOfLastProduct - pageSize;
-    const curr = filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
+    const curr = products.slice(indexOfFirstProduct, indexOfLastProduct);
 
     setCurrentProducts(curr)
-  }, [filteredProducts, currentPage, pageSize])
+  }
+
+  const { filteredProducts } = useFiltering(allProducts, setTotalElements, setCurrentPage, sorting, refreshCurrentProducts);
+
+  useEffect(() => {
+    refreshCurrentProducts(filteredProducts)
+  }, [currentPage, pageSize])
 
   const handleSearchChange = (e: any) => {
     if (e.target.value === '') {
@@ -75,7 +100,7 @@ export const ProductListPage = () => {
           </div>
         </Filter>
         <div>
-          <div className='flex items-center justify-between mt-3 mb-6'>
+          <div className='flex items-center justify-between gap-6 mt-3 mb-6'>
             <PaginationProducts
               pageSize={pageSize}
               setPageSize={setPageSize}
@@ -84,6 +109,30 @@ export const ProductListPage = () => {
               totalElements={totalElements}
               searching={searching}
             />
+            <ConfigProvider
+              theme={{
+                components: {
+                  Select: {
+                    colorTextPlaceholder: 'rgb(156 163 175)',
+                    colorBorder: 'rgb(156 163 175)',
+                    fontSizeIcon: 16,
+                    fontSize: 16,
+                    optionPadding: 10,
+                    controlHeight: 40
+                  }
+                }
+              }}
+            >
+              <Select
+                optionFilterProp="children"
+                value={sorting}
+                onChange={(value) => setSorting(value)}
+                options={sortingOptions}
+                style={{
+                  width: "190px"
+                }}
+              />
+            </ConfigProvider>
           </div>
           <div className='flex gap-2 flex-wrap ml-5'>
             {!searching && currentProducts.map((product) => (

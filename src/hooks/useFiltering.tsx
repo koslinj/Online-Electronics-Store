@@ -6,7 +6,8 @@ export function useFiltering(
   allProducts: Product[],
   setTotalElements: Dispatch<SetStateAction<number>>,
   setCurrentPage: Dispatch<SetStateAction<number>>,
-  sorting: Sorting
+  sorting: Sorting,
+  refreshCurrentProducts: (products: Product[]) => void
 ) {
   const [searchParams] = useSearchParams();
   const [filteredProducts, setFilteredProducts] = useState<Product[]>(allProducts);
@@ -72,7 +73,8 @@ export function useFiltering(
     setTotalElements(filteredProducts.length)
     setCurrentPage(1)
     setFilteredProducts(filteredProducts);
-  }, [searchParams, allProducts]);
+    refreshCurrentProducts(filteredProducts)
+  }, [searchParams, allProducts, sorting]);
 
   return { filteredProducts };
 }
