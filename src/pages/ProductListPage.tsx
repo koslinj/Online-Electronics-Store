@@ -5,13 +5,15 @@ import { useProductListData } from '@/hooks/useProductListData';
 import { Filter } from '@/components/filter/Filter';
 import { PaginationProducts } from '@/components/PaginationProducts';
 import { useEffect, useState } from 'react';
-import { Product } from '@/types';
+import { Product, Sorting } from '@/types';
 import { SearchProps } from 'antd/es/input';
 import axios from 'axios';
 import { SearchProductAdmin } from '@/components/admin/removeProductsForm/SearchProductAdmin';
 
 export const ProductListPage = () => {
   const { category } = useParams();
+
+  const [sorting, setSorting] = useState<Sorting>('Od A do Z');
 
   const [currentPage, setCurrentPage] = useState(1);
   const [totalElements, setTotalElements] = useState(1);
@@ -27,7 +29,7 @@ export const ProductListPage = () => {
     setSearching,
     setSearchQuery
   );
-  const { filteredProducts } = useFiltering(allProducts, setTotalElements, setCurrentPage);
+  const { filteredProducts } = useFiltering(allProducts, setTotalElements, setCurrentPage, sorting);
 
   useEffect(() => {
     const indexOfLastProduct = currentPage * pageSize;

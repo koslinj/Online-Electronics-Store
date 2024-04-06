@@ -1,11 +1,12 @@
-import { Product } from "@/types";
+import { Product, Sorting } from "@/types";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 export function useFiltering(
   allProducts: Product[],
   setTotalElements: Dispatch<SetStateAction<number>>,
-  setCurrentPage: Dispatch<SetStateAction<number>>
+  setCurrentPage: Dispatch<SetStateAction<number>>,
+  sorting: Sorting
 ) {
   const [searchParams] = useSearchParams();
   const [filteredProducts, setFilteredProducts] = useState<Product[]>(allProducts);
@@ -56,6 +57,16 @@ export function useFiltering(
           )
         );
       }
+    }
+
+    if (sorting === 'Od A do Z') {
+      filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (sorting === 'Od Z do A') {
+      filteredProducts.sort((a, b) => a.name.localeCompare(b.name)).reverse();
+    } else if (sorting === 'Od najtańszych') {
+      filteredProducts.sort((a, b) => a.price - b.price)
+    } else if (sorting === 'Od najdroższych') {
+      filteredProducts.sort((a, b) => b.price - a.price)
     }
 
     setTotalElements(filteredProducts.length)

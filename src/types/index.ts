@@ -59,3 +59,6 @@ export interface Category {
   name: string
   urlName: string
 }
+
+
+export type Sorting = "Od najtańszych" | "Od najdroższych" | "Od A do Z" | "Od Z do A"
