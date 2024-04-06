@@ -15,21 +15,6 @@ import caro6 from "@/images/caro6.jpg"
 
 import Autoplay from "embla-carousel-autoplay"
 
-export function Example() {
-  return (
-    <Carousel
-      plugins={[
-        Autoplay({
-          delay: 2000,
-        }),
-      ]}
-    >
-      // ...
-    </Carousel>
-  )
-}
-
-
 const images = [
   {
     id: 1,
