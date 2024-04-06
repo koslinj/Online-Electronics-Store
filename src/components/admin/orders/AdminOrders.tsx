@@ -59,7 +59,7 @@ export const AdminOrders = () => {
   }
 
   return (
-    <div className="p-4 pr-0 border-2 border-gray-400 rounded-xl">
+    <div className="p-5 border-2 border-gray-400 rounded-xl">
       <h2 className="text-2xl font-semibold text-center mb-4">{t('orders')}</h2>
       <div>
         <div className="flex justify-between mr-8 flex-wrap gap-2">

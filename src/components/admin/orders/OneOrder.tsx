@@ -20,7 +20,6 @@ const statesObjects = states.map(state => ({ label: state, value: state }));
 export const OneOrder = ({ order, setOrders }: Props) => {
   const { t } = useTranslation()
   const [focused, setFocused] = useState(false)
-  const [orderState, setOrderState] = useState(order.state)
   const formatStr = 'dd/MM/yyyy'
   const formattedSum = order.sum.toLocaleString('pl-PL', {
     style: 'currency',
@@ -30,10 +29,10 @@ export const OneOrder = ({ order, setOrders }: Props) => {
     useGrouping: true,
   });
 
-  const handleUpdate = async (id: number) => {
+  const handleUpdate = async (id: number, value: string) => {
     try {
       const formData = new FormData();
-      formData.append('state', orderState);
+      formData.append('state', value);
 
       await axios.put(`http://localhost:8080/api/orders/${id}`, formData, {
         headers: {
@@ -43,7 +42,7 @@ export const OneOrder = ({ order, setOrders }: Props) => {
       setOrders(prevOrders => {
         return prevOrders.map(order => {
           if (order.id === id) {
-            return { ...order, state: orderState };
+            return { ...order, state: value };
           }
           return order;
         });
@@ -62,14 +61,14 @@ export const OneOrder = ({ order, setOrders }: Props) => {
   };
 
   return (
-    <div className="flex justify-between items-center border-b-2 border-b-gray-400 mb-3">
-      <div>
-        <p>{order.state}</p>
-        <p>{format(order.createdAt, formatStr)}</p>
-        <p>{order.user}</p>
-        <p>{formattedSum}</p>
+    <div className="flex justify-between items-center border-b-2 border-b-gray-400 mt-3 py-5 text-center">
+      <p className='font-bold text-2xl w-[180px]'>{order.state}</p>
+      <div className='space-y-2'>
+        <p className='font-semibold text-xl'>{format(order.createdAt, formatStr)}</p>
+        <p className='text-xl italic'>{order.user}</p>
       </div>
-      <div className='flex flex-col items-center justify-center gap-5 pb-4'>
+      <p className='font-semibold text-xl'>{formattedSum}</p>
+      <div className='flex flex-col items-center justify-center gap-5'>
         <ConfigProvider
           theme={{
             components: {
@@ -90,8 +89,8 @@ export const OneOrder = ({ order, setOrders }: Props) => {
             suffixIcon={focused ? <FaSearch color="rgb(100 100 100)" /> : <FaChevronDown color="rgb(100 100 100)" />}
             placeholder={t('choose_state')}
             optionFilterProp="children"
-            value={orderState}
-            onChange={(value) => { setOrderState(value); console.log(value) }}
+            value={order.state}
+            onChange={(value) => {handleUpdate(order.id, value); console.log(value) }}
             filterOption={filterOption}
             options={statesObjects}
             style={{
@@ -99,13 +98,6 @@ export const OneOrder = ({ order, setOrders }: Props) => {
             }}
           />
         </ConfigProvider>
-        <button
-          onClick={() => handleUpdate(order.id)}
-          type="submit"
-          className="p-2 mr-4 hover:scale-110 duration-200 border-2 border-black rounded-xl"
-        >
-          Zapisz
-        </button>
       </div>
     </div>
   )
