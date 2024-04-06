@@ -88,7 +88,7 @@ export const ProductListPage = () => {
   return (
     <div className='mt-8'>
       <h2 className='text-4xl font-semibold mb-4 ml-1'>{categoryEntity?.name}</h2>
-      <div className='flex justify-start items-start'>
+      <div className='flex justify-start items-start flex-wrap'>
         <Filter filters={Object.entries(filters)}>
           <div>
             <h3 className="text-lg font-bold mb-1">Szukaj</h3>
@@ -100,7 +100,7 @@ export const ProductListPage = () => {
           </div>
         </Filter>
         <div>
-          <div className='flex items-center justify-between gap-6 mt-3 mb-6'>
+          <div className='flex flex-wrap items-center justify-between gap-6 mt-3 mb-6'>
             <PaginationProducts
               pageSize={pageSize}
               setPageSize={setPageSize}
