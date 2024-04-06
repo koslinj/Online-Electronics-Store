@@ -25,15 +25,17 @@ export const CategoryPage = () => {
 
   return (
     <>
-      <h2 className='text-2xl text-gray-600 m-4'>
+      <h2 className='text-3xl text-gray-600 my-8'>
         <span className='font-bold text-black'>Kategorie</span><br />
         w {categories[0]?.generalCategory}
       </h2>
-      {categories.map((cat) => (
-        <Link to={`/products/${cat.urlName}`} key={cat.id}>
-          <div>{cat.name}</div>
-        </Link>
-      ))}
+      <div>
+        {categories.map((cat) => (
+          <Link to={`/products/${cat.urlName}`} key={cat.id}>
+            <div className='text-xl mt-3 font-semibold italic hover:underline'>{cat.name}</div>
+          </Link>
+        ))}
+      </div>
     </>
   )
 }
