@@ -6,6 +6,7 @@ import { MainCarousel } from '@/components/MainCarousel';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/shadcn/components/ui/carousel';
 import { data } from "@/data/data"
 import { NewsCard } from '@/components/NewsCard';
+import { Link } from 'react-router-dom';
 
 export const Home = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -33,7 +34,9 @@ export const Home = () => {
         <h2 className="text-4xl font-bold mb-4">Polecamy</h2>
         <div className='flex flex-wrap gap-4'>
           {products.slice(0, 8).map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <Link key={product.id} to={`/products/${product.categoryUrl}/${encodeURIComponent(product.name)}`}>
+              <ProductCard product={product} />
+            </Link>
           ))}
         </div>
       </div>
@@ -49,7 +52,9 @@ export const Home = () => {
             <CarouselContent className='py-2 px-6'>
               {products.slice(8, 14).map((product) => (
                 <CarouselItem key={product.id} className="basis-1/3">
-                  <ProductCard product={product} />
+                  <Link to={`/products/${product.categoryUrl}/${encodeURIComponent(product.name)}`}>
+                    <ProductCard product={product} />
+                  </Link>
                 </CarouselItem>
               ))}
             </CarouselContent>
