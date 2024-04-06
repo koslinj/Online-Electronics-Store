@@ -15,8 +15,8 @@ export const NewsCard = ({ data }: Props) => {
       <div className='border-2 rounded-xl border-gray-300 px-2'>
         <img src={data.image} alt="" />
       </div>
-      <h3 className='font-semibold text-2xl'>{data.title}</h3>
-      <div className='flex items-center gap-2'>
+      <h3 className='font-semibold text-xl line-clamp-2'>{data.title}</h3>
+      <div className='flex items-center gap-2 mt-3'>
         <p>{data.time}</p>
         <p className='font-bold'>·</p>
         <p>{data.comments}</p>
