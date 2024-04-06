@@ -35,6 +35,27 @@ export const Home = () => {
           ))}
         </div>
       </div>
+
+      <div className='border-t-2 border-gray-400 my-10 py-5'>
+        <h2 className="text-4xl font-bold">Wybrane dla Ciebie</h2>
+        <h3 className="text-2xl text-gray-600 mb-4">Na podstawie ostatnio oglądanych produktów</h3>
+        <div className="mx-auto max-w-7xl mt-4">
+          <Carousel
+            opts={{ duration: 36, dragFree: true, slidesToScroll: 'auto' }}
+            className="md:mx-12"
+          >
+            <CarouselContent>
+              {products.slice(8, 16).map((product) => (
+                <CarouselItem key={product.id} className="basis-1/4">
+                  <ProductCard product={product} />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="border-gray-500 size-10 hidden md:flex" />
+            <CarouselNext className="border-gray-500 size-10 hidden md:flex" />
+          </Carousel>
+        </div>
+      </div>
     </div>
   );
 };
