@@ -33,7 +33,7 @@ export const ProductCard = ({ product }: Props) => {
   }
 
   return (
-    <div className="group relative w-76 rounded-md flex flex-col items-center p-2 pb-16 h-110 before:absolute before:h-[1px] before:w-48 before:bottom-0 before:bg-gray-300 cursor-pointer hover:shadow-equal duration-200">
+    <div className="group relative w-[296px] rounded-md flex flex-col items-center p-2 pb-16 h-110 before:absolute before:h-[1px] before:w-48 before:bottom-0 before:bg-gray-300 cursor-pointer hover:shadow-equal duration-200">
       <img className='max-w-56' src={product.imageUrl} alt={product.name} />
       <p className="w-full font-semibold">{product.name}</p>
       <div className="w-full mt-4">
