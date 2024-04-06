@@ -50,6 +50,7 @@ export const FinalConfirm = ({ user, method, payment }: Props) => {
     try {
       const body = {
         user: user.username,
+        sum: cartSum + restSum,
         items: cart.map(it => (
           {
             quantity: it.quantity,
