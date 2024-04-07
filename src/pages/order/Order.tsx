@@ -78,7 +78,7 @@ export const Order = () => {
       return (
         <div>
           <h1 className="text-4xl font-semibold mt-10 mb-8">Dostawa i płatność</h1>
-          <div className='flex gap-10 flex-wrap items-start'>
+          <div className='flex gap-10 flex-wrap lg:flex-nowrap items-start'>
             <div className='space-y-6 flex-grow'>
               <DeliveryMethod onUpdate={onUpdate} />
               <DeliveryAddress onUpdate={onUpdate} user={user} />

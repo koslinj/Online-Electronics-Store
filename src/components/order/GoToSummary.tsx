@@ -51,7 +51,7 @@ export const GoToSummary = ({ method, payment }: Props) => {
             <img className="w-32" src={item.product.imageUrl} alt={item.product.name} />
             <div className='w-full'>
               <Link to={`/products/${item.product.categoryUrl}/${encodeURIComponent(item.product.name)}`}>
-                <p className="text-lg font-semibold hover:underline">{item.product.name}</p>
+                <p className="text-lg max-w-[320px] font-semibold hover:underline">{item.product.name}</p>
               </Link>
               <p className="text-lg mt-2 text-blue-900">{item.quantity} {t('pieces')}</p>
               <p className="text-right text-lg font-semibold italic">
