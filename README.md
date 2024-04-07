@@ -3,13 +3,15 @@
 ## Overview
 This is a ***handmade*** (no tutorial or course, entirely ***independent work***) website of an electronic store. It is based on ***React with TypeScript***. The main library used for components is ***Ant Design***.  
 
+During the creation of the website, a significant inspiration was drawn from the x-kom store: https://www.x-kom.pl/  
+  
 There are lots of different features and functionalities, so I am not going to describe them all, instead there will be some screenshots showcasing the most important ones.  
   
 The website provides user ***authentication and authorization*** with role-based access control. For this purpose, it utilizes ***JWT tokens***.  
-  
-The backend providing the API for this website is located at: https://github.com/koslinj/Online-Electronics-Store-Backend  
 
-During the creation of the website, a significant inspiration was drawn from the x-kom store: https://www.x-kom.pl/
+For ***Internationalization*** I used i18next: https://react.i18next.com/  
+  
+The backend providing the API for this website is located at: https://github.com/koslinj/Online-Electronics-Store-Backend
 
 ### Main Focus
 - Focused on providing a ***modern UX*** while maintaining a minimalist design.
