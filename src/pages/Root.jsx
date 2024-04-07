@@ -34,7 +34,9 @@ export const Root = () => {
       <div className='max-w-7xl mx-auto px-1 sm:px-6'>
         <Outlet />
       </div>
-      <Footer />
+      <div className='max-w-7xl mx-auto px-1 sm:px-6'>
+        <Footer />
+      </div>
     </div>
   )
 }
