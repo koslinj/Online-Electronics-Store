@@ -2,6 +2,8 @@ import React, { MouseEventHandler, useMemo } from "react";
 import { Product } from "../types"
 import { MdOutlineAddShoppingCart } from "react-icons/md";
 import { useCart } from "@/providers/CartProvider";
+import { message } from "antd";
+import { FaCheckCircle } from "react-icons/fa";
 
 interface Props {
   product: Product
@@ -30,6 +32,14 @@ export const ProductCard = ({ product }: Props) => {
   const handleAddToCart = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
     addOne(product)
+    message.success({
+      content:
+        <div className='flex items-center gap-3'>
+          <FaCheckCircle className='size-10 text-green-500' />
+          <p className='text-xl'>Dodano do koszyka!</p>
+        </div>,
+      icon: <></>
+    });
   }
 
   return (

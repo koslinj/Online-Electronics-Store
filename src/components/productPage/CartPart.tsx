@@ -1,7 +1,7 @@
 import { useCart } from '@/providers/CartProvider';
 import { Product } from '@/types';
 import React, { useState } from 'react'
-import { FaMinus, FaPlus } from "react-icons/fa";
+import { FaCheckCircle, FaMinus, FaPlus } from "react-icons/fa";
 import { message } from "antd";
 import { MdError, MdOutlineAddShoppingCart } from "react-icons/md";
 import { useTranslation } from 'react-i18next';
@@ -18,6 +18,14 @@ export const CartPart = ({ product }: Props) => {
   const handleAddToCart = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
     add(product!, count)
+    message.success({
+      content:
+        <div className='flex items-center gap-3'>
+          <FaCheckCircle className='size-10 text-green-500' />
+          <p className='text-xl'>Dodano do koszyka!</p>
+        </div>,
+      icon: <></>
+    });
   }
 
   const handleMinus = () => {
