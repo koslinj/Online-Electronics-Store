@@ -41,7 +41,7 @@ export const Cart = () => {
       return (
         <div>
           <CartHeader />
-          <div className="flex gap-5 items-start">
+          <div className="flex gap-5 items-start flex-wrap">
             <div className="max-w-4xl flex-grow">
               <CartItems />
             </div>
@@ -55,7 +55,7 @@ export const Cart = () => {
   return (
     <div>
       <CartHeader />
-      <div className="flex gap-5 items-start">
+      <div className="flex gap-5 items-start flex-wrap">
         <div className="max-w-4xl flex-grow">
           <CartItems />
         </div>
