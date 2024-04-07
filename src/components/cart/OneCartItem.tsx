@@ -24,7 +24,7 @@ export const OneCartItem = ({ item }: { item: CartItem }) => {
           alt={item.product.name}
         />
         <Link to={`/products/${item.product.categoryUrl}/${encodeURIComponent(item.product.name)}`}>
-          <p className='text-lg hover:underline font-semibold'>{item.product.name}</p>
+          <p className='text-lg max-w-[420px] hover:underline font-semibold'>{item.product.name}</p>
         </Link>
       </div>
       <div className="flex flex-wrap gap-5 items-center">
