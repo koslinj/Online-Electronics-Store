@@ -42,16 +42,18 @@ export const Opinions = ({ product, user }: Props) => {
           <AddOpinion product={product} user={user} onOpinionAdded={onOpinionAdded} />
         </div>
       </div>
-      {opinions.map(opinion => (
-        <div key={opinion.id} className="space-y-1">
-          <p className="font-semibold italic">{opinion.user}</p>
-          <div className="flex gap-x-4">
-            <Stars n={opinion.stars} />
-            <p>{format(opinion.createdAt, formatStr)}</p>
+      <div className="space-y-4">
+        {opinions.map(opinion => (
+          <div key={opinion.id} className="space-y-1">
+            <p className="font-semibold italic">{opinion.user}</p>
+            <div className="flex gap-x-4">
+              <Stars n={opinion.stars} />
+              <p>{format(opinion.createdAt, formatStr)}</p>
+            </div>
+            <p className="text-lg">{opinion.content}</p>
           </div>
-          <p className="text-lg">{opinion.content}</p>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   )
 }
