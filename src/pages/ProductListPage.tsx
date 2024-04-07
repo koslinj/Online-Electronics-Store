@@ -88,7 +88,7 @@ export const ProductListPage = () => {
   return (
     <div className='mt-8'>
       <h2 className='text-4xl font-semibold mb-4 ml-1'>{categoryEntity?.name}</h2>
-      <div className='flex justify-start items-start flex-wrap'>
+      <div className='flex justify-start items-start flex-wrap md:flex-nowrap'>
         <Filter filters={Object.entries(filters)}>
           <div>
             <h3 className="text-lg font-bold mb-1">Szukaj</h3>
