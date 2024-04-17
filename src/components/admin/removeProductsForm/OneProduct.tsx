@@ -34,7 +34,7 @@ export const OneProduct = ({ product, setProducts }: Props) => {
         icon: <></>
       });
     } catch (error) {
-      console.error('Error uploading product:', error);
+      console.error('Error deleting product:', error);
     }
   };
 

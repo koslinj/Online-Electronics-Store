@@ -20,7 +20,7 @@ export const GeneralRating = ({ opinions }: Props) => {
 
   return (
     <div className='flex flex-col items-center gap-y-1'>
-      <p className='text-5xl font-semibold mb-4'>{averageStars}<span className='text-3xl text-gray-500 font-light'> /6</span></p>
+      <p className='text-5xl font-semibold mb-4'>{averageStars.toFixed(2)}<span className='text-3xl text-gray-500 font-light'> /6</span></p>
       <ConfigProvider
         theme={{
           components: {
